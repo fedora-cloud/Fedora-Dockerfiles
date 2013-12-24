@@ -9,28 +9,28 @@ To build:
 
 Over the net via git -
 
-```
-docker build -rm -t <username>/memcached git://github.com/scollier/dockerfiles-fedora-memcached.git
-```
+
+# docker build -rm -t <username>/memcached git://github.com/scollier/dockerfiles-fedora-memcached.git
+
 
 or
 
 Copy the sources down -
 
-```
-docker build -rm -t <username>/memcached .
-```
+
+# docker build -rm -t <username>/memcached .
+
 
 
 To run:
 
-```
-docker run -d -p 11211:11211 <username>/memcached
-```
+
+# docker run -d -p 11211:11211 <username>/memcached
+
 
 Test:
 
-```
+
 # telnet localhost 11211
 Trying 127.0.0.1...
 Connected to localhost.
@@ -42,4 +42,4 @@ STAT time 1387383960
 STAT version 1.4.15
 STAT libevent 2.0.21-stable
 <snip>
-```
+
