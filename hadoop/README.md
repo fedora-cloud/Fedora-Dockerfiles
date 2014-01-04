@@ -1,7 +1,7 @@
-dockerfiles-fedora-mongodb
+dockerfiles-fedora-hadoop
 ========================
 
-Fedora dockerfile for MongoDB
+Fedora dockerfile for Hadoop
 
 Tested on Docker 0.7.0
 
@@ -10,7 +10,7 @@ To build:
 Over the net via git -
 
 ```
-docker build -rm -t <username>/mongo git://github.com/scollier/dockerfiles-fedora-mongodb.git
+docker build -rm -t <username>/mongo git://github.com/scollier/dockerfiles-fedora-hadoop.git
 ```
 
 or
@@ -51,7 +51,7 @@ To test, use the port that was just located:
 
 ```
 # mongo --port 49158
-MongoDB shell version: 2.4.6
+Hadoop shell version: 2.4.6
 connecting to: 127.0.0.1:49158/test
 > 
 
