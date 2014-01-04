@@ -1,8 +1,21 @@
 FROM mattdm/fedora
-MAINTAINER scollier <scollier@redhat.com>
+MAINTAINER scollier <emailscottcollier@gmail.com>
 
 RUN yum -y update
-RUN yum -y install yum install hadoop-common hadoop-common-native hadoop-hdfs hadoop-mapreduce hadoop-mapreduce-examples hadoop-yarn pwgen java-1.7.0-openjdk-headless java-1.7.0-openjdk java-1.7.0-openjdk-devel ldapjdk supervisor bash-completion
+RUN yum -y install yum install \
+hadoop-common \
+hadoop-common-native \
+hadoop-hdfs \
+hadoop-mapreduce \
+hadoop-mapreduce-examples \
+hadoop-yarn \
+pwgen \
+java-1.7.0-openjdk-headless \
+java-1.7.0-openjdk \
+java-1.7.0-openjdk-devel \
+ldapjdk \
+supervisor \
+bash-completion
 
 ADD ./config.sh /config.sh
 ADD ./start_hadoop.sh /start_hadoop.sh
