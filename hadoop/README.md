@@ -10,7 +10,7 @@ To build:
 Over the net via git -
 
 ```
-docker build -rm -t <username>/mongo git://github.com/scollier/dockerfiles-fedora-hadoop.git
+docker build -rm -t <username>/hadoop git://github.com/scollier/dockerfiles-fedora-hadoop.git
 ```
 
 or
@@ -18,14 +18,14 @@ or
 Copy the sources down -
 
 ```
-docker build -rm -t <username>/mongo .
+docker build -rm -t <username>/hadoop .
 ```
 
 
 To run:
 
 ```
-docker run -d -p 27017 <username>/mongo
+docker run -d -p 27017 <username>/hadoop
 ```
 
 
@@ -44,13 +44,13 @@ Get the port that the container is listening on:
 ```
 # docker ps
 CONTAINER ID        IMAGE                   COMMAND             CREATED             STATUS              PORTS                      NAMES
-c8fc42d19fd3        <username>/mongo:latest   /usr/bin/mongod     4 minutes ago       Up 4 minutes        0.0.0.0:49158->27017/tcp   ecstatic_thompson   
+c8fc42d19fd3        <username>/hadoop:latest   /usr/bin/hadoopd     4 minutes ago       Up 4 minutes        0.0.0.0:49158->27017/tcp   ecstatic_thompson   
 ```
 
 To test, use the port that was just located:
 
 ```
-# mongo --port 49158
+# hadoop --port 49158
 Hadoop shell version: 2.4.6
 connecting to: 127.0.0.1:49158/test
 > 
