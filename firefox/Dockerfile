@@ -1,5 +1,5 @@
-FROM mattdm/fedora
-MAINTAINER scollier <scollier@redhat.com>
+FROM fedora
+MAINTAINER scollier <emailscottcollier@gmail.com>
 
 RUN yum -y update
 RUN yum -y install x11vnc firefox xorg-x11-server-Xvfb
