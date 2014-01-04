@@ -1,8 +1,1 @@
 This is a repo for dockerfiles.
-
-Each directory has a dockerfile and a README.  The README in each directory shows how to:
-
-1.  Build 
-2.  Run
-3.  Test
-
