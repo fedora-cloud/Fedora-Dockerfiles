@@ -1,11 +1,25 @@
-#!/bin/bash
+#!/bin/bash -x
 
-/usr/sbin/hadoop-daemon.sh start datanode
-/usr/sbin/mr-jobhistory-daemon.sh start historyserver
-/usr/sbin/hadoop-daemon.sh start namenode -format
-/usr/sbin/yarn-daemon.sh start nodemanager
-/usr/sbin/yarn-daemon.sh start proxyserver
-/usr/sbin/yarn-daemon.sh start resourcemanager
-/usr/sbin/hadoop-daemon.sh start secondarynamenode
-/usr/sbin/hadoop-daemon.sh start zkfc
+__hdfs_createdir() {
+echo
+echo "Running hdfs_createdir Function"
+echo
+runuser hdfs -s /bin/bash /bin/bash -c "hadoop fs -mkdir /user/test"
+# su - hdfs -c "hadoop fs -mkdir /user/test"
+runuser hdfs -s /bin/bash /bin/bash -c "hadoop fs -chown test /user/test"
+# runuser hdfs -s /bin/bash /bin/bash -c "hadoop fs -chown test /user/test"
+# hadoop fs -mkdir /user/test
+# hadoop fs -chown test /user/test
+}
 
+__run_supervisor() {
+echo
+echo "Running run_supervisor Function"
+echo
+supervisord -n
+}
+
+
+# Call all functions
+__hdfs_createdir
+__run_supervisor
