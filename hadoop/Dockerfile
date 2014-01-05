@@ -11,7 +11,7 @@ ADD ./hdfs-create-dirs /hdfs-create-dirs
 ADD ./supervisord.conf /etc/supervisord.conf
 
 RUN chmod 755 /config_1.sh
-RUN chmod 755 /config_2.sh
+RUN chmod 755 /start_hadoop.sh
 RUN chmod 755 /hdfs-create-dirs
 RUN /hdfs-create-dirs
 

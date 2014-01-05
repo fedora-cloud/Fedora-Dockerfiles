@@ -1,0 +1,29 @@
+Uploading context 30.72 kB
+Step 1 : FROM fedora
+ ---> 924a401326b8
+Step 2 : MAINTAINER scollier <fake@gmail.com>
+ ---> Using cache
+ ---> 3dd44648522b
+Step 3 : RUN yum -y update
+ ---> Using cache
+ ---> da5ddb298179
+Step 4 : RUN yum -y install yum install hadoop-common hadoop-common-native hadoop-hdfs hadoop-mapreduce hadoop-mapreduce-examples hadoop-yarn pwgen java-1.7.0-openjdk-headless java-1.7.0-openjdk java-1.7.0-openjdk-devel ldapjdk supervisor bash-completion
+ ---> Using cache
+ ---> 4391c4e7a11b
+Step 5 : ADD ./config_1.sh /config_1.sh
+ ---> 7b96dc4034ad
+Step 6 : ADD ./start_hadoop.sh /start_hadoop.sh
+ ---> bf7b5c14e586
+Step 7 : ADD ./start_hadoop.sh /start_hadoop.sh
+ ---> 018f0a1cf8fb
+Step 8 : ADD ./hdfs-create-dirs /hdfs-create-dirs
+ ---> ea8313c9609c
+Step 9 : ADD ./supervisord.conf /etc/supervisord.conf
+ ---> d450e5949321
+Step 10 : RUN chmod 755 /config_1.sh
+ ---> Running in bd52c171fd5e
+ ---> 96d163310075
+Step 11 : RUN chmod 755 /config_2.sh
+ ---> Running in f7ff91016477
+[91mchmod: [0m[91mcannot access '/config_2.sh'[0m[91m: No such file or directory[0m[91m
+[0m2014/01/05 19:12:13 The command [/bin/sh -c chmod 755 /config_2.sh] returned a non-zero code: 1
