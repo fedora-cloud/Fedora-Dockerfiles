@@ -21,5 +21,5 @@ supervisord -n
 
 
 # Call all functions
-__hdfs_createdir
+# __hdfs_createdir
 __run_supervisor

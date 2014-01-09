@@ -1,6 +1,8 @@
 dockerfiles-fedora-hadoop
 ========================
 
+THIS DOCKERFILE NEEDS WORK - 1/9/2014
+
 Fedora dockerfile for Hadoop
 
 Tested on Docker 0.7.0

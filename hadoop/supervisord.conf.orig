@@ -138,52 +138,20 @@ serverurl=unix:///tmp/supervisor.sock ; use a unix:// URL  for a unix socket
 
 [program:datanode]
 command=/bin/bash -c "/sbin/hadoop-daemon.sh start datanode"
-;user=root
-;autostart=true
-;autorestart=true
-;startsecs=3
 [program:historyserver]
 command=/bin/bash -c "/sbin/mr-jobhistory-daemon.sh start historyserver"
-;user=root
-;autostart=true
-;autorestart=true
-;startsecs=3
 [program:namenode]
 command=/bin/bash -c "/sbin/hadoop-daemon.sh start namenode"
-;user=root
-;autostart=true
-;autorestart=true
-;startsecs=3
 [program:nodemanager]
 command=/bin/bash -c "/sbin/yarn-daemon.sh start nodemanager"
-;user=root
-;autostart=true
-;autorestart=true
-;startsecs=3
 [program:proxyserver]
 command=/bin/bash -c "/sbin/yarn-daemon.sh start proxyserver"
-;user=root
-;autostart=true
-;autorestart=true
-;startsecs=3
 [program:resourcemanager]
-;user=root
 command=/bin/bash -c "/sbin/yarn-daemon.sh start resourcemanager"
-;autostart=true
-;autorestart=true
-;startsecs=3
 [program:secondarynamenode]
 command=/bin/bash -c "/sbin/hadoop-daemon.sh start secondarynamenode"
-;user=root
-;autostart=true
-;autorestart=true
-;startsecs=3
 [program:hadoop-daemon]
 command=/bin/bash -c "/sbin/hadoop-daemon.sh start zkfc"
-;user=root
-;autostart=true
-;autorestart=true
-;startsecs=3
 
 ;[include]
 ;files = relative/directory/*.ini
@@ -196,7 +164,7 @@ command=/bin/bash -c "/sbin/hadoop-daemon.sh start zkfc"
 ;sshd 
 ;[program:sshd]
 ;command=/usr/sbin/sshd -D
-; stdout_logfile=/var/log/supervisor/%(program_name)s.log
-; stderr_logfile=/var/log/supervisor/%(program_name)s.log
-; autorestart=true
+stdout_logfile=/var/log/supervisor/%(program_name)s.log
+stderr_logfile=/var/log/supervisor/%(program_name)s.log
+autorestart=true
 
