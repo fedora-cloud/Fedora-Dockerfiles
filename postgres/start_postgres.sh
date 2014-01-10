@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 __run_supervisor() {
 supervisord -n
 }

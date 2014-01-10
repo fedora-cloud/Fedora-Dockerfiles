@@ -8,13 +8,14 @@ ADD ./postgresql-setup /usr/bin/postgresql-setup
 ADD ./postgres_user.sh /postgres_user.sh
 ADD ./supervisord.conf /etc/supervisord.conf
 ADD ./start_postgres.sh /start_postgres.sh
-ADD ./postgresql.conf /var/lib/pgsql/data/postgresql.conf
 
 RUN chmod +x /usr/bin/postgresql-setup
 RUN chmod +x /start_postgres.sh
 RUN chmod +x /postgres_user.sh
 
 RUN /usr/bin/postgresql-setup initdb
+
+ADD ./postgresql.conf /var/lib/pgsql/data/postgresql.conf
 
 RUN chown -v postgres.postgres /var/lib/pgsql/data/postgresql.conf
 

@@ -35,7 +35,7 @@ PGDATA="/var/lib/pgsql/data"
 #     echo "failed to find PGDATA setting in ${SERVICE_NAME}.service"
 #     exit 1
 # fi
-PGPORT=5432
+PGPORT="5432"
 # PGPORT=`systemctl show -p Environment "${SERVICE_NAME}.service" |
 #                 sed 's/^Environment=//' | tr ' ' '\n' |
 #                 sed -n 's/^PGPORT=//p' | tail -n 1`
