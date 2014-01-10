@@ -1,89 +1,0 @@
-Uploading context 61.44 kB
-[2KStep 1 : FROM fedora
-[2K ---> 924a401326b8
-[2KStep 2 : MAINTAINER scollier <scollier@redhat.com>
-[2K ---> Using cache
-[2K ---> 4e1cbe10de55
-[2KStep 3 : RUN yum -y update
-[2K ---> Using cache
-[2K ---> d921331fad6c
-[2KStep 4 : RUN yum -y install postgresql-server postgresql postgresql-contrib supervisor
-[2K ---> Using cache
-[2K ---> 2de3efc5f672
-[2KStep 5 : ADD ./postgresql-setup /usr/bin/postgresql-setup
-[2K ---> 5e9f62a89ef4
-[2KStep 6 : ADD ./postgres_user.sh /postgres_user.sh
-[2K ---> 110adc68d2b8
-[2KStep 7 : ADD ./supervisord.conf /etc/supervisord.conf
-[2K ---> 66dae8302467
-[2KStep 8 : ADD ./start_postgres.sh /start_postgres.sh
-[2K ---> 1ee0f97353bd
-[2KStep 9 : RUN chmod +x /usr/bin/postgresql-setup
-[2K ---> Running in 39a3cf4e6533
-[2K ---> 10ea6a67fdef
-[2KStep 10 : RUN chmod +x /start_postgres.sh
-[2K ---> Running in e72caf83d939
-[2K ---> b5856b7fe402
-[2KStep 11 : RUN chmod +x /postgres_user.sh
-[2K ---> Running in 52e28b55fa25
-[2K ---> d0909d752690
-[2KStep 12 : RUN /usr/bin/postgresql-setup initdb
-[2K ---> Running in 72da2fc401fb
-[2KInitializing database ... [2KOK
-[2K
-[2K ---> a99988e5885a
-[2KStep 13 : ADD ./postgresql.conf /var/lib/pgsql/data/postgresql.conf
-[2K ---> f7f6edc7e5a1
-[2KStep 14 : RUN chown -v postgres.postgres /var/lib/pgsql/data/postgresql.conf
-[2K ---> Running in ddd105bd669a
-[2Kchanged ownership of '/var/lib/pgsql/data/postgresql.conf' from root:root to postgres:postgres
-[2K ---> 7cc057993301
-[2KStep 15 : RUN echo "host    all             all             0.0.0.0/0               md5" >> /var/lib/pgsql/data/pg_hba.conf
-[2K ---> Running in 57322cc5a40f
-[2K ---> 8fa9051bd1be
-[2KStep 16 : RUN /postgres_user.sh
-[2K ---> Running in 9fd7256b7c8a
-[2K[91mLOG:  redirecting log output to logging collector process
-HINT:  Future log output will appear in directory "pg_log".
-[0m[2KUSER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
-root         1  0.4  0.0  11596  1356 ?        S    18:23   0:00 /bin/bash /postgres_user.sh
-root        11  0.1  0.0  76948  1784 ?        S    18:23   0:00 su --login postgres --command /usr/bin/postgres -D /var/lib/pgsql/data -p 5432
-postgres    13  0.6  0.1 206624  7900 ?        Ss   18:23   0:00 /usr/bin/postgres -D /var/lib/pgsql/data -p 5432
-postgres    26  0.0  0.0 190252  1228 ?        Ss   18:23   0:00 postgres: logger process                        
-postgres    28  0.0  0.0 206624  1640 ?        Ss   18:23   0:00 postgres: checkpointer process                  
-postgres    29  0.0  0.0 206624  1652 ?        Ss   18:23   0:00 postgres: writer process                        
-postgres    30  0.0  0.0 206624  1412 ?        Ss   18:23   0:00 postgres: wal writer process                    
-postgres    31  0.0  0.0 207316  2664 ?        Ss   18:23   0:00 postgres: autovacuum launcher process           
-postgres    32  0.0  0.0 192348  1540 ?        Ss   18:23   0:00 postgres: stats collector process               
-root        33  0.0  0.0  19744  1180 ?        R    18:23   0:00 ps aux
-[2KCREATE ROLE
-[2KCREATE DATABASE
-[2K                              List of roles
- Role name  |                   Attributes                   | Member of 
-------------+------------------------------------------------+-----------
- dockeruser | Superuser, Create role                         | {}
- postgres   | Superuser, Create role, Create DB, Replication | {}
-
-[2K ---> b3ae30e2f4c1
-[2KStep 17 : EXPOSE 5432
-[2K ---> Running in 32bebdb30fd3
-[2K ---> ad067c77e04b
-[2KStep 18 : CMD ["/bin/bash", "/start_postgres.sh"]
-[2K ---> Running in 0d7f3f42ed05
-[2K ---> 1ed9acecb90e
-[2KSuccessfully built 1ed9acecb90e
-[2KRemoving intermediate container 98ae1d49b888
-[2KRemoving intermediate container 32bebdb30fd3
-[2KRemoving intermediate container 74ebaf4535ac
-[2KRemoving intermediate container 8bd782ebbb53
-[2KRemoving intermediate container 39a3cf4e6533
-[2KRemoving intermediate container e72caf83d939
-[2KRemoving intermediate container 57322cc5a40f
-[2KRemoving intermediate container 1fe22458b2e4
-[2KRemoving intermediate container 52e28b55fa25
-[2KRemoving intermediate container 72da2fc401fb
-[2KRemoving intermediate container 9566a233a10a
-[2KRemoving intermediate container 9fd7256b7c8a
-[2KRemoving intermediate container 0d7f3f42ed05
-[2KRemoving intermediate container ddd105bd669a
-
