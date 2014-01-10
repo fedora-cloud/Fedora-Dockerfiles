@@ -1,0 +1,36 @@
+Uploading context  51.2 kB
+[2KStep 1 : FROM fedora
+[2K ---> 924a401326b8
+[2KStep 2 : MAINTAINER scollier <scollier@redhat.com>
+[2K ---> Using cache
+[2K ---> b194d8a805b6
+[2KStep 3 : RUN yum -y update
+[2K ---> Using cache
+[2K ---> ecf60eb17164
+[2KStep 4 : RUN yum -y install postgresql-server postgresql postgresql-contrib supervisor
+[2K ---> Using cache
+[2K ---> ff7113620582
+[2KStep 5 : ADD ./postgresql-setup /usr/bin/postgresql-setup
+[2K ---> 70b24516fbaf
+[2KStep 6 : ADD ./postgres_user.sh /postgres_user.sh
+[2K ---> d2ee6438577a
+[2KStep 7 : ADD ./supervisord.conf /etc/supervisord.conf
+[2K ---> a2ffa02d2e8d
+[2KStep 8 : ADD ./start_postgres.sh /start_postgres.sh
+[2K ---> d6e35987ee96
+[2KStep 9 : ADD ./postgresql.conf /var/lib/pgsql/data/postgresql.conf
+[2K ---> 525e1ba3a393
+[2KStep 10 : RUN chmod +x /usr/bin/postgresql-setup
+[2K ---> Running in 5b9824c62477
+[2K ---> 5ac9d6a3d938
+[2KStep 11 : RUN chmod +x /start_postgres.sh
+[2K ---> Running in 02644973c667
+[2K ---> 49ac52514492
+[2KStep 12 : RUN chmod +x /postgres_user.sh
+[2K ---> Running in 85209d2894d9
+[2K ---> d469ae0d3fd9
+[2KStep 13 : RUN /usr/bin/postgresql-setup initdb
+[2K ---> Running in 36e0599aa49f
+[2KInitializing database ... [2Kfailed, see /var/lib/pgsql/initdb.log
+[2K
+2014/01/10 03:07:49 The command [/bin/sh -c /usr/bin/postgresql-setup initdb] returned a non-zero code: 1
