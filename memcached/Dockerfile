@@ -1,4 +1,4 @@
-from        mattdm/fedora
+from        fedora
 maintainer  scollier <scollier@redhat.com>
 
 run         yum -y update
