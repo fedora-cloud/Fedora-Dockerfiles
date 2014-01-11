@@ -7,12 +7,6 @@ Tested on Docker 0.7.0
 
 To build:
 
-Over the net via git -
-
-\# docker build -rm -t <username>/httpd git://github.com/scollier/dockerfiles-fedora-apache.git
-
-or
-
 Copy the sources down and do the build-
 
 \# docker build -rm -t <username>/httpd .
