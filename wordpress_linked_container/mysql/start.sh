@@ -29,26 +29,15 @@ echo mysql root password: $MYSQL_PASSWORD
 echo wordpress password: $WORDPRESS_PASSWORD
 echo $MYSQL_PASSWORD > /mysql-root-pw.txt
 echo $WORDPRESS_PASSWORD > /wordpress-db-pw.txt
-# There used to be a huge ugly line of sed and cat and pipe and stuff below,
-# but thanks to @djfiander's thing at https://gist.github.com/djfiander/6141138
-# there isn't now.
-sed -e "s/database_name_here/$WORDPRESS_DB/
-s/username_here/$WORDPRESS_DB/
-s/password_here/$WORDPRESS_PASSWORD/
-/'AUTH_KEY'/s/put your unique phrase here/`pwgen -c -n -1 65`/
-/'SECURE_AUTH_KEY'/s/put your unique phrase here/`pwgen -c -n -1 65`/
-/'LOGGED_IN_KEY'/s/put your unique phrase here/`pwgen -c -n -1 65`/
-/'NONCE_KEY'/s/put your unique phrase here/`pwgen -c -n -1 65`/
-/'AUTH_SALT'/s/put your unique phrase here/`pwgen -c -n -1 65`/
-/'SECURE_AUTH_SALT'/s/put your unique phrase here/`pwgen -c -n -1 65`/
-/'LOGGED_IN_SALT'/s/put your unique phrase here/`pwgen -c -n -1 65`/
-/'NONCE_SALT'/s/put your unique phrase here/`pwgen -c -n -1 65`/" /var/www/html/wp-config-sample.php > /var/www/html/wp-config.php
 }
 
 __start_mysql() {
 # systemctl start mysqld.service
 mysqladmin -u root password $MYSQL_PASSWORD 
 mysql -uroot -p$MYSQL_PASSWORD -e "CREATE DATABASE wordpress; GRANT ALL PRIVILEGES ON wordpress.* TO 'wordpress'@'localhost' IDENTIFIED BY '$WORDPRESS_PASSWORD'; FLUSH PRIVILEGES;"
+mysql -uroot -p$MYSQL_PASSWORD -e "GRANT ALL PRIVILEGES ON *.* TO 'wordpress'@'%' IDENTIFIED BY '$WORDPRESS_PASSWORD' WITH GRANT OPTION; FLUSH PRIVILEGES;"
+mysql -uroot -p$MYSQL_PASSWORD -e "GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY '$WORDPRESS_PASSWORD' WITH GRANT OPTION; FLUSH PRIVILEGES;"
+mysql -uroot -p$MYSQL_PASSWORD -e "select user, host FROM mysql.user;"
 killall mysqld
 sleep 10
 }
