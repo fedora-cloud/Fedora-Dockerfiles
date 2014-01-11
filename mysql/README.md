@@ -5,7 +5,17 @@ Tested on Docker 0.7.2
 
 This repo contains a recipe for making Docker container for SSH and MySQL on Fedora. 
 
+Check your Docker version
+
+\# docker version
+
+Perform the build
+
 \# docker build -rm -t <yourname>/MySQL .
+
+Check the image out.
+
+\# docker images
 
 Run it:
 
@@ -23,3 +33,9 @@ Get the IP address for the container:
 
 For MySQL:
 \# mysql -h 172.17.0.x -utestdb -pmysqlPassword
+
+
+Create a table:
+
+\> CREATE TABLE test (name VARCHAR(10), owner VARCHAR(10),
+    -> species VARCHAR(10), birth DATE, death DATE);

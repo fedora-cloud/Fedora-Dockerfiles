@@ -3,14 +3,17 @@ dockerfiles-fedora-httpd
 
 Fedora dockerfile for httpd
 
-Tested on Docker 0.7.0
+Tested on Docker 0.7.2
+
+Get Docker version
+
+\# docker version
 
 To build:
 
 Copy the sources down and do the build-
 
 \# docker build -rm -t <username>/httpd .
-
 
 To run (if port 80 is open on your host):
 
