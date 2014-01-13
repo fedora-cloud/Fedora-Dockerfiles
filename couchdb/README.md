@@ -3,33 +3,23 @@ dockerfiles-fedora-couchdb
 
 Fedora dockerfile for couchdb
 
-Tested on Docker 0.7.0
+Tested on Docker 0.7.2
+
+Get the version of Docker:
+
+\# docker version
 
 To build:
 
-Over the net via git -
-
-
-\# docker build -rm -t <username>/couchdb git://github.com/scollier/dockerfiles-fedora-couchdb.git
-
-
-or
-
-Copy the sources down -
-
+Copy the sources down, then -
 
 \# docker build -rm -t <username>/couchdb .
 
-
-
 To run:
-
 
 \# docker run -d -p 5984:5984 <username>/couchdb
 
-
 Test:
-
 
 \# curl -X PUT http://localhost:5984/test/
 {"error":"file_exists","reason":"The database could not be created, the file already exists."}

@@ -3,33 +3,23 @@ dockerfiles-fedora-memcached
 
 Fedora dockerfile for memcached
 
-Tested on Docker 0.7.0
+Tested on Docker 0.7.2
+
+Get the version of Docker:
+
+\# docker version
 
 To build:
 
-Over the net via git -
-
-
-\# docker build -rm -t <username>/memcached git://github.com/scollier/dockerfiles-fedora-memcached.git
-
-
-or
-
 Copy the sources down -
-
 
 \# docker build -rm -t <username>/memcached .
 
-
-
 To run:
-
 
 \# docker run -d -p 11211:11211 <username>/memcached
 
-
 Test:
-
 
 \# telnet localhost 11211
 Trying 127.0.0.1...
