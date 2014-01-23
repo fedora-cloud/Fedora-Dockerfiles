@@ -15,4 +15,5 @@ RUN sed -i '/\/etc\/X11\/xinit\/xinitrc-common/a [ -x /usr/bin/firefox ] && /usr
 
 EXPOSE 5901
 
-CMD    ["vncserver", "-fg" ]
+# CMD    ["vncserver", "-fg" ]
+ENTRYPOINT ["vncserver", "-fg" ]
