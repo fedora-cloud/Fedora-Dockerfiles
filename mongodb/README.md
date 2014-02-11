@@ -33,12 +33,9 @@ Get the port that the container is listening on:
 CONTAINER ID        IMAGE                   COMMAND             CREATED             STATUS              PORTS                      NAMES
 c8fc42d19fd3        <username>/mongo:latest   /usr/bin/mongod     4 minutes ago       Up 4 minutes        0.0.0.0:49158->27017/tcp   ecstatic_thompson   
 
-To test,  Find the IP Address of the container.
+To test:
 
-\# docker inspect c8fc42d19fd3 | grep -i ipaddr
-        "IPAddress": "172.17.0.28",
-
-\# mongo --host 172.17.0.28 --port 49158
+\# mongo --host localhost --port 49158
 
 MongoDB shell version: 2.4.6
 connecting to: 127.0.0.1:49158/test
