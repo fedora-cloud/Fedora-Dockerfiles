@@ -7,14 +7,14 @@ RUN yum -y install x11vnc firefox xorg-x11-server-Xvfb xorg-x11-twm tigervnc-ser
 
 # Add the xstartup file into the image
 ADD ./xstartup /
-RUN chmod -v +x /xstartup
 
 RUN mkdir /.vnc
 RUN x11vnc -storepasswd 123456 /.vnc/passwd
 RUN  \cp -f ./xstartup /.vnc/.
+RUN chmod -v +x /.vnc/xstartup
 RUN sed -i '/\/etc\/X11\/xinit\/xinitrc-common/a [ -x /usr/bin/firefox ] && /usr/bin/firefox &' /etc/X11/xinit/xinitrc
 
 EXPOSE 5901
 
-# CMD    ["vncserver", "-fg" ]
-ENTRYPOINT ["vncserver", "-fg" ]
+CMD    ["vncserver", "-fg" ]
+# ENTRYPOINT ["vncserver", "-fg" ]
