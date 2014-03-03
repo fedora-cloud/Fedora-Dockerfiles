@@ -20,4 +20,4 @@ Plugins
 -----
 
 In order to install plugins just follow the steps from earthquake manuals;
-Docker will keep those chnaged files untouched.
+Docker will keep those changed/new files untouched.
