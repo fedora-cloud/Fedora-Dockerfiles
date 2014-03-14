@@ -13,13 +13,50 @@ those to query this DNS server. By default legit networks are 127.0.0.1 and
 whole 172.16.0.0/12 private network (as Docker uses those ranges for internal
 networking).
 
+You should also prepare SSH public key and copy it to cfg_files/bindadm/.ssh/authorized_keys
+so you'll be able to login to the container (sshd config denies login to any
+other user).
+
 Installation
 -----
 
-Clone Dockerfile somewhere and run:
+Copy your SSH public key to authorized_keys:
+
+    $ cat ~/.ssh/id_rsa.pub > cfg_files/bindadm/.ssh/authorized_keys
+
+Edit allowed networks in named.conf:
+
+    $ vim cfg_files/named.conf
+
+Clone Dockerfile somewhere and build the container:
 
     $ sudo docker build -t --rm .
-    $ sudo docker run --rm -dns 127.0.0.1 -p 53:53/udp -p 53:53/tcp -name bind -t -d bind
+
+Take note of ssh bindadm user password during above build process - you'll
+need that later:
+
+    Step 26 : RUN /root/scripts/init.sh
+    ...
+    bindadm ssh password: YYYYYYYYY
+
+And now run the container:
+
+    $ docker run -dns 127.0.0.1 -p 53:53/udp -p 53:53/tcp -p 60022:22/tcp -name bind -t -d bind
+
+In above example params means:
+
+    -dns 127.0.0.1 - this is a way to use 127.0.0.1 as DNS server in the container
+    -p 53:53/udp(tcp) - let's forward external ports from host to container ports (53 - for DNS)
+    -p 60022:22/tcp - let's forward external 60022 TCP port to 22 container port for SSH usage
+
+After running container it should be working fine and you should be able to ssh
+to it using your ssh key. After successfull logging you should be able to sudo
+to the root user with:
+
+    $ sudo -i
+
+Using password generated during build process. You should change this password
+:)
 
 Testing
 -----
@@ -32,7 +69,14 @@ And next use use dig:
 
     $ dig google.com @container_IP_ADDR
 
+Also try to ssh to the container with bindadmuser:
+
+    $ ssh bindadm@container_IP
+
 Managing own zone files (domains)
 -----
 
-Just add zones definitions to named.conf, create zone files and use Docker ADD command top copy those to the container
+Just add zones definitions to named.conf, create zone files and use Docker ADD
+command top copy those to the container.
+
+This is still not ready as we should export config files to external storage
