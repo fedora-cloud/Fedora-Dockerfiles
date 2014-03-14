@@ -1,2 +1,2 @@
-#/bin/bash
+#!/bin/bash
 /usr/sbin/sshd -D -E /var/log/sshd.log
