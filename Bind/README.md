@@ -50,7 +50,13 @@ In above example params means:
     -p 60022:22/tcp - let's forward external 60022 TCP port to 22 container port for SSH usage
 
 After running container it should be working fine and you should be able to ssh
-to it using ssh key that 
+to it using your ssh key. After successfull logging you should be able to sudo
+to the root user with:
+
+    $ sudo -i
+
+Using password generated during build process. You should change this password
+:)
 
 Testing
 -----
