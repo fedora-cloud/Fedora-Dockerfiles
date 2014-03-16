@@ -9,17 +9,17 @@ Tested on Docker 0.7.2
 
 Copy the sources down and do the build-
 
-\# docker build -rm -t <username>/postgresql . |& tee postgres_build.log
+\# docker build -rm -t username/postgresql . |& tee postgres_build.log
 
 2.	To run 
 
 If port 5432 is open on your host:
 
-\# docker run -d -p 5432:5432 <username>/postgresql
+\# docker run -d -p 5432:5432 username/postgresql
 
 or to assign a random port that maps to port 5432 on the container:
 
-\# docker run -d -p 5432 <username>/postgresql
+\# docker run -d -p 5432 username/postgresql
 
 To see the random port that the container is listening on:
 
