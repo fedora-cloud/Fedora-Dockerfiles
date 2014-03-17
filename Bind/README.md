@@ -54,15 +54,14 @@ And now run the container:
 
 In above example params means:
 
-    -dns 127.0.0.1 - this is a way to use 127.0.0.1 as DNS server in the container
-    -p 53:53/udp(tcp) - let's forward external ports from host to container ports (53 - for DNS)
-    -p 60022:22/tcp - let's forward external 60022 TCP port to 22 container port for SSH usage
-    -v /srv/docker_mounts/bind/logs:/var/log/named:rw - mounting host
-    /srv/.../logs dir in container's /var/log/named dir with rw rights
-    -v /srv/docker_mounts/bind/configs:/etc/named:rw - same as above
+* - dns 127.0.0.1 - this is a way to use 127.0.0.1 as DNS server in the container
+* -p 53:53/udp(tcp) - let's forward external ports from host to container ports (53 - for DNS)
+* -p 60022:22/tcp - let's forward external 60022 TCP port to 22 container port for SSH usage
+* -v /srv/docker_mounts/bind/logs:/var/log/named:rw - mounting host /srv/.../logs dir in container's /var/log/named dir with rw rights
+* -v /srv/docker_mounts/bind/configs:/etc/named:rw - same as above
 
 After running container it should be working fine and you should be able to ssh
-to it using ssh key that.
+to it using ssh key that you pasted before tocfg_files/bindadm/.ssh/authorized_keys
 
 Testing
 -----
