@@ -44,7 +44,7 @@ fi
 
 PIDFILE="/var/run/named/named.pid"
 
-ROOTDIR_MOUNT='/etc/named /etc/pki/dnssec-keys /var/named /etc/named.conf
+ROOTDIR_MOUNT='/etc/named /etc/pki/dnssec-keys /var/named /etc/named/named.conf
 /etc/named.dnssec.keys /etc/named.rfc1912.zones /etc/rndc.conf /etc/rndc.key
 /usr/lib64/bind /usr/lib/bind /etc/named.iscdlv.key /etc/named.root.key'
 
@@ -129,7 +129,11 @@ start()
     previous_option=$a;
   done;
 
-  named_conf=${named_conf:-/etc/named.conf};
+  named_conf=${named_conf:-/etc/named/named.conf};
+
+  if [ ! -f $named_conf ]; then
+    cp /etc/named.conf.orig $named_conf
+  fi
 
   mount_chroot_conf
 

@@ -19,3 +19,7 @@ mv /tmp/authorized_keys /home/bindadm/.ssh/
 chown bindadm:bindadm /home/bindadm -R
 chmod 600 /home/bindadm/.ssh/authorized_keys
 chmod 700 /home/bindadm/.ssh
+
+# create named.conf template - we'll use it later
+mv /etc/named.conf /etc/named.conf.orig
+ln -s /etc/named/named.conf  /etc/named.conf

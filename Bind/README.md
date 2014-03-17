@@ -28,6 +28,15 @@ Edit allowed networks in named.conf:
 
     $ vim cfg_files/named.conf
 
+Prepare directories for logs and configs (e.g. if want to use zone files):
+
+    $ mkdir /srv/docker_mounts/bind/{logs,configs} -p
+
+Now copy your zonefiles and rest of the configs (except for named.conf which
+will be copied by initscript from cfg_files/named.conf) to the
+/srv/docker_mounts/bind/configs (this dir will be mounted as /etc/named in the
+container).
+
 Clone Dockerfile somewhere and build the container:
 
     $ sudo docker build -t --rm .
@@ -41,22 +50,19 @@ need that later:
 
 And now run the container:
 
-    $ docker run -dns 127.0.0.1 -p 53:53/udp -p 53:53/tcp -p 60022:22/tcp -name bind -t -d bind
+    $ sudo docker run -dns 127.0.0.1 -t -p 53:53/udp -p 53:53/tcp -p 60022:22/tcp -name bind -v /srv/docker_mounts/bind/logs:/var/log/named:rw -v /srv/docker_mounts/bind/configs:/etc/named:rw -d bind 
 
 In above example params means:
 
     -dns 127.0.0.1 - this is a way to use 127.0.0.1 as DNS server in the container
     -p 53:53/udp(tcp) - let's forward external ports from host to container ports (53 - for DNS)
     -p 60022:22/tcp - let's forward external 60022 TCP port to 22 container port for SSH usage
+    -v /srv/docker_mounts/bind/logs:/var/log/named:rw - mounting host
+    /srv/.../logs dir in container's /var/log/named dir with rw rights
+    -v /srv/docker_mounts/bind/configs:/etc/named:rw - same as above
 
 After running container it should be working fine and you should be able to ssh
-to it using your ssh key. After successfull logging you should be able to sudo
-to the root user with:
-
-    $ sudo -i
-
-Using password generated during build process. You should change this password
-:)
+to it using ssh key that.
 
 Testing
 -----
@@ -76,7 +82,14 @@ Also try to ssh to the container with bindadmuser:
 Managing own zone files (domains)
 -----
 
-Just add zones definitions to named.conf, create zone files and use Docker ADD
-command top copy those to the container.
+In order to change configuration just edit cfg files in host
+/srv/docker_mounts/bind/configs (remember that this dir is mounted on
+/etc/named/ in container) and use command:
 
-This is still not ready as we should export config files to external storage
+    $ ssh bindadm@contaienr_IP "sudo rndc reload"
+
+Managing logfiles
+-----
+
+You can access logfiles within host in /srv/docker_mounts/bind/logs; those logs
+are rotated by containers logrotate.
