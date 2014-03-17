@@ -17,4 +17,5 @@ echo bindadm ssh password: $SSH_USERPASS
 mkdir /home/bindadm/.ssh
 mv /tmp/authorized_keys /home/bindadm/.ssh/
 chown bindadm:bindadm /home/bindadm -R
+chmod 600 /home/bindadm/.ssh/authorized_keys
 chmod 700 /home/bindadm/.ssh
