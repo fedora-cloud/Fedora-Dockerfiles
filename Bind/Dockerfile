@@ -17,13 +17,14 @@ ADD ./cfg_files/logrotate.d/named /etc/logrotate.d/named
 ADD ./cfg_files/logrotate.d/sshd /etc/logrotate.d/sshd
 ADD ./cfg_files/init.d/named /etc/init.d/named
 ADD ./cfg_files/init.d/sshd /etc/init.d/sshd
-ADD ./cfg_files/named.conf /etc/named.conf
+ADD ./cfg_files/named.conf /etc/named/named.conf
 ADD ./cfg_files/cron.daily/update_named.ca.sh /etc/cron.daily/update_named.ca.sh
 ADD ./cfg_files/supervisord.conf /etc/supervisord.conf
 ADD ./cfg_files/supervisord.d/cron.ini /etc/supervisord.d/cron.ini
 ADD ./cfg_files/supervisord.d/named.ini /etc/supervisord.d/named.ini
 ADD ./cfg_files/supervisord.d/sshd.ini /etc/supervisord.d/sshd.ini
 ADD ./cfg_files/supervisord.d/rsyslog.ini /etc/supervisord.d/rsyslog.ini
+ADD ./cfg_files/sudoers.d/bindadm /etc/sudoers.d/bindadm
 RUN mkdir /root/scripts -p
 ADD ./cfg_files/root/scripts/init.sh /root/scripts/init.sh
 RUN chmod +x /root/scripts/init.sh
