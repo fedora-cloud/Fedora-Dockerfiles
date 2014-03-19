@@ -39,7 +39,7 @@ container).
 
 Clone Dockerfile somewhere and build the container:
 
-    $ sudo docker build -t --rm .
+    $ sudo docker build -t bind --rm .
 
 Take note of ssh bindadm user password during above build process - you'll
 need that later:
