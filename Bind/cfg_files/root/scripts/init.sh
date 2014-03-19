@@ -20,6 +20,10 @@ chown bindadm:bindadm /home/bindadm -R
 chmod 600 /home/bindadm/.ssh/authorized_keys
 chmod 700 /home/bindadm/.ssh
 
+# set sudo permission for `bindadm` user to allow him rndc command without pwd:
+chown root:root /etc/sudoers.d/bindadm
+sed -i 's/Defaults    requiretty/#Defaults    requiretty/' /etc/sudoers
+
 # create named.conf template - we'll use it later
 mv /etc/named.conf /etc/named.conf.orig
 ln -s /etc/named/named.conf  /etc/named.conf

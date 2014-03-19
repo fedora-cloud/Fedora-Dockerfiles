@@ -83,9 +83,9 @@ Managing own zone files (domains)
 
 In order to change configuration just edit cfg files in host
 /srv/docker_mounts/bind/configs (remember that this dir is mounted on
-/etc/named/ in container) and ssh to the container, sudo to `root` and:
+/etc/named/ in container) and run a command:
 
-    $ rndc reload
+    $ ssh bindadm@container_IP "sudo rndc reload"
 
 Managing logfiles
 -----
