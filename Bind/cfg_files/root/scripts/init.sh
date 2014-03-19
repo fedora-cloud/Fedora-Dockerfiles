@@ -27,3 +27,6 @@ sed -i 's/Defaults    requiretty/#Defaults    requiretty/' /etc/sudoers
 # create named.conf template - we'll use it later
 mv /etc/named.conf /etc/named.conf.orig
 ln -s /etc/named/named.conf  /etc/named.conf
+
+# let's make sure that external mount for named logs has correct owner:
+chown named:named /var/log/named
