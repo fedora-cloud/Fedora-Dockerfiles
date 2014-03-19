@@ -17,10 +17,8 @@ To run:
 
 \# docker run -d -p 5000:5000 <yourname>/registry
 
-#
-# To use a separate data volume for /var/lib/docker-registry (recommended, to
-#  allow image update without losing registry contents):
-#
+To use a separate data volume for /var/lib/docker-registry (recommended, to
+allow image update without losing registry contents):
 
 Create a data volume container: (it doesn't matter what image you use
 here, we'll never run this container again; it's just here to
