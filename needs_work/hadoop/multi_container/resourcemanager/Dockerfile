@@ -14,10 +14,10 @@ RUN yum -y install net-tools lsof nmap
 
 ADD ./yarn-site.xml /etc/hadoop/
 ADD ./core-site.xml /etc/hadoop/
-ADD ./config_1.sh /config_1.sh
+# ADD ./config_1.sh /config_1.sh
 ADD ./supervisord.conf /etc/supervisord.conf
 
-RUN chmod 755 /config_1.sh
+# RUN chmod 755 /config_1.sh
 # RUN hadoop namenode -format -force
 
 # Expose lots of ports, we might be able to pare this down a bit.
@@ -26,9 +26,9 @@ RUN chmod 755 /config_1.sh
 
 # These only expose what was given in: http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.0.6.0/bk_using_Ambari_book/content/reference_chap2_2a_2x.html
 # EXPOSE 8025 8141 8050 45454
-EXPOSE 8025 8141 8050 8030
+EXPOSE 8025 8141 8050 8030 8032 8088 8090 8031 8033 
 
-RUN /config_1.sh
+# RUN /config_1.sh
 
 # Launch the supervisord service to manage all the hadoop processes.
 CMD ["supervisord", "-n"]

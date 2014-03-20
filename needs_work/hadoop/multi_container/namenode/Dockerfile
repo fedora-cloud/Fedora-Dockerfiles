@@ -10,16 +10,16 @@ RUN yum -y install hadoop-hdfs pwgen java-1.7.0-openjdk-headless java-1.7.0-open
 # Install network troubleshooting tools into the container, these can be removed if you don't want them.
 RUN yum -y install net-tools lsof nmap
 
-ADD ./config_1.sh /config_1.sh
-ADD ./start_hadoop.sh /start_hadoop.sh
-ADD ./hdfs-create-dirs /hdfs-create-dirs
+# ADD ./config_1.sh /config_1.sh
+# ADD ./start_hadoop.sh /start_hadoop.sh
+ADD ./hdfs-create-dirs /usr/sbin/hdfs-create-dirs
 ADD ./core-site.xml /etc/hadoop/
 ADD ./supervisord.conf /etc/supervisord.conf
 
-RUN chmod 755 /config_1.sh
-RUN chmod 755 /start_hadoop.sh
+# RUN chmod 755 /config_1.sh
+# RUN chmod 755 /start_hadoop.sh
 RUN chmod 755 /hdfs-create-dirs
-RUN hadoop namenode -format -force
+# RUN hadoop namenode -format -force
 RUN /hdfs-create-dirs
 
 # Expose lots of ports, we might be able to pare this down a bit.
@@ -28,7 +28,7 @@ RUN /hdfs-create-dirs
 # Only exposing: http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.0.6.0/bk_using_Ambari_book/content/reference_chap2_1_2x.html
 EXPOSE 50070 50470 8020 9000 50090
 
-RUN /config_1.sh
+# RUN /config_1.sh
 
 # Launch the supervisord service to manage all the hadoop processes.
 CMD ["supervisord", "-n"]

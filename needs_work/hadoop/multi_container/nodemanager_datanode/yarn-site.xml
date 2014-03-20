@@ -72,4 +72,9 @@
         $HADOOP_YARN_HOME/$YARN_DIR/*,$HADOOP_YARN_HOME/$YARN_LIB_JARS_DIR/*
      </value>
   </property>
+
+  <property>
+     <name>yarn.resourcemanager.hostname</name>
+     <value>resourcemgr</value>
+  </property>
 </configuration>
