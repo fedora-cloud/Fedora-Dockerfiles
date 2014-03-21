@@ -5,7 +5,7 @@ MAINTAINER "Maciej Lasyk" <maciek@lasyk.info>
 
 # install main packages:
 #RUN yum -y update
-RUN yum -y install openssh-server supervisor rsyslog sudo gcc python python-pip git pwgen
+RUN yum -y install openssh-server supervisor rsyslog sudo gcc python python-pip git pwgen lighttpd
 #logrotate supervisor openssh-server rsyslog sudo pwgen
 
 RUN pip install pelican
@@ -14,6 +14,7 @@ RUN pip install Markdown
 # copy cfg files:
 ADD ./cfg_files/supervisord.conf /etc/supervisord.conf
 ADD ./cfg_files/logrotate.d/sshd /etc/logrotate.d/sshd
+ADD ./cfg_files/logrotate.d/lighttpd /etc/logrotate.d/lighttpd
 ADD ./cfg_files/init.d/sshd /etc/init.d/sshd
 ADD ./cfg_files/supervisord.d/sshd.ini /etc/supervisord.d/sshd.ini
 ADD ./cfg_files/supervisord.d/rsyslog.ini /etc/supervisord.d/rsyslog.ini

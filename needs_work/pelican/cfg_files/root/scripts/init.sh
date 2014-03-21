@@ -17,7 +17,10 @@ echo blog ssh password: $SSH_USERPASS
 mkdir /home/blog/.ssh
 mv /tmp/authorized_keys /home/blog/.ssh/
 chown blog:blog /home/blog -R
- 
+
+mkdir -p /srv/http/blog
+chown blog:blog /srv/http/blog -R
+
 chmod 600 /home/blog/.ssh/authorized_keys
 chmod 700 /home/blog/.ssh
 
