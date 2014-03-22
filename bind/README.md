@@ -92,3 +92,21 @@ Managing logfiles
 
 You can access logfiles within host in /srv/docker_mounts/bind/logs; those logs
 are rotated by containers logrotate.
+
+You could also switch off logging of all DNS queries (it is turned on in the
+included named.conf) - just comment out following lines:
+
+```
+        channel log_queries {
+                file "/var/log/named/named_queries.log" versions 3 size 20m;
+                print-category yes;
+                print-severity yes;
+                print-time yes;
+        };
+ 
+```
+
+Also - as you can see above - logrotate is not needed that much for this
+DNS service as size of logfiles is limited in the configuration. Yet logrotate
+is included and turned on just to make sure nothing outgrows the FS capacity
+in the unpredicted way.
