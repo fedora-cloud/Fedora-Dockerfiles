@@ -9,8 +9,7 @@ This is the upstream source for the fedora-dockerfiles package.  To get started 
 
 Some guidelines for contributing to this repo:
 
-https://github.com/scollier/Fedora-Dockerfiles/wiki/Guidelines-for-Creating-Dockerfiles
+Check out these [guidelines](https://github.com/scollier/Fedora-Dockerfiles/wiki/Guidelines-for-Creating-Dockerfiles) for contributing to this repo.
 
-The wishlist / todo for this repo is:
+If there are some Dockerfiles that are not in the repo, feel free to add them to the [wishlist / todo.](https://github.com/scollier/Fedora-Dockerfiles/wiki/Fedora-Dockerfiles-ToDo)
 
-https://github.com/scollier/Fedora-Dockerfiles/wiki/Fedora-Dockerfiles-ToDo
