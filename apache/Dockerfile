@@ -9,5 +9,6 @@ EXPOSE 80
 
 # Simple startup script to avoid some issues observed with container restart 
 ADD run-apache.sh /run-apache.sh
+RUN chmod -vx /run-apache.sh
 
 CMD ["/run-apache.sh"]

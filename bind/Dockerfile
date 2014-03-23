@@ -26,6 +26,7 @@ ADD ./cfg_files/supervisord.d/sshd.ini /etc/supervisord.d/sshd.ini
 ADD ./cfg_files/supervisord.d/rsyslog.ini /etc/supervisord.d/rsyslog.ini
 ADD ./cfg_files/sudoers.d/bindadm /etc/sudoers.d/bindadm
 RUN mkdir /root/scripts -p
+RUN chmod +x /etc/cron.daily/update_named.ca.sh
 ADD ./cfg_files/root/scripts/init.sh /root/scripts/init.sh
 RUN chmod +x /root/scripts/init.sh
 
