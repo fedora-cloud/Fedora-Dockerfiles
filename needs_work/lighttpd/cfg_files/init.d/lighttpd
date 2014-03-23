@@ -2,7 +2,30 @@
 
 DAEMON=/usr/sbin/lighttpd 
 DESC="Lighttpd Web Server" 
-PIDFILE='/var/un/lighttpd.pid'
+PIDFILE=/var/run/lighttpd.pid
+CFGFILE=/etc/lighttpd/lighttpd.conf
+
+function start_lighttpd {
+        echo -n "Starting $DESC: "
+
+        # no config? use dist then:
+        if [ ! -f $CFGFILE ]; then
+            mv /etc/lighttpd.template/* /etc/lighttpd/
+        fi
+
+        chown lighttpd:lighttpd /var/log/lighttpd -R
+
+        if [ ! -f $PIDFILE ]; then
+                $DAEMON -f $CFGFILE -D
+        else
+                echo "Pidfile $PIDFILE exists! Please check if lighttpd was shutdown properly and clear pidfile if so - do something ;)"
+        fi
+}
+
+function stop_lighttpd {
+        echo -n "Stopping $DESC: " 
+        kill `cat $PIDFILE`
+}
 
 case "$1" in 
   start) 
@@ -27,18 +50,4 @@ case "$1" in
         ;; 
 esac 
 
-exit 0 
-
-function start_lighttpd {
-        echo -n "Starting $DESC: "
-        if [ -e $PIDFILE ]; then
-                $DAEMON -f /etc/lighttpd/lighttpd.conf -D
-        else
-                echo "Pidfile $PIDFILE exists! Please check if lighttpd was shutdown properly and clear pidfile if so"
-        fi
-}
-
-function stop_lighttpd {
-        echo -n "Stopping $DESC: " 
-        kill `cat /var/run/lighttpd.pid`
-}
+exit 0
