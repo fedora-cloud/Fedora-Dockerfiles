@@ -1,12 +1,16 @@
 Fedora-Dockerfiles
 ==================
 
-Fedora Dockerfiles
+This is the upstream source for the fedora-dockerfiles package.  To get started with Docker on Fedora:
 
-This is a repo for dockerfiles.
+```
+# sudo yum install docker-io fedora-dockerfiles
+```
 
-The Fedora hosted git repo:
-https://git.fedorahosted.org/cgit/dockerfiles.git/
+Some guidelines for contributing to this repo:
 
-Is mirrored to:
-https://github.com/scollier/Fedora-Dockerfiles
+https://github.com/scollier/Fedora-Dockerfiles/wiki/Guidelines-for-Creating-Dockerfiles
+
+The wishlist / todo for this repo is:
+
+https://github.com/scollier/Fedora-Dockerfiles/wiki/Fedora-Dockerfiles-ToDo
