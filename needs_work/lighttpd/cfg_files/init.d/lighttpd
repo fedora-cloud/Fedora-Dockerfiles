@@ -25,6 +25,7 @@ function start_lighttpd {
 function stop_lighttpd {
         echo -n "Stopping $DESC: " 
         kill `cat $PIDFILE`
+        rm -rf $PIDFILE
 }
 
 case "$1" in 
