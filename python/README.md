@@ -3,7 +3,7 @@ dockerfiles-fedora-python
 
 Fedora dockerfile for python
 
-Tested on Docker 0.7.2
+Tested on Docker 0.7.6 and 0.8.1
 
 Get Docker version
 
