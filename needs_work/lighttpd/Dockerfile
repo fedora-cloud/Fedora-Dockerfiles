@@ -16,6 +16,7 @@ ADD ./cfg_files/init.d/lighttpd /etc/init.d/lighttpd
 ADD ./cfg_files/supervisord.d/sshd.ini /etc/supervisord.d/sshd.ini
 ADD ./cfg_files/supervisord.d/rsyslog.ini /etc/supervisord.d/rsyslog.ini
 ADD ./cfg_files/supervisord.d/lighttpd.ini /etc/supervisord.d/lighttpd.ini
+ADD ./cfg_files/sudoers.d/lighttpd /etc/sudoers.d/lighttpd
 
 # set up env:
 RUN chmod +x /etc/init.d/{sshd,lighttpd}
