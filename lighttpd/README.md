@@ -69,6 +69,10 @@ Also try to ssh to the container with lighttpd user:
 
     $ ssh lighttpd@container_IP
 
+Seeing only 404 error? Probably you didn't put any index.html into htdocs dir.
+Also remember that default lighttpd config expects htdocs/lighttpd as the
+public directory so you should create e.g. htdocs/lighttpd/index.html file
+
 Managing configuration:
 -----
 
