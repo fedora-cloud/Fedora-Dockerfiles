@@ -34,3 +34,7 @@ sed -i 's/server.username  = "www"/server.username  = "lighttpd"/' /etc/lighttpd
 
 # make sure logs are accessible from lighttpd user:
 chown lighttpd:lighttpd /var/log/lighttpd
+
+# set sudo permission for `bindadm` user to allow him rndc command without pwd:
+chown root:root /etc/sudoers.d/lighttpd
+sed -i 's/Defaults    requiretty/#Defaults    requiretty/' /etc/sudoers
