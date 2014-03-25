@@ -1,8 +1,7 @@
 FROM fedora
 MAINTAINER scollier <scollier@redhat.com>
 
-RUN yum -y update
-RUN yum -y install mongodb-server
+RUN yum -y update; yum -y install mongodb-server; yum clean all
 RUN mkdir -p /data/db
 
 EXPOSE 27017

@@ -1,8 +1,7 @@
 FROM fedora:20
 MAINTAINER scollier <scollier@redhat.com>
 
-RUN yum -y update
-RUN yum -y install community-mysql-server community-mysql pwgen supervisor bash-completion psmisc net-tools
+RUN yum -y update; yum -y install community-mysql-server community-mysql pwgen supervisor bash-completion psmisc net-tools; yum clean all
 
 ADD ./start.sh /start.sh
 ADD ./config_mysql.sh /config_mysql.sh

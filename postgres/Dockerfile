@@ -1,8 +1,7 @@
 FROM fedora
 MAINTAINER scollier <scollier@redhat.com>
 
-RUN yum -y update
-RUN yum -y install postgresql-server postgresql postgresql-contrib supervisor
+RUN yum -y update; yum -y install postgresql-server postgresql postgresql-contrib supervisor; yum clean all
 
 ADD ./postgresql-setup /usr/bin/postgresql-setup
 ADD ./postgres_user.sh /postgres_user.sh

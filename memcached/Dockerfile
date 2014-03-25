@@ -1,9 +1,8 @@
-from        fedora
-maintainer  scollier <scollier@redhat.com>
+FROM  fedora
+MAINTAINER  scollier <scollier@redhat.com>
 
-run         yum -y update
-run         yum -y install memcached
+RUN  yum -y update; yum -y install memcached; yum clean all
 
-expose      11211
+EXPOSE  11211
 
-cmd         ["memcached", "-u", "daemon"]
+CMD  ["memcached", "-u", "daemon"]
