@@ -1,7 +1,8 @@
 FROM fedora
 MAINTAINER "Jason Clark" <jclark@redhat.com>
 
-RUN yum -y update; yum -y install npm; yum clean all
+RUN yum -y update; yum clean all
+RUN yum -y install npm; yum clean all
 
 ADD . /src
 

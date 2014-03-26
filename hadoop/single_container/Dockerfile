@@ -2,7 +2,8 @@ FROM fedora
 MAINTAINER scollier <emailscottcollier@gmail.com>
 
 # Update the container
-RUN yum -y update; yum -y install yum install hadoop-common hadoop-common-native hadoop-hdfs hadoop-mapreduce hadoop-mapreduce-examples hadoop-yarn pwgen java-1.7.0-openjdk-headless java-1.7.0-openjdk java-1.7.0-openjdk-devel ldapjdk supervisor bash-completion; yum clean all
+RUN yum -y update; yum clean all
+RUN yum -y install yum install hadoop-common hadoop-common-native hadoop-hdfs hadoop-mapreduce hadoop-mapreduce-examples hadoop-yarn pwgen java-1.7.0-openjdk-headless java-1.7.0-openjdk java-1.7.0-openjdk-devel ldapjdk supervisor bash-completion; yum clean all
 
 # Install network troubleshooting tools into the container, these can be removed if you don't want them.
 RUN yum -y install net-tools lsof nmap

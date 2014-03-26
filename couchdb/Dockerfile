@@ -1,7 +1,8 @@
 FROM fedora
 MAINTAINER scollier <scollier@redhat.com>
 
-RUN  yum -y update; yum -y install couchdb; yum clean all
+RUN  yum -y update; yum clean all
+RUN  yum -y install couchdb; yum clean all
 
 RUN  sed -e 's/^bind_address = .*$/bind_address = 0.0.0.0/' -i /etc/couchdb/default.ini
 
