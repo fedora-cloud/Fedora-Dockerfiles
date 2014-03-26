@@ -13,3 +13,5 @@ Check out these [guidelines](https://github.com/scollier/Fedora-Dockerfiles/wiki
 
 If there are some Dockerfiles that are not in the repo, feel free to add them to the [wishlist / todo.](https://github.com/scollier/Fedora-Dockerfiles/wiki/Fedora-Dockerfiles-ToDo)
 
+We welcome contributions.
+
