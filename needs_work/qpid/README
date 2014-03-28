@@ -1,0 +1,13 @@
+Launch the container using:
+
+sudo docker run -p 5672 whenry/fedora-qpidd
+
+Run the following to hear what port is mapped to 5672: sudo docker ps
+
+e.g. 2a16c0dda3b8 4e431243448a qpidd -t --auth=no 19 seconds ago Up 18 seconds 0.0.0.0:49153->5672/tcp
+
+You can install qpid-tools package and run the following to test:
+
+qpid-tool localhost:49153
+
+Where 49153 is the port that was revealed in the docker ps above.
