@@ -2,7 +2,7 @@
 dockerfiles-fedora-qpidd
 ========================
 
-Fedora dockerfile for Apqache Qpid
+Fedora dockerfile for Apache Qpid
 
 Tested on Docker version 0.9.0-dev
 
