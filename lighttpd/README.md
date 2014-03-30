@@ -21,7 +21,7 @@ Copy your SSH public key to authorized_keys:
 
 Prepare directories for logs and configs and htdocs:
 
-    $ mkdir /srv/docker_mounts/bind/{logs,configs,htdocs} -p
+    $ mkdir /srv/docker_mounts/lighttpd/{logs,configs,htdocs} -p
 
 If you have prepared lighttpd.conf you can put it now in
 /srv/docker_mounts/lighttpd/configs (this dir will be mounted as 
