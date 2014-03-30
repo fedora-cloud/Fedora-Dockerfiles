@@ -3,7 +3,7 @@ dockerfiles-fedora-bind
 
 Fedora dockerfile for Bind - based resolving & cache'ing (DNS server)
 
-Tested on Docker 0.8.0
+Tested on Docker 0.8.x / 0.9.x
 
 Configuration
 -----
@@ -50,9 +50,13 @@ need that later:
 
 And now run the container:
 
+    On docker 0.8.x:
     $ sudo docker run -dns 127.0.0.1 -t -p 53:53/udp -p 53:53/tcp -p 60022:22/tcp -name bind -v /srv/docker_mounts/bind/logs:/var/log/named:rw -v /srv/docker_mounts/bind/configs:/etc/named:rw -d bind 
 
-In above example params means:
+    On docker 0.9.x:
+    $ sudo docker run -d --dns=127.0.0.1 -p 53:53/udp -p 53:53/tcp -p 60022:22/tcp  --name=bind -v /srv/docker_mounts/bind/logs:/var/log/named:rw -v /srv/docker_mounts/bind/configs:/etc/named:rw bind
+
+In above examples params means:
 
 * - dns 127.0.0.1 - this is a way to use 127.0.0.1 as DNS server in the container
 * -p 53:53/udp(tcp) - let's forward external ports from host to container ports (53 - for DNS)

@@ -3,7 +3,7 @@ dockerfiles-fedora-lighttpd
 
 Fedora dockerfile for lighttpd (http://www.lighttpd.net/)
 
-Tested on Docker 0.8.1
+Tested on Docker 0.8.x / 0.9.x
 
 
 Configuration
@@ -41,7 +41,11 @@ need that later:
 
 And now run the container:
 
+    On docker 0.8.x:
     $ sudo docker run -p 8091:80/tcp -v /srv/docker_mounts/lighttpd/configs:/etc/lighttpd -v /srv/docker_mounts/lighttpd/logs:/var/log/lighttpd -v /srv/docker_mounts/lighttpd/htdocs/:/srv/httpd/htdocs -name lighttpd -t -d lighttpd
+
+    On docker 0.9.x:
+    $ sudo docker run -d -p 8091:80/tcp -v /srv/docker_mounts/lighttpd/configs:/etc/lighttpd -v /srv/docker_mounts/lighttpd/logs:/var/log/lighttpd -v /srv/docker_mounts/lighttpd/htdocs/:/srv/httpd/htdocs --name=lighttpd -t lighttpd
 
 In above example params means:
 
