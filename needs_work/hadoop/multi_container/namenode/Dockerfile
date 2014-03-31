@@ -13,12 +13,13 @@ RUN yum -y install net-tools lsof nmap
 ADD ./hdfs-create-dirs /usr/sbin/hdfs-create-dirs
 ADD ./core-site.xml /etc/hadoop/
 ADD ./supervisord.conf /etc/supervisord.conf
+ADD ./start-hadoop-namenode /usr/sbin/start-hadoop-namenode
 
 RUN chmod 755 /usr/sbin/hdfs-create-dirs
-RUN /usr/sbin/hdfs-create-dirs
+RUN chmod 755 /usr/sbin/start-hadoop-namenode
 
 # Only exposing: http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.0.6.0/bk_using_Ambari_book/content/reference_chap2_1_2x.html
 EXPOSE 50070 50470 8020 9000 50090
 
 # Launch the supervisord service to manage all the hadoop processes.
-CMD ["supervisord", "-n"]
+CMD ["start-hadoop-namenode"]
