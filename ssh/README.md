@@ -1,35 +1,26 @@
-dockerfiles-fedora-ssh
-========================
+# dockerfiles-fedora-ssh
 
-Fedora dockerfile for ssh
+This is a Fedora dockerfile for ssh and it was tested on Docker 0.7.0.
 
-Tested on Docker 0.7.0
-
-To build:
-
-Copy the sources down -
+### Building & Running
 
 
-\# docker build -rm -t <username>/ssh .
+Copy the sources to your docker host and build the container:
 
+    docker build -rm -t <username>/ssh .
 
+Run the container:
 
-To run:
-
-
-\# docker run -d -p 22 <username>/ssh
+    docker run -d -p 22 <username>/ssh
 
 
 Get the port that the container is listening on:
 
+    # docker ps
+    CONTAINER ID        IMAGE                 COMMAND             CREATED             STATUS              PORTS                   NAMES
+    8c82a9287b23        <username>/ssh:latest   /usr/sbin/sshd -D   4 seconds ago       Up 2 seconds        0.0.0.0:49154->22/tcp   mad_mccarthy        
 
-\# docker ps
-CONTAINER ID        IMAGE                 COMMAND             CREATED             STATUS              PORTS                   NAMES
-8c82a9287b23        <username>/ssh:latest   /usr/sbin/sshd -D   4 seconds ago       Up 2 seconds        0.0.0.0:49154->22/tcp   mad_mccarthy        
+Test using the port that was just located:
 
-
-To test, use the port that was just located:
-
-
-\# ssh -p xxxx user@localhost 
+    ssh -p xxxx user@localhost 
 
