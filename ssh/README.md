@@ -1,5 +1,4 @@
 # dockerfiles-fedora-ssh
-====
 
 This is a Fedora dockerfile for ssh and it was tested on Docker 0.7.0.
 
