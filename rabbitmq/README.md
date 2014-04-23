@@ -1,7 +1,7 @@
 dockerfiles-fedora-rabbitmq
 ========================
 
-Fedora dockerfile for rabbitmq. We are using the latest rabbitmq from rabbitmq.org. Erlang is used from Fedora. A user is created with a random password, please see docker output (run or logs) for the current password of user admin.
+Fedora dockerfile for rabbitmq. A user is created with a random password, please see docker output (run or logs) for the current password of user admin.
 
 Tested on Docker 0.9.0
 
@@ -10,7 +10,7 @@ To build:
 Copy the sources down -
 
 
-\# docker build -rm -t <username>/rabbitmq .
+\# docker build -t <username>/rabbitmq .
 
 
 
