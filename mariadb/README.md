@@ -34,10 +34,10 @@ Create a table:
     \> CREATE TABLE test (name VARCHAR(10), owner VARCHAR(10),
         -> species VARCHAR(10), birth DATE, death DATE);
 
-#
-# To use a separate data volume for /var/lib/mysql (recommended, to allow image update without
-# losing database contents):
-#
+
+To use a separate data volume for /var/lib/mysql (recommended, to allow image update without
+losing database contents):
+
 
 Create a data volume container: (it doesn't matter what image you use
 here, we'll never run this container again; it's just here to
