@@ -1,13 +1,11 @@
-dockerfiles-fedora-ssh
-========================
+# dockerfiles-fedora-ssh
 
-Fedora dockerfile for ssh
+This is a Fedora dockerfile for ssh and it was tested on Docker 0.7.0.
 
-Tested on Docker 0.7.0
+### Building & Running
 
-To build:
 
-Copy the sources down -
+Copy the sources to your docker host and build the container:
 
 	# docker build -rm -t <username>/ssh .
 
