@@ -83,7 +83,7 @@ resouce manager running in containers.
 
 Run a job.
 
-\# hadoop jar /usr/share/java/hadoop/hadoop-mapreduce-examples.jar pi 10 100000
+	# hadoop jar /usr/share/java/hadoop/hadoop-mapreduce-examples.jar pi 10 100000
 
 <snip>
 		Total committed heap usage (bytes)=1956642816
@@ -105,6 +105,6 @@ Misc:
 
 Useful commands for checking out hadoop inside the container:
 
-\# hdfs dfsadmin -report (Must be run as hdfs user)
-\# mapred queue -list
+	# hdfs dfsadmin -report (Must be run as hdfs user)
+	# mapred queue -list
 
