@@ -31,4 +31,6 @@ de33e77a7d73        <username>/hadoop-resourcemgr:latest   supervisord -n      6
 
 4. To access services, open a local browser and hit the following URLs.
 
+```
 	# curl http://localhost:8088/cluster - Resource manager
+```

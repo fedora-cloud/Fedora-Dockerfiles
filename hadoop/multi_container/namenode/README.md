@@ -7,15 +7,17 @@ This was built and tested on a Fedora 20 host running Docker 0.9.0.
 
 1. To build:
 
+```
 	# docker build -rm -t <username>/hadoop-namenode . |& tee hadoop_build.log
-
 	# docker images
+```
 
 2. To Run:
 
+```
 	# ./run.sh
-
 	# docker ps
+```
 
 Make sure to replace <username> and <dns_ip> in the run.sh file.
 
@@ -29,4 +31,6 @@ de33e77a7d73        <username>/hadoop-namenode:latest   supervisord -n      6 se
 
 4. To access services, open a local browser and hit the following URLs.
 
+```
 	# curl http://localhost:50070 - Namenode
+```
