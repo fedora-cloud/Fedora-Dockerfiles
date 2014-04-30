@@ -7,35 +7,37 @@ This repo contains a recipe for making Docker container for SSH and MySQL on Fed
 
 Check your Docker version
 
-\# docker version
+    # docker version
 
 Perform the build
 
-\# docker build -rm -t <yourname>/MySQL .
+    # docker build -rm -t <yourname>/MySQL .
 
 Check the image out.
 
-\# docker images
+    # docker images
 
 Run it:
 
-\# docker run -d -p 3306:3306 <yourname>/MySQL
+    # docker run -d -p 3306:3306 <yourname>/MySQL
 
 Get container ID:
 
-\# docker ps
+    # docker ps
 
 Keep in mind the password set for MySQL is: mysqlPassword
 
 Get the IP address for the container:
 
-\# docker inspect <container_id> | grep -i ipaddr
+    # docker inspect <container_id> | grep -i ipaddr
 
 For MySQL:
-\# mysql -h 172.17.0.x -utestdb -pmysqlPassword
+    # mysql -h 172.17.0.x -utestdb -pmysqlPassword
 
 
 Create a table:
 
+```
 \> CREATE TABLE test (name VARCHAR(10), owner VARCHAR(10),
     -> species VARCHAR(10), birth DATE, death DATE);
+```

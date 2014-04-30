@@ -7,21 +7,22 @@ Tested on Docker 0.7.2
 
 Get the version of Docker:
 
-\# docker version
+    # docker version
 
 To build:
 
 Copy the sources down -
 
-\# docker build -rm -t <username>/memcached .
+    # docker build -rm -t <username>/memcached .
 
 To run:
 
-\# docker run -d -p 11211:11211 <username>/memcached
+    # docker run -d -p 11211:11211 <username>/memcached
 
 Test:
 
-\# telnet localhost 11211
+```
+# telnet localhost 11211
 Trying 127.0.0.1...
 Connected to localhost.
 Escape character is '^]'.
@@ -32,4 +33,4 @@ STAT time 1387383960
 STAT version 1.4.15
 STAT libevent 2.0.21-stable
 <snip>
-
+```
