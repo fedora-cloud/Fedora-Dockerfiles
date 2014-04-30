@@ -1,9 +1,9 @@
 dockerfiles-fedora-rabbitmq
 ========================
 
-Fedora dockerfile for rabbitmq
+Fedora dockerfile for rabbitmq. A user is created with a random password, please see docker output (run or logs) for the current password of user admin.
 
-Tested on Docker 0.7.0
+Tested on Docker 0.9.0
 
 To build:
 
