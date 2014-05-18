@@ -3,9 +3,6 @@ dockerfiles-fedora-lighttpd
 
 Fedora dockerfile for lighttpd (http://www.lighttpd.net/)
 
-Tested on Docker 0.8.x / 0.9.x
-
-
 Configuration
 -----
 

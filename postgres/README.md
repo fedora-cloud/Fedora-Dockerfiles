@@ -3,8 +3,6 @@ dockerfiles-fedora-postgres
 
 Fedora dockerfile for PostgreSQL
 
-Tested on Docker 0.7.2
-
 1.	To build
 
 Copy the sources down and do the build-

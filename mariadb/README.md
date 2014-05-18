@@ -1,7 +1,6 @@
 dockerfiles-sct-mariadb
 ========================
 
-Tested on Docker 0.8.1
 Based on scollier's mysql dockerfile.
 
 This repo contains a recipe for making Docker container for mariadb on Fedora. 

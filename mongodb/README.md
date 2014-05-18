@@ -3,8 +3,6 @@ dockerfiles-fedora-mongodb
 
 Fedora dockerfile for MongoDB
 
-Tested on Docker 0.7.2
-
 Get the version of Docker
 
     # docker version

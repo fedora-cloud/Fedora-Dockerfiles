@@ -4,8 +4,6 @@ dockerfiles-fedora-earthquake
 Fedora dockerfile for earthquake (terminal-based Twitter client:
 https://github.com/jugyo/earthquake)
 
-Tested on Docker 0.8.x / 0.9.x
-
 Installation
 -----
 

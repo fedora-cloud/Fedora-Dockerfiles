@@ -3,8 +3,6 @@ dockerfiles-fedora-memcached
 
 Fedora dockerfile for memcached
 
-Tested on Docker 0.7.2
-
 Get the version of Docker:
 
     # docker version

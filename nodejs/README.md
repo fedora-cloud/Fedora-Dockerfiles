@@ -3,7 +3,6 @@ dockerfiles-fedora-nodejs
 
 Fedora dockerfile for nodejs
 
-Tested on Docker 0.7.2
 
 Get Docker version
 

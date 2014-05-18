@@ -5,8 +5,6 @@ Fedora dockerfile for apache working with systemd
 For more information on systemd inside Docker containers, please see:
 http://rhatdan.wordpress.com/2014/04/30/running-systemd-within-a-docker-container/
 
-Tested on Docker 0.10.0
-
 Get Docker version
 
 ```

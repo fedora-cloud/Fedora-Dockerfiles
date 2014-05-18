@@ -3,8 +3,6 @@ dockerfiles-fedora-nginx
 
 Fedora dockerfile for nginx
 
-Tested on Docker 0.7.0
-
 To build:
 
 Copy the sources down -

@@ -3,8 +3,6 @@ dockerfiles-fedora-httpd
 
 Fedora dockerfile for httpd
 
-Tested on Docker 0.7.2
-
 Get Docker version
 
 ```

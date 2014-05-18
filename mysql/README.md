@@ -1,8 +1,6 @@
 dockerfiles-fedora-MySQL
 ========================
 
-Tested on Docker 0.7.2
-
 This repo contains a recipe for making Docker container for SSH and MySQL on Fedora. 
 
 Check your Docker version

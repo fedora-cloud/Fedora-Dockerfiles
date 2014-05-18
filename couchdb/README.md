@@ -3,8 +3,6 @@ dockerfiles-fedora-couchdb
 
 Fedora dockerfile for couchdb
 
-Tested on Docker 0.7.2
-
 Get the version of Docker:
 
 ```

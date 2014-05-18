@@ -3,8 +3,6 @@ dockerfiles-fedora-registry
 
 Fedora dockerfile for docker registry
 
-Tested on Docker 0.8.1 and Fedora 20
-
 Get the version of Docker:
 
 	# docker version

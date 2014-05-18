@@ -3,8 +3,6 @@ dockerfiles-fedora-bind
 
 Fedora dockerfile for Bind - based resolving & cache'ing (DNS server)
 
-Tested on Docker 0.8.x / 0.9.x
-
 Configuration
 -----
 

@@ -4,8 +4,6 @@ dockerfiles-fedora-qpidd
 
 Fedora dockerfile for Apache Qpid
 
-Tested on Docker version 0.9.0-dev
-
 Get Docker version
 
     # docker version

@@ -3,8 +3,6 @@ dockerfiles-fedora-redis
 
 Fedora dockerfile for redis
 
-Tested on Docker 0.8.1
-
 To build:
 
 Copy the sources down -

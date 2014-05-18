@@ -1,4 +1,4 @@
-FROM fedora
+FROM fedora:20
 MAINTAINER scollier <scollier@redhat.com>
 
 RUN  yum -y update; yum clean all

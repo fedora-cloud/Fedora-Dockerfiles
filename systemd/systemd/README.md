@@ -3,8 +3,6 @@ dockerfiles-fedora-systemd
 
 Fedora dockerfile for systemd
 
-Tested on Docker 0.10.0
-
 Get Docker version
 
 ```
