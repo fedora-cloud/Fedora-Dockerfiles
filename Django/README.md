@@ -1,7 +1,7 @@
 dockerfiles-fedora-django
 ========================
 
-Fedora dockerfile for redis
+Fedora dockerfile for django
 
 Tested on Docker 1.0.0
 
