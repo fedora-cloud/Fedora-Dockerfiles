@@ -1,4 +1,4 @@
-dockerfiles-fedora-redis
+dockerfiles-fedora-django
 ========================
 
 Fedora dockerfile for redis
