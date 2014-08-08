@@ -5,7 +5,7 @@ Fedora dockerfile for Hadoop - Single container, multi-service.  No external vol
 
 1. To build:
 
-        # docker build -rm -t <username>/hadoop-single . |& tee hadoop_build.log
+        # docker build --rm -t <username>/hadoop-single . |& tee hadoop_build.log
 
         # docker images
 

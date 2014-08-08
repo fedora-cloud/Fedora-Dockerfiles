@@ -11,7 +11,7 @@ To build:
 
 Copy the sources down and do the build-
 
-    # docker build -rm -t <username>/python .
+    # docker build --rm -t <username>/python .
 
 To run (if port 8080 is open on your host):
 

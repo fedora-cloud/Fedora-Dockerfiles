@@ -11,7 +11,7 @@ To build:
 
 Copy the sources down -
 
-    # docker build -rm -t <username>/mongo .
+    # docker build --rm -t <username>/mongo .
 
 To run:
 

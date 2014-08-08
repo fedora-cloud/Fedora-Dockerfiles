@@ -12,7 +12,7 @@ Installation
 
 Copy the sources and run the build process:
 
-    $ docker build -rm -t <username>/fas .
+    $ docker build --rm -t <username>/fas .
 
 Running
 ----

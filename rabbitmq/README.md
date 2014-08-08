@@ -7,7 +7,7 @@ To build:
 
 Copy the sources down -
 
-	# docker build -rm -t <username>/rabbitmq .
+	# docker build --rm -t <username>/rabbitmq .
 
 To run:
 

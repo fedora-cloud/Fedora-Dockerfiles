@@ -8,7 +8,7 @@ This was built and tested on a Fedora 20 host running Docker 0.9.0.
 1. To build:
 
 ```
-	# docker build -rm -t <username>/hadoop-namenode . |& tee hadoop_build.log
+	# docker build --rm -t <username>/hadoop-namenode . |& tee hadoop_build.log
 	# docker images
 ```
 

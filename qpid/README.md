@@ -10,7 +10,7 @@ Get Docker version
 
 To build:
 
-    # docker build -rm -t fedora-qpidd .
+    # docker build --rm -t fedora-qpidd .
 
 Launch the container using:
 
