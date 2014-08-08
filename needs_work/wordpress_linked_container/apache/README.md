@@ -12,12 +12,12 @@ When you run the below commands, simply use sudo. This is a [known issue](https:
 This repo contains a recipe for making a [Docker](http://docker.io) container for Wordpress, using Linux, Apache and MySQL on Fedora. 
 To build, make sure you have Docker [installed](http://www.docker.io/gettingstarted/), clone this repo somewhere, and then run:
 
-# docker build -rm -t <yourname>/wordpress .
+# docker build --rm -t <yourname>/wordpress .
 
 
 Or, alternately, build DIRECTLY from the github repo:
 
-# docker build -rm -t <username>/wordpress git://github.com/scollier/dockerfiles-fedora-wordpress.git
+# docker build --rm -t <username>/wordpress git://github.com/scollier/dockerfiles-fedora-wordpress.git
 
 
 Run it:

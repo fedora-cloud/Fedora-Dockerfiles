@@ -10,7 +10,7 @@ To build:
 Copy the sources down -
 
 
-\# docker build -rm -t <username>/redis .
+\# docker build --rm -t <username>/redis .
 
 
 
