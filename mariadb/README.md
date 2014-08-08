@@ -12,7 +12,7 @@ Check your Docker version
 
 Perform the build
 
-\# docker build --rm -t <yourname>/mariadb .
+\# docker build -rm -t <yourname>/mariadb .
 
 Check the image out.
 

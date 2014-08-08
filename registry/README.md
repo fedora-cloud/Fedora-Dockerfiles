@@ -11,7 +11,7 @@ Get the version of Docker:
 
 To build:
 
-\# docker build --rm -t <yourname>/registry .
+\# docker build -rm -t <yourname>/registry .
 
 To run:
 

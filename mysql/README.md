@@ -11,7 +11,7 @@ Check your Docker version
 
 Perform the build
 
-\# docker build --rm -t <yourname>/MySQL .
+\# docker build -rm -t <yourname>/MySQL .
 
 Check the image out.
 

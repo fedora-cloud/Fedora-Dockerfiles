@@ -9,7 +9,7 @@ Tested on Docker 0.7.2
 
 Copy the sources down and do the build-
 
-\# docker build --rm -t username/postgresql . |& tee postgres_build.log
+\# docker build -rm -t username/postgresql . |& tee postgres_build.log
 
 2.	To run 
 
