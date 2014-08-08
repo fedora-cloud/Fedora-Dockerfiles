@@ -4,8 +4,8 @@ FROM fedora
 MAINTAINER "Maciej Lasyk" <maciek@lasyk.info>
 
 # install main packages:
-RUN yum -y update
-RUN yum -y install bind-utils bind cronie logrotate supervisor openssh-server rsyslog sudo pwgen
+RUN yum -y update; yum clean all;
+RUN yum -y install bind-utils bind cronie logrotate supervisor openssh-server rsyslog sudo pwgen; yum clean all;
 
 # gen rndc key:
 RUN rndc-confgen -a -c /etc/rndc.key
@@ -26,6 +26,7 @@ ADD ./cfg_files/supervisord.d/sshd.ini /etc/supervisord.d/sshd.ini
 ADD ./cfg_files/supervisord.d/rsyslog.ini /etc/supervisord.d/rsyslog.ini
 ADD ./cfg_files/sudoers.d/bindadm /etc/sudoers.d/bindadm
 RUN mkdir /root/scripts -p
+RUN chmod +x /etc/cron.daily/update_named.ca.sh
 ADD ./cfg_files/root/scripts/init.sh /root/scripts/init.sh
 RUN chmod +x /root/scripts/init.sh
 

@@ -4,15 +4,18 @@ dockerfiles-fedora-earthquake
 Fedora dockerfile for earthquake (terminal-based Twitter client:
 https://github.com/jugyo/earthquake)
 
-Tested on Docker 0.8.0
-
 Installation
 -----
 
 Clone Dockerfile somewhere and run:
 
     $ sudo docker build -t earthquake .
+
+    On docker 0.8.x:
     $ sudo docker run --rm -i -name earthquake -t earthquake
+    
+    On docker 0.9.x:
+    $ sudo docker run --rm -i --name=earthquake -t earthquake
 
 Could be run using TMux or GNU Screen
 

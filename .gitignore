@@ -1,4 +1,3 @@
 postgres/postgres_build.log
 wordpress_linked_container/mysql/mysql_build.log
 .*swp
-authorized_keys
