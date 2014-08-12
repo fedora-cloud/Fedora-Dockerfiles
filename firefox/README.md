@@ -14,7 +14,7 @@ To build:
 Copy the sources down -
 
 ```
-# docker build -rm -t <username>/firefox .
+# docker build --rm -t <username>/firefox .
 ```
 
 To run:

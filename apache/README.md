@@ -14,7 +14,7 @@ To build:
 Copy the sources down and do the build-
 
 ```
-# docker build -rm -t <username>/httpd .
+# docker build --rm -t <username>/httpd .
 ```
 
 To run (if port 80 is open on your host):

@@ -14,7 +14,7 @@ To build:
 Copy the sources down, then -
 
 ```
-# docker build -rm -t <username>/couchdb .
+# docker build --rm -t <username>/couchdb .
 ```
 
 To run:

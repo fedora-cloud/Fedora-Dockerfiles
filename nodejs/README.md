@@ -12,7 +12,7 @@ To build:
 
 Copy the sources down and do the build-
 
-    # docker build -rm -t <username>/nodejs .
+    # docker build --rm -t <username>/nodejs .
 
 To run (if port 8080 is open on your host):
 
