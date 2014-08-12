@@ -7,7 +7,7 @@ To build:
 
 Copy the sources down -
 
-    # docker build -rm -t <username>/nginx .
+    # docker build --rm -t <username>/nginx .
 
 To run:
 
