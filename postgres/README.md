@@ -7,7 +7,7 @@ Fedora dockerfile for PostgreSQL
 
 Copy the sources down and do the build-
 
-    # docker build -rm -t username/postgresql . |& tee postgres_build.log
+    # docker build --rm -t username/postgresql . |& tee postgres_build.log
 
 2.	To run 
 
