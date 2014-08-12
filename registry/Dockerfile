@@ -1,4 +1,4 @@
-FROM fedora
+FROM fedora:20
 MAINTAINER Stephen Tweedie <sct@redhat.com>
 
 RUN yum update -y; yum clean all
