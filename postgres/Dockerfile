@@ -1,5 +1,5 @@
 FROM fedora
-MAINTAINER briemers <briemers@redhat.com>
+MAINTAINER scollier <scollier@redhat.com>
 ENV LANG en_US.UTF-8
 ENV LC_ALL en_US.UTF-8
 
@@ -7,7 +7,6 @@ RUN yum -y update && yum clean all
 RUN yum -y install postgresql postgresql-server postgresql-contrib supervisor && yum clean all
 
 ADD ./supervisord.conf /etc/supervisord.conf
-ADD ./Dockerfile /Dockerfile
 
 RUN sed -i -e '2,2ialias system=echo' -e '2,2ifunction systemctl() { echo "Environment=PGPORT=5432 PGDATA=/var/lib/pgsql/data"; }' /usr/bin/postgresql-setup && \
 ( tail -F /var/lib/pgsql/initdb.log & tailpid=$!; \
