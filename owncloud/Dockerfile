@@ -1,14 +1,14 @@
 FROM       fedora:20
-MAINTAINER Dusty Mabe <dustymabe@gmail.com>
+MAINTAINER Dusty Mabe <dusty@dustymabe.com>
 
 # Perform updates
-RUN yum -y update; yum clean all
+RUN yum -y update && yum clean all
 
 # Install owncloud owncloud-httpd owncloud-sqlite rpms
-RUN yum install -y owncloud{,-httpd,-sqlite}; yum clean all
+RUN yum install -y owncloud{,-httpd,-sqlite} && yum clean all
 
 # Install SSL module and force SSL to be used by owncloud
-RUN yum install -y mod_ssl; yum clean all
+RUN yum install -y mod_ssl && yum clean all
 RUN sed -i 's/"forcessl" => false,/"forcessl" => true,/' /etc/owncloud/config.php
 
 # Allow connections from everywhere
