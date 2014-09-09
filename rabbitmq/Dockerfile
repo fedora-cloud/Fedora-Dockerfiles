@@ -1,8 +1,8 @@
 FROM fedora
 MAINTAINER scollier <scollier@redhat.com>
 
-RUN yum -y update; yum clean all
-RUN yum -y install pwgen wget logrotate rabbitmq-server; yum clean all
+RUN yum -y update && yum clean all
+RUN yum -y install pwgen wget logrotate rabbitmq-server && yum clean all
 RUN /usr/lib/rabbitmq/bin/rabbitmq-plugins enable rabbitmq_management
 
 #

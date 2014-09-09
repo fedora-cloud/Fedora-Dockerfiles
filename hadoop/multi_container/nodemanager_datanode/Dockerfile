@@ -2,13 +2,13 @@ FROM fedora
 MAINTAINER scollier <emailscottcollier@gmail.com>
 
 # Update the container
-RUN yum -y update
+RUN yum -y update && yum clean all
 
 # Install the hadoop packages
-RUN yum -y install hadoop-hdfs hadoop-yarn hadoop-common-native hadoop-mapreduce pwgen ldapjdk supervisor bash-completion
+RUN yum -y install hadoop-hdfs hadoop-yarn hadoop-common-native hadoop-mapreduce pwgen ldapjdk supervisor bash-completion && yum clean all
 
 # Install network troubleshooting tools into the container, these can be removed if you don't want them.
-RUN yum -y install net-tools lsof nmap
+RUN yum -y install net-tools lsof nmap && yum clean all
 
 ADD ./supervisord.conf /etc/supervisord.conf
 ADD ./core-site.xml /etc/hadoop/

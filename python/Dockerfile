@@ -1,8 +1,8 @@
 FROM fedora
 MAINTAINER "Aditya Patawari" <adimania@fedoraproject.org>
 
-RUN yum -y update; yum clean all
-RUN yum -y install python-pip; yum clean all
+RUN yum -y update && yum clean all
+RUN yum -y install python-pip && yum clean all
 
 ADD . /src
 

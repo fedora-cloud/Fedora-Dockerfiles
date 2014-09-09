@@ -4,8 +4,8 @@ FROM fedora
 MAINTAINER "Maciej Lasyk" <maciek@lasyk.info>
 
 # install main packages:
-RUN yum -y update; yum clean all;
-RUN yum -y install openssh-server supervisor rsyslog sudo pwgen lighttpd; yum clean all;
+RUN yum -y update && yum clean all
+RUN yum -y install openssh-server supervisor rsyslog sudo pwgen lighttpd && yum clean all
 
 # copy cfg files:
 ADD ./cfg_files/supervisord.conf /etc/supervisord.conf

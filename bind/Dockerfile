@@ -4,8 +4,8 @@ FROM fedora
 MAINTAINER "Maciej Lasyk" <maciek@lasyk.info>
 
 # install main packages:
-RUN yum -y update; yum clean all;
-RUN yum -y install bind-utils bind cronie logrotate supervisor openssh-server rsyslog sudo pwgen; yum clean all;
+RUN yum -y update && yum clean all
+RUN yum -y install bind-utils bind cronie logrotate supervisor openssh-server rsyslog sudo pwgen && yum clean all
 
 # gen rndc key:
 RUN rndc-confgen -a -c /etc/rndc.key
