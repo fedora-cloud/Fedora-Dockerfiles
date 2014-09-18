@@ -1,9 +1,8 @@
 FROM fedora:20
 MAINTAINER "Brent Baude" <bbaude@redhat.com>
 ENV container docker
-#RUN yum -y update && yum clean all
-RUN yum clean all
-RUN yum -y install systemd libvirt-daemon && yum clean all; \
+RUN yum -y update && yum clean all
+RUN yum -y install libvirt-daemon-driver* qemu systemd libvirt-daemon && yum clean all; \
 (cd /lib/systemd/system/sysinit.target.wants/; for i in *; do [ $i == systemd-tmpfiles-setup.service ] || rm -f $i; done); \
 rm -f /lib/systemd/system/multi-user.target.wants/*;\
 rm -f /etc/systemd/system/*.wants/*;\
@@ -15,7 +14,7 @@ rm -f /lib/systemd/system/anaconda.target.wants/*; \
 systemctl enable libvirtd; \
 systemctl enable virtlockd 
 
-EXPOSE 16514 16509
+EXPOSE 16509
 
 # RUN echo "listen_tls = 0" >> /etc/libvirt/libvirtd.conf; \
 # echo 'listen_tcp = 1' >> /etc/libvirt/libvirtd.conf; \
@@ -23,13 +22,9 @@ EXPOSE 16514 16509
 # echo 'tcp_port = "16509"' >> /etc/libvirt/libvirtd.conf; \
 # echo 'auth_tcp = "none"' >> /etc/libvirt/libvirtd.conf
 
-RUN yum -y install libvirt-daemon-driver*
-
 ADD ./libvirtd.conf /etc/libvirt/libvirtd.conf
 
 RUN echo 'LIBVIRTD_ARGS="--listen"' >> /etc/sysconfig/libvirtd
-
-RUN yum -y install qemu
 
 VOLUME [ "/sys/fs/cgroup" ]
 CMD ["/usr/sbin/init"]
