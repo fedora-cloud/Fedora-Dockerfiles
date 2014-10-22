@@ -1,7 +1,8 @@
 dockerfiles-fedora-cups
 ========================
 
-Fedora dockerfile for CUPS
+This is a recipe for making a Docker container CUPS on Fedora. It has
+been tested with docker 1.2.0.
 
 Get Docker version
 
