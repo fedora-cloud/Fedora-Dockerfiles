@@ -35,6 +35,8 @@ To use from the command line:
 
 ```
 # lpstat -h localhost:631 -t
+# cupsctl -U {CUPS_ADMIN_USER} -h localhost:631
+etc...
 ```
 
 View https://localhost:631/ for the web interface.
