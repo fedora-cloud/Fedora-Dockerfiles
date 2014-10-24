@@ -2,34 +2,26 @@ dockerfiles-fedora-dhcpd
 =========================
 
 Fedora dockerfile for dhcpd - DHCP server.
-Tested on Docker 1.2.0
+Tested on Docker 1.3.0
 
 Clone Dockerfile somewhere and build the container:
 
-```
-# docker build --rm -t <username>/dhcpd .
-```
+    # docker build --rm -t <username>/dhcpd .
 
-Create a volume container for the /data:
+Create a volume containers for configuration file and leases database:
 
-```bash
-# docker run -d -v /data --name dhcpd-data fedora true
-```
+    # docker run -d -v /etc/dhcp --name dhcpd-conf fedora true
+    # docker run -d -v /var/lib/dhcpd --name dhcpd-db fedora true
 
-Run the container:
+Run dhcpd container. This creates default ``/etc/dhcp/dhcpd.conf``
+with subnet declaration according to eth0's address:
 
-```bash
-# docker run -d --volumes-from dhcpd-data --name dhcpd <username>/dhcpd
-```
+    # docker run -d -p 67:67/udp --volumes-from dhcpd-conf --volumes-from dhcpd-db --name dhcpd <username>/dhcpd
 
-Use a temporary container to edit the ``/data/dhcpd.conf``:
+Use a temporary container to edit the ``/etc/dhcp/dhcpd.conf``:
 
-```bash
-# docker run -i -t --volumes-from dhcpd-data fedora /bin/sh -l
-```
+    # docker run -i -t --volumes-from dhcpd-conf fedora vi /etc/dhcp/dhcpd.conf
 
-Edit ``/data/dhcpd.conf`` as desired, then restart the dhcpd container.
+Edit ``/etc/dhcp/dhcpd.conf`` as desired, then restart the dhcpd container.
 
-```bash
-# docker restart dhcpd
-```
+    # docker restart dhcpd
