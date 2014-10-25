@@ -17,4 +17,4 @@ Copy the sources down and do the build
 
 To test:
 
-  # docker run -i -t haskell
+  # docker run -i -t <username>/haskell

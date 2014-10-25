@@ -1,4 +1,4 @@
-FROM fedora:20
+FROM rhel7
 MAINTAINER "Brent Baude" <bbaude@redhat.com>
 ENV container docker
 RUN yum -y update && yum clean all

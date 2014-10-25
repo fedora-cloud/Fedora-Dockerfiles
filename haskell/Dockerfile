@@ -39,7 +39,7 @@ RUN yum -y install ghc cabal-install cabal-rpm cabal-dev\
   ghc-parsec-devel\
   ghc-mtl-devel\
   ghc-text-devel\
-  ghc-transformers-devel ;\
+  ghc-transformers-devel &&\
  yum clean all
 
 CMD [ "/bin/bash" ]
