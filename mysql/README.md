@@ -9,7 +9,7 @@ Check your Docker version
 
 Perform the build
 
-    # docker build --rm -t <yourname>/MySQL .
+    # docker build --rm -t <yourname>/mysql .
 
 Check the image out.
 
@@ -17,7 +17,7 @@ Check the image out.
 
 Run it:
 
-    # docker run -d -p 3306:3306 <yourname>/MySQL
+    # docker run -d -p 3306:3306 <yourname>/mysql
 
 Get container ID:
 
