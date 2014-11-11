@@ -7,11 +7,6 @@ This is the upstream source for the [fedora-dockerfiles](http://koji.fedoraproje
 # sudo yum install docker-io fedora-dockerfiles
 ```
 
-Some guidelines for contributing to this repo:
-
-Check out these [guidelines](https://github.com/scollier/Fedora-Dockerfiles/wiki/Guidelines-for-Creating-Dockerfiles) for contributing to this repo.
-
-If there are some Dockerfiles that are not in the repo, feel free to add them to the [wishlist / todo.](https://github.com/scollier/Fedora-Dockerfiles/wiki/Fedora-Dockerfiles-ToDo)
+Some [guidelines](https://github.com/scollier/Fedora-Dockerfiles/wiki/Guidelines-for-Creating-Dockerfiles) for contributing to this repo.
 
 We welcome contributions.
-
