@@ -11,7 +11,7 @@ Copy the sources down -
 
 To run:
 
-    # docker run -d -p 80:80 <username>/flask
+    # docker run -d -p 80:5000 <username>/flask
 
 To test:
 
