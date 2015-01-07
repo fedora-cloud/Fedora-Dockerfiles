@@ -1,5 +1,5 @@
-# Dockerfile for lapis on fedora 22
-FROM fedora:22
+# Dockerfile for lapis on fedora
+FROM fedora
 MAINTAINER Artyom Rabetskiy <rabeckiy@gmail.com>
 
 RUN yum -y update && yum clean all
