@@ -30,6 +30,7 @@ Example develop:
 
 
 \# su -c "setenforce 0"
+
 \# docker run -d -p 8080:8080 -v /path/to/your_lapis_project:/opt/webapp <username>/lapis
 
 /opt/webapp - WORKDIR for lapis server
