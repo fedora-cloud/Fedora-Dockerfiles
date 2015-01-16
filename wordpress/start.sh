@@ -1,11 +1,5 @@
 #!/bin/bash
 
-__check() {
-if [ -f /var/www/html/wp-config.php ]; then
-  exit
-fi
-}
-
 __mysql_config() {
 # Hack to get MySQL up and running... I need to look into it more.
 yum -y erase community-mysql community-mysql-server
@@ -59,10 +53,15 @@ __run_supervisor() {
 supervisord -n
 }
 
+__check() {
+if [ ! -f /var/www/html/wp-config.php ]; then
+  __mysql_config
+  __handle_passwords
+  __httpd_perms
+  __start_mysql
+fi
+}
+
 # Call all functions
 __check
-__mysql_config
-__handle_passwords
-__httpd_perms
-__start_mysql
 __run_supervisor
