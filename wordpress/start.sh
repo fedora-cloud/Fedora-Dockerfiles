@@ -6,14 +6,6 @@ if [ -f /var/www/html/wp-config.php ]; then
 fi
 }
 
-__create_user() {
-# Create a user to SSH into as.
-SSH_USERPASS=`pwgen -c -n -1 8`
-useradd -G wheel user
-echo user:$SSH_USERPASS | chpasswd
-echo ssh user password: $SSH_USERPASS
-}
-
 __mysql_config() {
 # Hack to get MySQL up and running... I need to look into it more.
 yum -y erase community-mysql community-mysql-server
@@ -69,7 +61,6 @@ supervisord -n
 
 # Call all functions
 __check
-__create_user
 __mysql_config
 __handle_passwords
 __httpd_perms
