@@ -1,11 +1,10 @@
 FROM fedora
 MAINTAINER scollier <scollier@redhat.com>
 RUN yum -y update && yum clean all
-RUN yum -y install httpd php php-mysql php-gd pwgen supervisor bash-completion psmisc tar && yum clean all
+RUN yum -y install httpd php php-mysql php-gd pwgen supervisor psmisc tar && yum clean all
 ADD ./start.sh /start.sh
 ADD ./foreground.sh /etc/apache2/foreground.sh
 ADD ./supervisord.conf /etc/supervisord.conf
-RUN echo %sudo	ALL=NOPASSWD: ALL >> /etc/sudoers
 ADD http://wordpress.org/latest.tar.gz /wordpress.tar.gz
 RUN tar xvzf /wordpress.tar.gz 
 RUN mv /wordpress/* /var/www/html/.
