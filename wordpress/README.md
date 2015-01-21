@@ -16,16 +16,10 @@ To build, make sure you have Docker [installed](http://www.docker.io/gettingstar
 # docker build --rm -t <yourname>/wordpress .
 ```
 
-Or, alternately, build DIRECTLY from the github repo:
-
-```
-# docker build --rm -t <username>/wordpress git://github.com/scollier/dockerfiles-fedora-wordpress.git
-```
-
 Run it:
 
 ```
-# CID=$(docker run -d -p 80 -p 22 <yourname>/wordpress)
+# CID=$(docker run -d -p 80 <yourname>/wordpress)
 ```
 
 Check docker logs after running to see MySQL root password and Wordpress MySQL password, as so:
