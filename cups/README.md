@@ -85,7 +85,7 @@ also use the CUPS server in the container when printing.
 You can set up a printer through the web interface or by passing additional environment variables to docker (usefull for automation):
 
 ```
-# docker run -d 
+# docker run -d \
     -e CUPS_PRINTER_NAME=<printer> \
     -e CUPS_PRINTER_DRIVER=<driver> \
     -e CUPS_PRINTER_CONNECTION=<uri> \
@@ -101,7 +101,7 @@ See the man page of `lpadmin` for a detailed description of each option.
 To setup a Zebra label printer with a static IP address you could do:
 
 ```
-# docker run -d 
+# docker run -d \
     -e CUPS_PRINTER_NAME=GX420t \
     -e CUPS_PRINTER_DRIVER=drv:///sample.drv/zebraep2.ppd \
     -e CUPS_PRINTER_CONNECTION=socket://192.168.1.42 \
