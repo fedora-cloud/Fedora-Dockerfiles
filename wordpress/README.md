@@ -16,16 +16,10 @@ To build, make sure you have Docker [installed](http://www.docker.io/gettingstar
 # docker build --rm -t <yourname>/wordpress .
 ```
 
-Or, alternately, build DIRECTLY from the github repo:
-
-```
-# docker build --rm -t <username>/wordpress git://github.com/scollier/dockerfiles-fedora-wordpress.git
-```
-
 Run it:
 
 ```
-# CID=$(docker run -d -p 80 -p 22 <yourname>/wordpress)
+# CID=$(docker run -d -p 80 <yourname>/wordpress)
 ```
 
 Check docker logs after running to see MySQL root password and Wordpress MySQL password, as so:
@@ -44,11 +38,5 @@ Then find the external port assigned to your container:
 
 Visit in a webrowser, then fill out the form. No need to mess with wp-config.php, it's been auto-generated with proper values. 
 
-
-Note that this image now has a user account (appropriately named "user") and passwordless sudo for that user account. The password is generated upon startup; check logs for "ssh user password", docker ps for the port assigned to 22, and something like this to get in: 
-
-```
-# ssh -p <port> user@localhost
-```
 
 
