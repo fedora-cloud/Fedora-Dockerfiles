@@ -6,4 +6,15 @@ if ! grep -q "^$CUPS_ADMIN_USER:" /etc/shadow; then
 		(passwd --stdin "$CUPS_ADMIN_USER")
 fi
 
+if [ -n "$CUPS_PRINTER_NAME" ]; then
+	/usr/sbin/cupsd
+
+	echo Adding printer $CUPS_PRINTER_NAME:
+	echo "  Driver: $CUPS_PRINTER_DRIVER"
+	echo "  Connection: $CUPS_PRINTER_CONNECTION"
+	lpadmin -p $CUPS_PRINTER_NAME -E -m $CUPS_PRINTER_DRIVER -v $CUPS_PRINTER_CONNECTION
+
+	kill $(ps -eo comm,pid | grep cupsd | awk '{ print $2 }')
+fi
+
 exec /usr/sbin/cupsd -f
