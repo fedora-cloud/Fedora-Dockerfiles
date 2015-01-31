@@ -50,6 +50,7 @@ sleep 10
 }
 
 __run_supervisor() {
+rm -f /run/httpd/httpd.pid
 supervisord -n
 }
 
