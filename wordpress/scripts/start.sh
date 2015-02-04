@@ -23,7 +23,6 @@ printf "Creating wp-config.php...\n"
 sed -e "s/database_name_here/$DB_NAME/
 s/username_here/$DB_ENV_USER/
 s/password_here/$DB_ENV_PASS/
-s/localhost/${DB_PORT#tcp://}/
 /'AUTH_KEY'/s/put your unique phrase here/`pwgen -s -1 65`/
 /'SECURE_AUTH_KEY'/s/put your unique phrase here/`pwgen -s -1 65`/
 /'LOGGED_IN_KEY'/s/put your unique phrase here/`pwgen -s -1 65`/
@@ -32,6 +31,12 @@ s/localhost/${DB_PORT#tcp://}/
 /'SECURE_AUTH_SALT'/s/put your unique phrase here/`pwgen -s -1 65`/
 /'LOGGED_IN_SALT'/s/put your unique phrase here/`pwgen -s -1 65`/
 /'NONCE_SALT'/s/put your unique phrase here/`pwgen -s -1 65`/" /var/www/html/wp-config-sample.php > /var/www/html/wp-config.php
+}
+
+__handle_db_host() {
+# Update wp-config.php to point to our linked container's address.
+sed -i -e "s/^\(define('DB_HOST', '\).*\(');.*\)/\1${DB_PORT#tcp://}\2/" \
+  /var/www/html/wp-config.php
 }
 
 __httpd_perms() {
@@ -47,6 +52,7 @@ if [ ! -f /var/www/html/wp-config.php ]; then
   __handle_passwords
   __httpd_perms
 fi
+__handle_db_host
 }
 
 # Call all functions
