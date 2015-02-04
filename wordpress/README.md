@@ -59,7 +59,7 @@ For the wordpress instance:
 
 ```
 # docker run --link=the-mariadb-container:db -p 80 \
-    -v /mnt/wp-content:/var/www/html/wp-content -d <twaugh>/wordpress
+    -v /mnt/wp-content:/var/www/html/wp-content -d <yourname>/wordpress
 ```
 
 The container will generate a new wp-config.php based on the information provided by the linked container. Local configuration changes to wp-config.php will not persist when making a new wordpress container even if you are using a volume for wp-content.
