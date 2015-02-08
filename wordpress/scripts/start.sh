@@ -44,7 +44,7 @@ chown apache:apache /var/www/html/wp-config.php
 }
 
 __run_apache() {
-/scripts/run-apache.sh
+exec /scripts/run-apache.sh
 }
 
 __check() {
