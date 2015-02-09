@@ -7,7 +7,6 @@ ADD adjust-config.sh /adjust-config.sh
 ADD start-cups.sh /start-cups.sh
 RUN chmod 755 /adjust-config.sh /start-cups.sh
 RUN /adjust-config.sh
-RUN printf "ServerAlias localhost\n" >> /etc/cups/cupsd.conf
 
 EXPOSE 631
 

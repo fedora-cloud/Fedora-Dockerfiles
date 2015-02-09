@@ -24,3 +24,6 @@ sed -i \
 sed -i \
 	-e "s,^Browsing.*,Browsing Off," \
 	/etc/cups/cupsd.conf
+
+# Allow host<->container proxying
+printf "ServerAlias localhost\n" >> /etc/cups/cupsd.conf
