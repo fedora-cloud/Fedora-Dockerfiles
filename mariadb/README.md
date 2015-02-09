@@ -34,14 +34,14 @@ This will create the system tables and a database named 'db', with user 'dbuser'
 
 ### Adjustable configuration ###
 
-Use a separate data volume for /var/lib/mysql, to allow image update without losing database contents. When creating this volume, make sure to set the SELinux file context to allow the container to write to it:
+Create a data volume container:
 
-    # mkdir /mnt/db
-    # chcon -t svirt_sandbox_file_t /mnt/db
+    # docker run --name=mariadb-data -v /var/lib/mysql \
+        --entrypoint /bin/echo <yourname>/mariadb "MariaDB data volume"
 
-Now create the container:
+Now create the persistent container, using the data volume container for storage:
 
-    # docker run --name=mariadb -v /mnt/db:/var/lib/mysql \
+    # docker run --name=mariadb --volumes-from=mariadb-data \
         -p 3306:3306 -d <yourname>/mariadb
 
 The container will not re-initialise an already-initialised data volume.
@@ -65,7 +65,7 @@ Linking with another container
 
 To arrange for linking with another container, set the USER, PASS, and NAME environment variables when creating the mariadb container. You don't need to expose any ports, as they are available to other containers automatically:
 
-    # docker run --name=mariadb -v /mnt/db:/var/lib/mysql \
+    # docker run --name=mariadb --volumes-from=mariadb-data \
         -e USER=user -e PASS=mypassword -e NAME=mydb \
 	-d <yourname>/mariadb
 
