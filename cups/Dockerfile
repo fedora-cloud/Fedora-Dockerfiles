@@ -8,6 +8,7 @@ ADD start-cups.sh /start-cups.sh
 RUN chmod 755 /adjust-config.sh /start-cups.sh
 RUN /adjust-config.sh
 
+VOLUME ["/var/spool/cups", "/var/log/cups"]
 EXPOSE 631
 
 CMD ["/start-cups.sh"]

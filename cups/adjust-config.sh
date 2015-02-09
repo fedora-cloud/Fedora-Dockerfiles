@@ -27,3 +27,8 @@ sed -i \
 
 # Allow host<->container proxying
 printf "ServerAlias localhost\n" >> /etc/cups/cupsd.conf
+
+# Log to file, not to journal
+sed -i \
+	-e "s,^ErrorLog .*,ErrorLog /var/log/cups/error_log," \
+	/etc/cups/cups-files.conf

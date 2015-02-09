@@ -107,3 +107,10 @@ To setup a Zebra label printer with a static IP address you could do:
     -e CUPS_PRINTER_CONNECTION=socket://192.168.1.42 \
     <username>/cups
 ```
+
+### Volumes
+
+The volumes defined by this container are:
+
+- /var/spool/cups (the spool directory)
+- /var/log/cups (for logs)
