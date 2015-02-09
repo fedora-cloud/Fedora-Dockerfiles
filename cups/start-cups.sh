@@ -1,4 +1,9 @@
 #!/bin/bash
+if [ -z "$CUPS_ADMIN_USER" ]; then
+	printf "No CUPS_ADMIN_USER environment variable set.\n"
+	exit 1
+fi
+
 if ! grep -q "^$CUPS_ADMIN_USER:" /etc/shadow; then
 	echo Adding "$CUPS_ADMIN_USER" user
 	useradd "$CUPS_ADMIN_USER" --system -G root,sys -M
