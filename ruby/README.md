@@ -4,7 +4,7 @@ fedora-cloud ruby Dockerfile
 Try out a simple build:
 
 ```
-$ sudo docker build .
+$ sudo docker build -t <username>/ruby .
 ..
 ..
 Complete!
@@ -18,7 +18,7 @@ Successfully built 5fbcdaa353c5
 Now launch an interactive ruby shell:
 
 ``` ruby
-$ sudo docker run -it 5fbcdaa353c5 irb
+$ sudo docker run -it <username>/ruby irb
 irb(main):001:0> 2 + 3
 => 5
 ```
