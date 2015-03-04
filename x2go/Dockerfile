@@ -25,10 +25,10 @@ RUN yum -y remove anaconda-core && yum clean all
 # Make the command-line significantly more usable
 RUN mandb
 
-RUN ssh-keygen -t rsa -f /etc/ssh/ssh_host_rsa_key -N ''
-# With X2Go Client for Windows 4.0.3.2, for some reason, I had to create this
-# type of key.
-RUN ssh-keygen -f /etc/ssh/ssh_host_ecdsa_key -N '' -t ecdsa -b 256
+# Although generating the standard set of SSH keys is a best practice,
+# X2Go Client for Windows 4.0.3.2 requires an ecdsa-sha2-nistp256 key due to
+# http://bugs.x2go.org/cgi-bin/bugreport.cgi?bug=765
+RUN ssh-keygen -A
 
 # start.sh script from the fedora/ssh Dockerfile
 ADD ./start.sh /start.sh
