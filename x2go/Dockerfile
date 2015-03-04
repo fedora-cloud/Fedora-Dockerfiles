@@ -4,13 +4,13 @@ MAINTAINER "Mike DePaulo" <mikedep333@gmail.com>
 
 ENV container docker
 
-RUN yum -y update
+RUN yum -y update && yum clean all
 # install main packages:
-RUN yum -y install systemd openssh-server sudo pwgen x2goserver x2goserver-xsession
+RUN yum -y install systemd openssh-server sudo pwgen x2goserver x2goserver-xsession && yum clean all
 # Make the command-line significantly more usable
-RUN yum -y install bash-completion man-db file net-tools
+RUN yum -y install bash-completion man-db file net-tools && yum clean all
 # Minimal set of fonts. Many (proprietary) apps do not run, or do not run correctly without them.
-RUN yum -y install xorg-x11-fonts-Type1 xorg-x11-fonts-misc dejavu-lgc-sans-fonts xorg-x11-fonts-75dpi xorg-x11-fonts-100dpi 
+RUN yum -y install xorg-x11-fonts-Type1 xorg-x11-fonts-misc dejavu-lgc-sans-fonts xorg-x11-fonts-75dpi xorg-x11-fonts-100dpi && yum clean all
 
 # Discuss creating multiple Dockerfiles per each supported desktop enviornment
 # (and a base one for seamless window mode) with Fedora devel.
@@ -18,10 +18,9 @@ RUN yum -y install xorg-x11-fonts-Type1 xorg-x11-fonts-misc dejavu-lgc-sans-font
 #
 # Note: This installs many things we need like systemd as well as things we do
 # not need like the Linux kernel.
-RUN yum -y groups install fedora-release-nonproduct fonts input-methods mate-desktop
+RUN yum -y groups install fedora-release-nonproduct fonts input-methods mate-desktop && yum clean all
 
-RUN yum -y remove anaconda-core
-RUN yum clean all
+RUN yum -y remove anaconda-core && yum clean all
 
 # Make the command-line significantly more usable
 RUN mandb
