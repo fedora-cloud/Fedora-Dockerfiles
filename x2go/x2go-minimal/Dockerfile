@@ -27,14 +27,8 @@ RUN usermod -a -G wheel user
 # System is booting up. See pam_nologin(8)
 RUN sed --in-place=.orig 's/^account    required     pam_nologin.so/#account    required     pam_nologin.so/' /etc/pam.d/sshd
 
-# Install MATE desktop environment
-# Note that these groups are a subset of the groups that group MATE depends on
-#
-# Note: This installs many things we need like systemd as well as things we do
-# not need like the Linux kernel and anaconda.
-RUN yum -y groups install fedora-release-nonproduct fonts input-methods mate-desktop && yum clean all
-
-RUN yum -y remove anaconda-core && yum clean all
+# Install lxterminal rather than xterm because it is significantly easier to use
+RUN yum -y install lxterminal && yum clean all
 
 # Make the command-line significantly more usable
 RUN mandb
