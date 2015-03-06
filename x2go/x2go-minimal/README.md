@@ -1,4 +1,4 @@
-# dockerfiles-fedora-x2go
+# dockerfiles-fedora-x2go-minimal
 
 To build:
 Copy the sources to your docker host and build the container:
