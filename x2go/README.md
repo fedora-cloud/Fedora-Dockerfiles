@@ -10,7 +10,7 @@ To run:
 	# docker run -d -p 50000:22 --privileged=true <username>/x2go
 
 To test:
-	# ssh -p 50000 user@localhost 
+	# ssh -p 50000 user@localhost
 
 To use:
 log in with X2Go Client, PyHoca-GUI, or PyHoca-CLI:
