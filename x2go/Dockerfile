@@ -17,7 +17,7 @@ RUN yum -y install xorg-x11-fonts-Type1 xorg-x11-fonts-misc dejavu-lgc-sans-font
 # In the meantime, just install MATE.
 #
 # Note: This installs many things we need like systemd as well as things we do
-# not need like the Linux kernel.
+# not need like the Linux kernel and anaconda.
 RUN yum -y groups install fedora-release-nonproduct fonts input-methods mate-desktop && yum clean all
 
 RUN yum -y remove anaconda-core && yum clean all
