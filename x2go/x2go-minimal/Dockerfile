@@ -21,7 +21,6 @@ RUN ssh-keygen -A
 ADD ./start.sh /start.sh
 RUN chmod 755 /start.sh
 RUN ./start.sh
-RUN usermod -a -G wheel user
 
 # Fix login. Otherwise, pam refuses to let you login via ssh with this message:
 # System is booting up. See pam_nologin(8)
