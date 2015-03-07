@@ -28,7 +28,9 @@ RUN usermod -a -G wheel user
 RUN sed --in-place=.orig 's/^account    required     pam_nologin.so/#account    required     pam_nologin.so/' /etc/pam.d/sshd
 
 # Install lxterminal rather than xterm because it is significantly easier to use
-RUN yum -y install lxterminal && yum clean all
+#
+# Installing these fonts fixes this kerning bug http://imgur.com/ut4GXqE
+RUN yum -y install lxterminal dejavu-sans-mono-fonts && yum clean all
 
 # Make the command-line significantly more usable
 RUN mandb
