@@ -4,7 +4,8 @@
 # empty. We need to ensure that the following directories exist.
 
 # This is the target of the "default" storage pool.
-mkdir -p /var/log/libvirt/images
+mkdir -p /var/lib/libvirt/images
+mkdir -p /var/log/libvirt
 
 # This is used by "virsh console" to create lock files.  Technically,
 # "virsh console" uses /var/lock, but that is a symlink to /run/lock.
