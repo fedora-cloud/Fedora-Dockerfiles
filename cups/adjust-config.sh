@@ -1,12 +1,12 @@
 #!/bin/bash
 
-# Listen for network connections.
+# Listen for network connections
 sed -i \
 	-e "0,/^Listen /{s,^Listen .*$,Port 631,}" \
 	-e "/^Listen /d" \
 	/etc/cups/cupsd.conf
 
-# Allow remote connections.
+# Allow remote connections
 sed -i \
 	-e "/<Location \/>/,/<\/Location>/{/<\/Location>/i\ \ Allow @LOCAL
 }" \
@@ -20,7 +20,15 @@ sed -i \
 }" \
 	/etc/cups/cupsd.conf
 
-# Disable browsing.
+# Disable browsing
 sed -i \
 	-e "s,^Browsing.*,Browsing Off," \
 	/etc/cups/cupsd.conf
+
+# Allow host<->container proxying
+printf "ServerAlias localhost\n" >> /etc/cups/cupsd.conf
+
+# Log to file, not to journal
+sed -i \
+	-e "s,^ErrorLog .*,ErrorLog /var/log/cups/error_log," \
+	/etc/cups/cups-files.conf
