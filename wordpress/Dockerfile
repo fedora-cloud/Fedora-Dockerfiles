@@ -1,15 +1,17 @@
 FROM fedora
 MAINTAINER scollier <scollier@redhat.com>
 RUN yum -y update && yum clean all
-RUN yum -y install httpd php php-mysql php-gd pwgen supervisor psmisc tar && yum clean all
-ADD ./start.sh /start.sh
-ADD ./foreground.sh /etc/apache2/foreground.sh
-ADD ./supervisord.conf /etc/supervisord.conf
-ADD http://wordpress.org/latest.tar.gz /wordpress.tar.gz
-RUN tar xvzf /wordpress.tar.gz 
-RUN mv /wordpress/* /var/www/html/.
-RUN chown -R apache:apache /var/www/
-RUN chmod 755 /start.sh
-RUN chmod 755 /etc/apache2/foreground.sh
+RUN yum -y install httpd php php-mysql php-gd pwgen psmisc tar && \
+    yum clean all
+
+ADD scripts /scripts
+RUN curl -LO http://wordpress.org/latest.tar.gz                   && \
+    tar xvzf /latest.tar.gz -C /var/www/html --strip-components=1 && \
+    rm /latest.tar.gz                                             && \
+    chown -R apache:apache /var/www/                              && \
+    chmod 755 /scripts/*
+
+VOLUME ["/var/www/html/wp-content", "/var/log/httpd"]
 EXPOSE 80
-CMD ["/bin/bash", "/start.sh"]
+
+CMD ["/bin/bash", "/scripts/start.sh"]
