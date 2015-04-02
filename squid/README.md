@@ -6,6 +6,8 @@ Fedora dockerfile for Squid proxy cache
 To configure:
 
 - adjust the content of squid.conf
+- use auth_squid.conf if you would like to use authentication
+- Username and password for authentication can be modified in the Dockerfile
 
 To build:
 
