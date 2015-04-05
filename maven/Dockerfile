@@ -18,5 +18,5 @@ RUN curl -sSL http://archive.apache.org/dist/maven/maven-3/$MAVEN_VERSION/binari
 #ENV mavenRepositoryUrl http://localhost:8081/nexus/content/groups/public/
 #ADD settings.xml /usr/share/maven/conf/settings.xml
 
-ENV MAVEN_HOME /usr/share/maven
+ENV M2_HOME /usr/share/maven
 CMD ["mvn"]
