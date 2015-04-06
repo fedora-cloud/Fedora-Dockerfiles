@@ -2,7 +2,7 @@
 
 To build:
 Copy the sources to your docker host and build the container:
-	# docker build --rm -t <username>/x2go .
+	# docker build --rm -t <username>/x2go-minimal .
 
 The rest of these instructions assume you are OK with it using port 50000 on the host.
 
@@ -13,7 +13,7 @@ To run with the host's user accounts, sudo configuration, and home dirs:
 	docker run -d -p 50000:22 --privileged=true --volume /etc/passwd:/etc/passwd --volume /etc/shadow:/etc/shadow --volume /etc/group:/etc/group --volume /etc/gshadow:/etc/gshadow --volume /etc/sudoers:/etc/sudoers --volume /home:/home <username>/x2go
 (This is limited to local user accounts & sudo configuration. If home dirs are under a different path than /home, mount that path instead (or in addition to) /home.)
 
-To test:
+To test SSH connectivity (upon which X2Go is based):
 	# ssh -p 50000 user@localhost
 (Specify a system user account instead if running with system user accounts)
 
