@@ -18,10 +18,17 @@ To test:
 (Specify a system user account instead if running with system user accounts)
 
 To use:
-log in with X2Go Client, PyHoca-GUI, or PyHoca-CLI:
-Host: hostname of the docker host
-Login: user
-(Specify a system user account instead if running with system user accounts)
-SSH port: 50000
-Session type: Single Application: Terminal
+Connect with X2Go Client, PyHoca-GUI, or PyHoca-CLI.
+You can do a loopback connection (Host: localhost) or connect from another machine.
 
+X2Go Client Settings:
+	Host: hostname of the docker host
+	Login: user
+	SSH port: 50000
+	Session type: Single Application: Terminal
+(Specify a system user account instead if running with system user accounts)
+
+PyHoca-CLI command:
+	pyhoca-cli --server <hostname-of-the-docker-host> -p 50000 -N --user user --add-to-known-hosts
+(Specify a system user account instead if running with system user accounts)
+(Note that a "Terminal" session is defaulted to)
