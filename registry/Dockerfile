@@ -1,5 +1,5 @@
 FROM fedora:20
-MAINTAINER Stephen Tweedie <sct@redhat.com>
+MAINTAINER http://fedoraproject.org/wiki/Cloud
 
 RUN yum update -y &&  yum clean all
 RUN yum install -y docker-registry && yum clean all

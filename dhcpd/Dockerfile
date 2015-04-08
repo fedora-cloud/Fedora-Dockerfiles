@@ -1,7 +1,7 @@
 # Based on the Fedora image
 FROM fedora
 
-MAINTAINER "Jiri Popelka" <jpopelka@redhat.com>
+MAINTAINER http://fedoraproject.org/wiki/Cloud
 
 RUN yum -y update && yum clean all
 

@@ -1,7 +1,7 @@
 # Based on the Fedora image
 FROM fedora
 
-MAINTAINER "Maciej Lasyk" <maciek@lasyk.info>
+MAINTAINER http://fedoraproject.org/wiki/Cloud
 
 # install main packages:
 RUN yum -y update && yum clean all

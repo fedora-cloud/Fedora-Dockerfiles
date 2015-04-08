@@ -1,5 +1,5 @@
 FROM fedora
-MAINTAINER scollier <emailscottcollier@gmail.com>
+MAINTAINER http://fedoraproject.org/wiki/Cloud
 
 # Install the appropriate software
 RUN yum -y update && yum clean all

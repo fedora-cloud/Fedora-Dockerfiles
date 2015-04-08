@@ -1,5 +1,5 @@
 FROM fedora:latest
-MAINTAINER groks.org/yo
+MAINTAINER http://fedoraproject.org/wiki/Cloud
 
 RUN yum -y update && yum clean all
 

@@ -1,5 +1,5 @@
 FROM fedora
-MAINTAINER Aditya Patawari <adimania@fedoraproject.org>
+MAINTAINER http://fedoraproject.org/wiki/Cloud
 
 RUN yum -y update && yum clean all
 RUN yum -y install redis && yum clean all

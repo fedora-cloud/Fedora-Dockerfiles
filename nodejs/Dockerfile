@@ -1,5 +1,5 @@
 FROM fedora
-MAINTAINER "Jason Clark" <jclark@redhat.com>
+MAINTAINER http://fedoraproject.org/wiki/Cloud
 
 RUN yum -y update && yum clean all
 RUN yum -y install npm && yum clean all

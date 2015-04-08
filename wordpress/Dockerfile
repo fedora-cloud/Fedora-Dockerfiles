@@ -1,5 +1,5 @@
 FROM fedora
-MAINTAINER scollier <scollier@redhat.com>
+MAINTAINER http://fedoraproject.org/wiki/Cloud
 RUN yum -y update && yum clean all
 RUN yum -y install httpd php php-mysql php-gd pwgen psmisc tar && \
     yum clean all

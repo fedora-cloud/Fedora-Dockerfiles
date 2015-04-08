@@ -1,5 +1,5 @@
 FROM fedora
-MAINTAINER "Jens Petersen" <petersen@redhat.com>
+MAINTAINER http://fedoraproject.org/wiki/Cloud
 
 RUN yum -y update && yum clean all
 RUN yum -y install ghc cabal-install cabal-rpm cabal-dev\
