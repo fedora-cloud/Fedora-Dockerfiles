@@ -1,5 +1,5 @@
 FROM fedora
-MAINTAINER scollier <scollier@redhat.com>
+MAINTAINER http://fedoraproject.org/wiki/Cloud
 
 RUN yum -y update && yum clean all
 RUN yum -y install pwgen wget logrotate rabbitmq-server && yum clean all

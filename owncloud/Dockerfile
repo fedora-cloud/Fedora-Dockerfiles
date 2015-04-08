@@ -1,5 +1,5 @@
 FROM       fedora:20
-MAINTAINER Dusty Mabe <dusty@dustymabe.com>
+MAINTAINER http://fedoraproject.org/wiki/Cloud
 
 # Perform updates
 RUN yum -y update && yum clean all

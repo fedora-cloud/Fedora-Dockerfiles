@@ -1,5 +1,5 @@
 FROM fedora
-MAINTAINER https://github.com/fedora-cloud/Fedora-Dockerfiles
+MAINTAINER http://fedoraproject.org/wiki/Cloud
 
 EXPOSE 22
 

@@ -1,5 +1,5 @@
 FROM fedora:20
-MAINTAINER "Scott Collier" <scollier@redhat.com>
+MAINTAINER http://fedoraproject.org/wiki/Cloud
 
 RUN yum -y update && yum clean all
 RUN yum -y install httpd && yum clean all

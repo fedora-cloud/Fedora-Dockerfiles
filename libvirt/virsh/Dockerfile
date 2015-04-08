@@ -1,5 +1,5 @@
 FROM fedora:rawhide
-MAINTAINER Lars Kellogg-Stedman <lars@redhat.com>
+MAINTAINER http://fedoraproject.org/wiki/Cloud
 
 RUN yum -y install \
 	virt-install \

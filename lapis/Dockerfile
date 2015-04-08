@@ -1,6 +1,6 @@
 # Dockerfile for lapis on fedora
 FROM fedora
-MAINTAINER Artyom Rabetskiy <rabeckiy@gmail.com>
+MAINTAINER http://fedoraproject.org/wiki/Cloud
 
 RUN yum -y update && yum clean all
 RUN yum -y install unzip tar wget vim git make gcc readline-devel pcre-devel openssl-devel && yum clean all

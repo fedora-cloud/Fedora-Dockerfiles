@@ -1,5 +1,5 @@
 FROM fedora/systemd-systemd
-MAINTAINER Lars Kellogg-Stedman <lars@redhat.com>
+MAINTAINER http://fedoraproject.org/wiki/Cloud
 
 # USING THIS CONTAINER
 #

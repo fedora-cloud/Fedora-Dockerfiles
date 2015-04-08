@@ -2,7 +2,7 @@
 FROM fedora
 
 # File Author / Maintainer
-MAINTAINER "Michal Luscon" <mluscon@redhat.com>
+MAINTAINER http://fedoraproject.org/wiki/Cloud
 
 # Install Squid
 RUN yum -y update; yum clean all;

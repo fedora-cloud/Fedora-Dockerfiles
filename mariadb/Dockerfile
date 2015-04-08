@@ -1,5 +1,5 @@
 FROM fedora:21
-MAINTAINER Tim Waugh <twaugh@redhat.com>
+MAINTAINER http://fedoraproject.org/wiki/Cloud
 RUN yum -y update && yum clean all
 RUN yum -y install mariadb-server pwgen psmisc net-tools hostname && \
     yum clean all

@@ -1,5 +1,5 @@
 FROM fedora:21
-MAINTAINER "Stef Walter" <stefw@redhat.com>
+MAINTAINER http://fedoraproject.org/wiki/Cloud
 
 RUN yum -y update && yum install -y sed openssl && yum clean all
 

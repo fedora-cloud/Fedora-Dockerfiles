@@ -1,5 +1,5 @@
 FROM fedora
-MAINTAINER "Tim Waugh" <twaugh@redhat.com>
+MAINTAINER http://fedoraproject.org/wiki/Cloud
 
 RUN yum -y update && yum clean all
 RUN yum -y install cups openssl passwd && yum clean all

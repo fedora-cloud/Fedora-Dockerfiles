@@ -1,5 +1,5 @@
 FROM fedora
-MAINTAINER "Marek Novotny" <mnovotny@redhat.com>
+MAINTAINER http://fedoraproject.org/wiki/Cloud
 
 RUN yum -y update && yum clean all
 RUN yum -y install tar gzip java java-devel && yum clean all

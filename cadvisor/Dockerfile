@@ -1,5 +1,5 @@
 FROM fedora:21
-MAINTAINER atomic-devel@projectatomic.io
+MAINTAINER http://fedoraproject.org/wiki/Cloud
 
 RUN yum -y update && yum clean all
 RUN yum -y install yum-utils && yum clean all

@@ -1,5 +1,5 @@
 FROM fedora:20
-MAINTAINER scollier <scollier@redhat.com>
+MAINTAINER http://fedoraproject.org/wiki/Cloud
 
 RUN yum -y update && yum clean all
 RUN yum -y install community-mysql-server community-mysql pwgen supervisor bash-completion psmisc net-tools && yum clean all

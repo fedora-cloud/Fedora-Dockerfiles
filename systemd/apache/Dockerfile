@@ -1,5 +1,5 @@
 FROM fedora:rawhide
-MAINTAINER "Dan Walsh" <dwalsh@redhat.com>
+MAINTAINER http://fedoraproject.org/wiki/Cloud
 
 ENV container docker
 

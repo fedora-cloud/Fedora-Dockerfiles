@@ -1,5 +1,5 @@
 FROM fedora
-MAINTAINER scollier <scollier@redhat.com>
+MAINTAINER http://fedoraproject.org/wiki/Cloud
 ENV LANG en_US.UTF-8
 ENV LC_ALL en_US.UTF-8
 

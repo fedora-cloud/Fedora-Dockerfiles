@@ -1,5 +1,5 @@
 FROM rhel7
-MAINTAINER "Brent Baude" <bbaude@redhat.com>
+MAINTAINER http://fedoraproject.org/wiki/Cloud
 ENV container docker
 RUN yum -y update && yum clean all
 RUN yum -y install libvirt-daemon-driver* qemu systemd libvirt-daemon && yum clean all; \
