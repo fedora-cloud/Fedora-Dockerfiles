@@ -1,14 +1,14 @@
 FROM fedora
-MAINTAINER scollier <scollier@redhat.com>
+MAINTAINER https://github.com/fedora-cloud/Fedora-Dockerfiles
 
-RUN yum -y update && yum clean all
-RUN yum -y install openssh-server passwd && yum clean all
-ADD ./start.sh /start.sh
-RUN mkdir /var/run/sshd
+EXPOSE 22
 
-RUN ssh-keygen -t rsa -f /etc/ssh/ssh_host_rsa_key -N '' 
+RUN yum -y install \
+	openssh-server \
+	passwd \
+	; yum clean all
 
-RUN chmod 755 /start.sh
-# EXPOSE 22
-RUN ./start.sh
-ENTRYPOINT ["/usr/sbin/sshd", "-D"]
+COPY entrypoint.sh /entrypoint.sh
+
+ENTRYPOINT ["/entrypoint.sh"]
+CMD ["/usr/sbin/sshd", "-D"]
