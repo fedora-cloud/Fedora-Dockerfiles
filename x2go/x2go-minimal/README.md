@@ -1,8 +1,11 @@
 # dockerfiles-fedora-x2go-minimal
 
 To build:
-Copy the sources to your docker host and build the container:
+Copy the sources to your docker host and build the container.
+You must use an SELinux workaround for X2Go to be correctly installed within a container:
+	# setsebool virt_sandbox_use_all_caps 1
 	# docker build --rm -t <username>/x2go-minimal .
+	# setsebool virt_sandbox_use_all_caps 0
 
 The rest of these instructions assume you are OK with it using port 50000 on the host.
 
