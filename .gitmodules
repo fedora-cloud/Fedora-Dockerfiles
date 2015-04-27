@@ -1,3 +1,9 @@
 [submodule "cont-postgresql"]
 	path = postgresql/cont-postgresql
 	url = https://github.com/devexp-db/cont-postgresql.git
+[submodule "mysql/tests/steps/common_steps"]
+	path = mysql/tests/steps/common_steps
+	url = https://github.com/Containers-Testing-Framework/common-steps.git
+[submodule "mysql/tests/features/common_features"]
+	path = mysql/tests/features/common_features
+	url = https://github.com/Containers-Testing-Framework/common-features.git
