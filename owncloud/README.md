@@ -3,7 +3,8 @@ dockerfiles-fedora-OwnCloud
 
 This repo contains a recipe for making Docker container for OwnCloud on Fedora. 
 The docker file chooses httpd and sqlite for owncloud. These can easily be changed
-by changing what rpms get installed. This has been tested with docker 1.1.2 
+by changing what rpms get installed. This has been tested with docker 1.6.0 and 
+owncloud-7.0.5.
 
 Check your Docker version
 
@@ -22,7 +23,4 @@ Run it:
     # docker run -d -p 443:443 <yourname>/owncloud
 
 You should now be able to view the OwnCloud setup page by going to https://localhost/owncloud
-
-NOTE: Ignore the warning about webdav not being set up properly. This is because the SSL 
-      certificates aren't set up properly.
 
