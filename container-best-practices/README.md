@@ -13,7 +13,9 @@ To build:
 
 Copy the sources down -
 
-    sudo docker build -t fedora/container-best-practices .
+```
+sudo docker build -t fedora/container-best-practices .
+```
 
 To run: 
 
@@ -23,7 +25,9 @@ https://github.com/projectatomic/container-best-practices
 
 1. Clone the repo above
 
-    git clone https://github.com/projectatomic/container-best-practices.git
+```
+git clone https://github.com/projectatomic/container-best-practices.git
+```
 
 2. Change into the "container-best-practices" directory
 
