@@ -23,17 +23,17 @@ This Docker image / container is meant to process asciidoc documentation for the
 
 https://github.com/projectatomic/container-best-practices
 
-1. Clone the repo above
+* Clone the repo above
 
 ```
 git clone https://github.com/projectatomic/container-best-practices.git
 ```
 
-2. Change into the "container-best-practices" directory
+* Change into the "container-best-practices" directory
 
-3. Run the container and change the "-v" option to tpoin tot the location of the clone you just made.  There are two ways to run this contianer; 1. with a "make" 2. with a "make clean". 
+* Run the container and change the "-v" option to tpoin tot the location of the clone you just made.  There are two ways to run this contianer; 1. with a "make" 2. with a "make clean". 
 
-4. To render a new set of docs; run it with a "make" and look at the results.  You will see a labs.pdf and a labs.html.  If you see those, it worked.
+* To render a new set of docs; run it with a "make" and look at the results.  You will see a labs.pdf and a labs.html.  If you see those, it worked.
 
 ```
 $ docker run --privileged -v /home/scollier/git_projects/container-best-practices:/workdir -dt fedora/docs make 
@@ -43,7 +43,7 @@ $ ls
 content  docker  labs.adoc  labs.fo  labs.html  labs.pdf  labs.xml  Makefile  README.adoc  README.md  scripts
 ```
 
-5. To clean up the directory to render a new set of docs, run the following command and look at the results. After running a "make clean", you should no longer see a labs.pdf or a labs.html.  If those are gone, then the "make clean" worked.
+* To clean up the directory to render a new set of docs, run the following command and look at the results. After running a "make clean", you should no longer see a labs.pdf or a labs.html.  If those are gone, then the "make clean" worked.
 
 ```
 $ docker run --privileged -v /home/scollier/git_projects/container-best-practices:/workdir -dt fedora/docs make clean
