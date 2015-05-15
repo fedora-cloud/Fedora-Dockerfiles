@@ -1,27 +1,28 @@
-FROM fedora
-MAINTAINER http://fedoraproject.org/wiki/Cloud
-ENV LANG en_US.UTF-8
-ENV LC_ALL en_US.UTF-8
+FROM index.docker.io/fedora
+MAINTAINER Pavel Raiskup <praiskup@redhat.com>
 
-RUN yum -y update && yum clean all
-RUN yum -y install postgresql postgresql-server postgresql-contrib supervisor && yum clean all
+ENV container="docker"
 
-ADD ./supervisord.conf /etc/supervisord.conf
+RUN yum -y --setopt=tsflags=nodocs install postgresql-server \
+    && yum -y --setopt=tsflags=nodocs reinstall glibc-common \
+    && yum -y --setopt=tsflags=nodocs clean all --enablerepo='*'
 
-RUN sed -i -e '2,2ialias system=echo' -e '2,2ifunction systemctl() { echo "Environment=PGPORT=5432 PGDATA=/var/lib/pgsql/data"; }' /usr/bin/postgresql-setup && \
-( tail -F /var/lib/pgsql/initdb.log & tailpid=$!; \
-export $(locale 2>>/dev/null|tr -d '\\"') ; \
-/usr/bin/postgresql-setup initdb && \
-kill $tailpid )
+ADD root /
 
-RUN echo "host all all 0.0.0.0/0 trust" >> /var/lib/pgsql/data/pg_hba.conf
-RUN echo "listen_addresses='*'" >> /var/lib/pgsql/data/postgresql.conf
+RUN systemctl disable getty.service console-getty.service \
+    && systemctl enable postgresql-container.service \
+    && ln -s /usr/bin/cont-postgresql-cmd /usr/bin/container-start \
+    && chmod +x /usr/bin/container-build \
+    && container-build \
+    && rm -rf /usr/bin/container-build
 
-USER postgres
-WORKDIR /var/lib/pgsql
+VOLUME \
+    "/var/lib/pgsql/data"
 
 EXPOSE 5432
 
-USER root
-CMD ["/usr/bin/supervisord", "-n"]
+USER postgres
 
+ENTRYPOINT ["/usr/bin/container-entrypoint"]
+
+CMD ["container-start"]

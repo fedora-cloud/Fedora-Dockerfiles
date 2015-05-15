@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# We split this file into 'preexec' and 'exec' to match what is done in
+# systemd service file (ExecStart & ExecStartPre), to alow easier re-using of
+# those scripts.
+
+. /usr/share/cont-postgresql/cont-postgresql.sh
+
+cont_debug "command: $0 $*"
+
+/usr/libexec/cont-postgresql-preexec \
+    && exec /usr/libexec/cont-postgresql-exec

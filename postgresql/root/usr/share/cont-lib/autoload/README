@@ -1,0 +1,2 @@
+All '*.sh' files in this directory will be automatically sourced together with
+cont-lib.sh script.

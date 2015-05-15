@@ -1,5 +1,5 @@
-dockerfiles-fedora-postgres
-===========================
+dockerfiles-fedora-postgresql
+=============================
 
 Fedora dockerfile for PostgreSQL
 
@@ -9,7 +9,11 @@ Copy the sources down and do the build-
 
     # docker build --rm -t username/postgresql . |& tee postgres_build.log
 
-2.	To run 
+2.	To get help output
+
+    # docker run username/postgresql container-usage
+
+3.	To run
 
 If port 5432 is open on your host:
 
@@ -23,7 +27,7 @@ To see the random port that the container is listening on:
 
     # docker ps
 
-3.	To test 
+4.	To test
 
 To find the IP address, get the container ID:
 
