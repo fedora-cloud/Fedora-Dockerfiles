@@ -2,7 +2,7 @@
 
 To build:
 Copy the sources to your docker host and build the container.
-You must use an SELinux workaround for X2Go to be correctly installed within a container:
+You must use an SELinux workaround for X2Go to be correctly installed within a container. See RHBZ #1222913 for more details:
 	# setsebool virt_sandbox_use_all_caps 1
 	# docker build --rm -t <username>/x2go-mate .
 	# setsebool virt_sandbox_use_all_caps 0
