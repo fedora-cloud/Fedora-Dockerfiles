@@ -17,11 +17,14 @@ Copy the sources down and do the build-
 
 If port 5432 is open on your host:
 
-    # docker run -d -p 5432:5432 username/postgresql
+    # mkdir data
+    # chown 26:26 data
+    # chcon -t svirt_sandbox_file_t data
+    # docker run -v "`pwd`/data:/var/lib/pgsql/data" -d -p 5432:5432 username/postgresql
 
 or to assign a random port that maps to port 5432 on the container:
 
-    # docker run -d -p 5432 username/postgresql
+    # docker run -v "`pwd`/data:/var/lib/pgsql/data" -d -p 5432 username/postgresql
 
 To see the random port that the container is listening on:
 
