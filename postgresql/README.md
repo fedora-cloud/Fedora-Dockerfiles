@@ -40,6 +40,9 @@ Then get the IP addr:
 
     # docker inspect --format '{{ .NetworkSettings.IPAddress }}' a0d14cc9830b
 
-Now connect to the instance of PostgreSQL.  There is no default database at this time.
+Now connect to the instance of PostgreSQL.  There is no default database at this
+time, neither the "default" password for 'postgres' (admin) user.  Please look
+at the 'container-usage' output described above how to setup that.
 
     # psql -h 172.17.0.x -U postgres
+    Password for user postgres:
