@@ -1,0 +1,9 @@
+#!/bin/bash
+
+. /usr/share/cont-postgresql/cont-postgresql.sh
+
+cont_debug "command: $0 $*"
+
+pgcont_cleanup_environment
+
+exec postgres -D "$(pgcont_opt pgdata)"
