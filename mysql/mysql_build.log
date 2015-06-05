@@ -1,499 +1,0 @@
-Uploading context 20.48 kB
-[2KStep 1 : FROM fedora
-[2K ---> 924a401326b8
-[2KStep 2 : MAINTAINER scollier <scollier@redhat.com>
-[2K ---> Using cache
-[2K ---> 4e1cbe10de55
-[2KStep 3 : RUN yum -y update
-[2K ---> Using cache
-[2K ---> d921331fad6c
-[2KStep 4 : RUN yum -y install community-mysql-server community-mysql pwgen supervisor bash-completion openssh-server psmisc net-tools
-[2K ---> Running in 0f4737a10c2e
-[2KResolving Dependencies
-[2K--> Running transaction check
-[2K---> Package bash-completion.noarch 1:2.1-3.fc20 will be installed
-[2K---> Package community-mysql.x86_64 0:5.5.35-1.fc20 will be installed
-[2K--> Processing Dependency: community-mysql-common(x86-64) = 5.5.35-1.fc20 for package: community-mysql-5.5.35-1.fc20.x86_64
-[2K--> Processing Dependency: perl(Getopt::Long) for package: community-mysql-5.5.35-1.fc20.x86_64
-[2K--> Processing Dependency: /usr/bin/perl for package: community-mysql-5.5.35-1.fc20.x86_64
-[2K---> Package community-mysql-server.x86_64 0:5.5.35-1.fc20 will be installed
-[2K--> Processing Dependency: perl-DBI for package: community-mysql-server-5.5.35-1.fc20.x86_64
-[2K--> Processing Dependency: perl-DBD-MySQL for package: community-mysql-server-5.5.35-1.fc20.x86_64
-[2K--> Processing Dependency: perl(File::Temp) for package: community-mysql-server-5.5.35-1.fc20.x86_64
-[2K--> Processing Dependency: perl(File::Path) for package: community-mysql-server-5.5.35-1.fc20.x86_64
-[2K--> Processing Dependency: perl(Data::Dumper) for package: community-mysql-server-5.5.35-1.fc20.x86_64
-[2K--> Processing Dependency: perl(DBI) for package: community-mysql-server-5.5.35-1.fc20.x86_64
-[2K--> Processing Dependency: libaio.so.1(LIBAIO_0.4)(64bit) for package: community-mysql-server-5.5.35-1.fc20.x86_64
-[2K--> Processing Dependency: libaio.so.1(LIBAIO_0.1)(64bit) for package: community-mysql-server-5.5.35-1.fc20.x86_64
-[2K--> Processing Dependency: libaio.so.1()(64bit) for package: community-mysql-server-5.5.35-1.fc20.x86_64
-[2K---> Package net-tools.x86_64 0:2.0-0.15.20131119git.fc20 will be installed
-[2K---> Package openssh-server.x86_64 0:6.4p1-3.fc20 will be installed
-[2K---> Package psmisc.x86_64 0:22.20-3.fc20 will be installed
-[2K---> Package pwgen.x86_64 0:2.06-10.fc20 will be installed
-[2K---> Package supervisor.noarch 0:3.0-1.fc20 will be installed
-[2K--> Processing Dependency: python-meld3 >= 0.6.5 for package: supervisor-3.0-1.fc20.noarch
-[2K--> Processing Dependency: python-setuptools for package: supervisor-3.0-1.fc20.noarch
-[2K--> Running transaction check
-[2K---> Package community-mysql-common.x86_64 0:5.5.35-1.fc20 will be installed
-[2K---> Package libaio.x86_64 0:0.3.109-8.fc20 will be installed
-[2K---> Package perl.x86_64 4:5.18.2-289.fc20 will be installed
-[2K--> Processing Dependency: perl-libs = 4:5.18.2-289.fc20 for package: 4:perl-5.18.2-289.fc20.x86_64
-[2K--> Processing Dependency: perl(Socket) >= 1.3 for package: 4:perl-5.18.2-289.fc20.x86_64
-[2K--> Processing Dependency: perl(Scalar::Util) >= 1.10 for package: 4:perl-5.18.2-289.fc20.x86_64
-[2K--> Processing Dependency: perl-macros for package: 4:perl-5.18.2-289.fc20.x86_64
-[2K--> Processing Dependency: perl-libs for package: 4:perl-5.18.2-289.fc20.x86_64
-[2K--> Processing Dependency: perl(threads::shared) for package: 4:perl-5.18.2-289.fc20.x86_64
-[2K--> Processing Dependency: perl(threads) for package: 4:perl-5.18.2-289.fc20.x86_64
-[2K--> Processing Dependency: perl(constant) for package: 4:perl-5.18.2-289.fc20.x86_64
-[2K--> Processing Dependency: perl(Time::Local) for package: 4:perl-5.18.2-289.fc20.x86_64
-[2K--> Processing Dependency: perl(Time::HiRes) for package: 4:perl-5.18.2-289.fc20.x86_64
-[2K--> Processing Dependency: perl(Storable) for package: 4:perl-5.18.2-289.fc20.x86_64
-[2K--> Processing Dependency: perl(Socket) for package: 4:perl-5.18.2-289.fc20.x86_64
-[2K--> Processing Dependency: perl(Scalar::Util) for package: 4:perl-5.18.2-289.fc20.x86_64
-[2K--> Processing Dependency: perl(Pod::Simple::XHTML) for package: 4:perl-5.18.2-289.fc20.x86_64
-[2K--> Processing Dependency: perl(Pod::Simple::Search) for package: 4:perl-5.18.2-289.fc20.x86_64
-[2K--> Processing Dependency: perl(Module::CoreList) for package: 4:perl-5.18.2-289.fc20.x86_64
-[2K--> Processing Dependency: perl(Filter::Util::Call) for package: 4:perl-5.18.2-289.fc20.x86_64
-[2K--> Processing Dependency: perl(File::Spec::Unix) for package: 4:perl-5.18.2-289.fc20.x86_64
-[2K--> Processing Dependency: perl(File::Spec::Functions) for package: 4:perl-5.18.2-289.fc20.x86_64
-[2K--> Processing Dependency: perl(File::Spec) for package: 4:perl-5.18.2-289.fc20.x86_64
-[2K--> Processing Dependency: perl(Exporter) for package: 4:perl-5.18.2-289.fc20.x86_64
-[2K--> Processing Dependency: perl(Cwd) for package: 4:perl-5.18.2-289.fc20.x86_64
-[2K--> Processing Dependency: perl(Carp) for package: 4:perl-5.18.2-289.fc20.x86_64
-[2K--> Processing Dependency: libperl.so.5.18()(64bit) for package: 4:perl-5.18.2-289.fc20.x86_64
-[2K---> Package perl-DBD-MySQL.x86_64 0:4.024-1.fc20 will be installed
-[2K--> Processing Dependency: libmysqlclient.so.18(libmysqlclient_16)(64bit) for package: perl-DBD-MySQL-4.024-1.fc20.x86_64
-[2K--> Processing Dependency: libmysqlclient.so.18()(64bit) for package: perl-DBD-MySQL-4.024-1.fc20.x86_64
-[2K---> Package perl-DBI.x86_64 0:1.630-1.fc20 will be installed
-[2K--> Processing Dependency: perl(RPC::PlServer) >= 0.2001 for package: perl-DBI-1.630-1.fc20.x86_64
-[2K--> Processing Dependency: perl(RPC::PlClient) >= 0.2000 for package: perl-DBI-1.630-1.fc20.x86_64
-[2K--> Processing Dependency: perl(Coro::Select) for package: perl-DBI-1.630-1.fc20.x86_64
-[2K--> Processing Dependency: perl(Coro::Handle) for package: perl-DBI-1.630-1.fc20.x86_64
-[2K--> Processing Dependency: perl(Coro) for package: perl-DBI-1.630-1.fc20.x86_64
-[2K---> Package perl-Data-Dumper.x86_64 0:2.145-292.fc20 will be installed
-[2K---> Package perl-File-Path.noarch 0:2.09-292.fc20 will be installed
-[2K---> Package perl-File-Temp.noarch 0:0.23.01-4.fc20 will be installed
-[2K---> Package perl-Getopt-Long.noarch 0:2.42-1.fc20 will be installed
-[2K--> Processing Dependency: perl(Pod::Usage) >= 1.14 for package: perl-Getopt-Long-2.42-1.fc20.noarch
-[2K--> Processing Dependency: perl(Text::ParseWords) for package: perl-Getopt-Long-2.42-1.fc20.noarch
-[2K---> Package python-meld3.x86_64 0:0.6.7-8.fc20 will be installed
-[2K---> Package python-setuptools.noarch 0:1.4.2-1.fc20 will be installed
-[2K--> Processing Dependency: python-backports-ssl_match_hostname for package: python-setuptools-1.4.2-1.fc20.noarch
-[2K--> Running transaction check
-[2K---> Package mariadb-libs.x86_64 1:5.5.34-2.fc20 will be installed
-[2K---> Package perl-Carp.noarch 0:1.26-245.fc20 will be installed
-[2K---> Package perl-Coro.x86_64 0:6.33-1.fc20 will be installed
-[2K--> Processing Dependency: perl(IO::AIO) >= 3.1 for package: perl-Coro-6.33-1.fc20.x86_64
-[2K--> Processing Dependency: perl(Guard) >= 0.5 for package: perl-Coro-6.33-1.fc20.x86_64
-[2K--> Processing Dependency: perl(Event) >= 1.08 for package: perl-Coro-6.33-1.fc20.x86_64
-[2K--> Processing Dependency: perl(EV) >= 4 for package: perl-Coro-6.33-1.fc20.x86_64
-[2K--> Processing Dependency: perl(AnyEvent::BDB) >= 1 for package: perl-Coro-6.33-1.fc20.x86_64
-[2K--> Processing Dependency: perl(AnyEvent::AIO) >= 1 for package: perl-Coro-6.33-1.fc20.x86_64
-[2K--> Processing Dependency: perl(AnyEvent) >= 7 for package: perl-Coro-6.33-1.fc20.x86_64
-[2K--> Processing Dependency: perl(common::sense) for package: perl-Coro-6.33-1.fc20.x86_64
-[2K--> Processing Dependency: perl(Net::HTTP) for package: perl-Coro-6.33-1.fc20.x86_64
-[2K--> Processing Dependency: perl(BDB) for package: perl-Coro-6.33-1.fc20.x86_64
-[2K--> Processing Dependency: perl(AnyEvent::Util) for package: perl-Coro-6.33-1.fc20.x86_64
-[2K--> Processing Dependency: perl(AnyEvent::Socket) for package: perl-Coro-6.33-1.fc20.x86_64
-[2K--> Processing Dependency: perl(AnyEvent::DNS) for package: perl-Coro-6.33-1.fc20.x86_64
-[2K---> Package perl-Exporter.noarch 0:5.68-293.fc20 will be installed
-[2K---> Package perl-Filter.x86_64 1:1.49-5.fc20 will be installed
-[2K---> Package perl-Module-CoreList.noarch 1:3.03-289.fc20 will be installed
-[2K--> Processing Dependency: perl(version) for package: 1:perl-Module-CoreList-3.03-289.fc20.noarch
-[2K---> Package perl-PathTools.x86_64 0:3.40-291.fc20 will be installed
-[2K---> Package perl-PlRPC.noarch 0:0.2020-15.fc20 will be installed
-[2K--> Processing Dependency: perl(Net::Daemon) >= 0.13 for package: perl-PlRPC-0.2020-15.fc20.noarch
-[2K--> Processing Dependency: perl(Net::Daemon::Test) for package: perl-PlRPC-0.2020-15.fc20.noarch
-[2K--> Processing Dependency: perl(Net::Daemon::Log) for package: perl-PlRPC-0.2020-15.fc20.noarch
-[2K--> Processing Dependency: perl(Compress::Zlib) for package: perl-PlRPC-0.2020-15.fc20.noarch
-[2K---> Package perl-Pod-Simple.noarch 1:3.28-292.fc20 will be installed
-[2K--> Processing Dependency: perl(Pod::Escapes) >= 1.04 for package: 1:perl-Pod-Simple-3.28-292.fc20.noarch
-[2K--> Processing Dependency: perl(Encode) for package: 1:perl-Pod-Simple-3.28-292.fc20.noarch
-[2K---> Package perl-Pod-Usage.noarch 0:1.63-4.fc20 will be installed
-[2K--> Processing Dependency: perl(Pod::Text) >= 3.15 for package: perl-Pod-Usage-1.63-4.fc20.noarch
-[2K--> Processing Dependency: perl-Pod-Perldoc for package: perl-Pod-Usage-1.63-4.fc20.noarch
-[2K---> Package perl-Scalar-List-Utils.x86_64 0:1.31-293.fc20 will be installed
-[2K---> Package perl-Socket.x86_64 1:2.013-1.fc20 will be installed
-[2K---> Package perl-Storable.x86_64 0:2.45-2.fc20 will be installed
-[2K---> Package perl-Text-ParseWords.noarch 0:3.29-3.fc20 will be installed
-[2K---> Package perl-Time-HiRes.x86_64 0:1.9726-1.fc20 will be installed
-[2K---> Package perl-Time-Local.noarch 0:1.2300-291.fc20 will be installed
-[2K---> Package perl-constant.noarch 0:1.27-292.fc20 will be installed
-[2K---> Package perl-libs.x86_64 4:5.18.2-289.fc20 will be installed
-[2K---> Package perl-macros.x86_64 4:5.18.2-289.fc20 will be installed
-[2K---> Package perl-threads.x86_64 1:1.89-1.fc20 will be installed
-[2K---> Package perl-threads-shared.x86_64 0:1.45-1.fc20 will be installed
-[2K---> Package python-backports-ssl_match_hostname.noarch 0:3.4.0.2-1.fc20 will be installed
-[2K--> Processing Dependency: python-backports for package: python-backports-ssl_match_hostname-3.4.0.2-1.fc20.noarch
-[2K--> Running transaction check
-[2K---> Package perl-AnyEvent.x86_64 0:7.05-1.fc20 will be installed
-[2K--> Processing Dependency: perl(Task::Weaken) for package: perl-AnyEvent-7.05-1.fc20.x86_64
-[2K--> Processing Dependency: perl(Net::SSLeay) for package: perl-AnyEvent-7.05-1.fc20.x86_64
-[2K---> Package perl-AnyEvent-AIO.noarch 0:1.1-13.fc20 will be installed
-[2K---> Package perl-AnyEvent-BDB.noarch 0:1.1-13.fc20 will be installed
----> Package perl-BDB.x86_64 0:1.90-6.fc20 will be installed
-[2K---> Package perl-EV.x86_64 0:4.11-4.fc20 will be installed
-[2K---> Package perl-Encode.x86_64 1:2.54-1.fc20 will be installed
-[2K---> Package perl-Event.x86_64 0:1.21-4.fc20 will be installed
-[2K---> Package perl-Guard.x86_64 0:1.022-6.fc20 will be installed
-[2K---> Package perl-IO-AIO.x86_64 0:4.15-6.fc20 will be installed
-[2K---> Package perl-IO-Compress.noarch 0:2.062-2.fc20 will be installed
-[2K--> Processing Dependency: perl(Compress::Raw::Zlib) >= 2.062 for package: perl-IO-Compress-2.062-2.fc20.noarch
-[2K--> Processing Dependency: perl(Compress::Raw::Bzip2) >= 2.062 for package: perl-IO-Compress-2.062-2.fc20.noarch
-[2K---> Package perl-Net-Daemon.noarch 0:0.48-7.fc20 will be installed
-[2K---> Package perl-Net-HTTP.noarch 0:6.06-4.fc20 will be installed
-[2K--> Processing Dependency: perl(IO::Socket::SSL) >= 1.38 for package: perl-Net-HTTP-6.06-4.fc20.noarch
-[2K---> Package perl-Pod-Escapes.noarch 1:1.04-289.fc20 will be installed
-[2K---> Package perl-Pod-Perldoc.noarch 0:3.20-7.fc20 will be installed
-[2K--> Processing Dependency: perl(parent) for package: perl-Pod-Perldoc-3.20-7.fc20.noarch
---> Processing Dependency: perl(HTTP::Tiny) for package: perl-Pod-Perldoc-3.20-7.fc20.noarch
-[2K---> Package perl-common-sense.noarch 0:3.6-6.fc20 will be installed
-[2K---> Package perl-podlators.noarch 0:2.5.1-291.fc20 will be installed
-[2K---> Package perl-version.x86_64 3:0.99.04-2.fc20 will be installed
-[2K---> Package python-backports.x86_64 0:1.0-3.fc20 will be installed
-[2K--> Running transaction check
-[2K---> Package perl-Compress-Raw-Bzip2.x86_64 0:2.062-2.fc20 will be installed
-[2K---> Package perl-Compress-Raw-Zlib.x86_64 0:2.062-2.fc20 will be installed
-[2K---> Package perl-HTTP-Tiny.noarch 0:0.034-4.fc20 will be installed
-[2K---> Package perl-IO-Socket-SSL.noarch 0:1.955-1.fc20 will be installed
-[2K--> Processing Dependency: perl(IO::Socket::IP) >= 0.20 for package: perl-IO-Socket-SSL-1.955-1.fc20.noarch
-[2K--> Processing Dependency: perl(Net::LibIDN) for package: perl-IO-Socket-SSL-1.955-1.fc20.noarch
-[2K---> Package perl-Net-SSLeay.x86_64 0:1.55-4.fc20 will be installed
-[2K---> Package perl-Task-Weaken.noarch 0:1.04-8.fc20 will be installed
-[2K---> Package perl-parent.noarch 1:0.228-1.fc20 will be installed
-[2K--> Running transaction check
-[2K---> Package perl-IO-Socket-IP.noarch 0:0.22-2.fc20 will be installed
-[2K---> Package perl-Net-LibIDN.x86_64 0:0.12-16.fc20 will be installed
-[2K--> Finished Dependency Resolution
-[2K
-Dependencies Resolved
-[2K
-================================================================================
- Package                         Arch   Version                   Repository
-                                                                           Size
-================================================================================
-Installing:
- bash-completion                 noarch 1:2.1-3.fc20              fedora  230 k
- community-mysql                 x86_64 5.5.35-1.fc20             updates 4.9 M
- community-mysql-server          x86_64 5.5.35-1.fc20             updates 8.8 M
- net-tools                       x86_64 2.0-0.15.20131119git.fc20 fedora  308 k
- openssh-server                  x86_64 6.4p1-3.fc20              updates 367 k
- psmisc                          x86_64 22.20-3.fc20              fedora  139 k
- pwgen                           x86_64 2.06-10.fc20              fedora   21 k
- supervisor                      noarch 3.0-1.fc20                fedora  560 k
-Installing for dependencies:
- community-mysql-common          x86_64 5.5.35-1.fc20             updates 208 k
- libaio                          x86_64 0.3.109-8.fc20            fedora   23 k
- mariadb-libs                    x86_64 1:5.5.34-2.fc20           updates 749 k
- perl                            x86_64 4:5.18.2-289.fc20         updates 8.2 M
- perl-AnyEvent                   x86_64 7.05-1.fc20               fedora  431 k
- perl-AnyEvent-AIO               noarch 1.1-13.fc20               fedora  9.1 k
- perl-AnyEvent-BDB               noarch 1.1-13.fc20               fedora  9.7 k
- perl-BDB                        x86_64 1.90-6.fc20               fedora   74 k
- perl-Carp                       noarch 1.26-245.fc20             fedora   19 k
- perl-Compress-Raw-Bzip2         x86_64 2.062-2.fc20              fedora   33 k
- perl-Compress-Raw-Zlib          x86_64 2.062-2.fc20              fedora   58 k
- perl-Coro                       x86_64 6.33-1.fc20               updates 256 k
- perl-DBD-MySQL                  x86_64 4.024-1.fc20              fedora  142 k
- perl-DBI                        x86_64 1.630-1.fc20              fedora  810 k
- perl-Data-Dumper                x86_64 2.145-292.fc20            fedora   48 k
- perl-EV                         x86_64 4.11-4.fc20               fedora  257 k
- perl-Encode                     x86_64 1:2.54-1.fc20             fedora  1.5 M
- perl-Event                      x86_64 1.21-4.fc20               fedora  283 k
- perl-Exporter                   noarch 5.68-293.fc20             fedora   29 k
- perl-File-Path                  noarch 2.09-292.fc20             fedora   27 k
- perl-File-Temp                  noarch 0.23.01-4.fc20            fedora   57 k
- perl-Filter                     x86_64 1:1.49-5.fc20             fedora   77 k
- perl-Getopt-Long                noarch 2.42-1.fc20               fedora   56 k
- perl-Guard                      x86_64 1.022-6.fc20              fedora   20 k
- perl-HTTP-Tiny                  noarch 0.034-4.fc20              updates  39 k
- perl-IO-AIO                     x86_64 4.15-6.fc20               fedora  111 k
- perl-IO-Compress                noarch 2.062-2.fc20              fedora  259 k
- perl-IO-Socket-IP               noarch 0.22-2.fc20               fedora   36 k
- perl-IO-Socket-SSL              noarch 1.955-1.fc20              fedora  116 k
- perl-Module-CoreList            noarch 1:3.03-289.fc20           updates  96 k
- perl-Net-Daemon                 noarch 0.48-7.fc20               fedora   51 k
- perl-Net-HTTP                   noarch 6.06-4.fc20               fedora   29 k
- perl-Net-LibIDN                 x86_64 0.12-16.fc20              fedora   29 k
- perl-Net-SSLeay                 x86_64 1.55-4.fc20               fedora  284 k
- perl-PathTools                  x86_64 3.40-291.fc20             fedora   83 k
- perl-PlRPC                      noarch 0.2020-15.fc20            fedora   35 k
- perl-Pod-Escapes                noarch 1:1.04-289.fc20           updates  51 k
- perl-Pod-Perldoc                noarch 3.20-7.fc20               fedora   87 k
- perl-Pod-Simple                 noarch 1:3.28-292.fc20           fedora  216 k
- perl-Pod-Usage                  noarch 1.63-4.fc20               fedora   27 k
- perl-Scalar-List-Utils          x86_64 1.31-293.fc20             fedora   43 k
- perl-Socket                     x86_64 1:2.013-1.fc20            fedora   49 k
- perl-Storable                   x86_64 2.45-2.fc20               fedora   78 k
- perl-Task-Weaken                noarch 1.04-8.fc20               fedora   19 k
- perl-Text-ParseWords            noarch 3.29-3.fc20               fedora   13 k
- perl-Time-HiRes                 x86_64 1.9726-1.fc20             fedora   46 k
- perl-Time-Local                 noarch 1.2300-291.fc20           fedora   25 k
- perl-common-sense               noarch 3.6-6.fc20                fedora   28 k
- perl-constant                   noarch 1.27-292.fc20             fedora   19 k
- perl-libs                       x86_64 4:5.18.2-289.fc20         updates 694 k
- perl-macros                     x86_64 4:5.18.2-289.fc20         updates  43 k
- perl-parent                     noarch 1:0.228-1.fc20            fedora   13 k
- perl-podlators                  noarch 2.5.1-291.fc20            fedora  112 k
- perl-threads                    x86_64 1:1.89-1.fc20             fedora   50 k
- perl-threads-shared             x86_64 1.45-1.fc20               updates  39 k
- perl-version                    x86_64 3:0.99.04-2.fc20          fedora   80 k
- python-backports                x86_64 1.0-3.fc20                fedora  5.4 k
- python-backports-ssl_match_hostname
-                                 noarch 3.4.0.2-1.fc20            fedora   12 k
- python-meld3                    x86_64 0.6.7-8.fc20              fedora   72 k
- python-setuptools               noarch 1.4.2-1.fc20              updates 413 k
-
-Transaction Summary
-================================================================================
-Install  8 Packages (+60 Dependent packages)
-
-[2KTotal download size: 32 M
-[2KInstalled size: 136 M
-[2KDownloading packages:
-[2K--------------------------------------------------------------------------------
-[2KTotal                                              8.4 MB/s |  32 MB  00:03     
-[2KRunning transaction check
-[2KRunning transaction test
-[2KTransaction test succeeded
-[2KRunning transaction
-[2K  Installing : 1:perl-parent-0.228-1.fc20.noarch                           1/68[2K 
-  Installing : perl-HTTP-Tiny-0.034-4.fc20.noarch                          2/68[2K 
-  Installing : perl-podlators-2.5.1-291.fc20.noarch                        3/68[2K 
-  Installing : perl-Pod-Perldoc-3.20-7.fc20.noarch                         4/68[2K 
-  Installing : 3:perl-version-0.99.04-2.fc20.x86_64                        5/68[2K 
-  Installing : perl-Text-ParseWords-3.29-3.fc20.noarch                     6/68[2K 
-  Installing : 1:perl-Pod-Escapes-1.04-289.fc20.noarch                     7/68[2K 
-  Installing : 1:perl-Encode-2.54-1.fc20.x86_64                            8/68[2K 
-  Installing : perl-Pod-Usage-1.63-4.fc20.noarch                           9/68[2K 
-  Installing : 4:perl-macros-5.18.2-289.fc20.x86_64                       10/68[2K 
-  Installing : 4:perl-libs-5.18.2-289.fc20.x86_64                         11/68[2K 
-  Installing : perl-constant-1.27-292.fc20.noarch                         12/68[2K 
-  Installing : 1:perl-threads-1.89-1.fc20.x86_64                          13/68[2K 
-  Installing : perl-Storable-2.45-2.fc20.x86_64                           14/68[2K 
-  Installing : perl-threads-shared-1.45-1.fc20.x86_64                     15/68[2K 
-  Installing : perl-Scalar-List-Utils-1.31-293.fc20.x86_64                16/68[2K 
-  Installing : perl-Time-Local-1.2300-291.fc20.noarch                     17/68[2K 
-  Installing : 1:perl-Socket-2.013-1.fc20.x86_64                          18/68[2K 
-  Installing : 1:perl-Filter-1.49-5.fc20.x86_64                           19/68[2K 
-  Installing : perl-File-Path-2.09-292.fc20.noarch                        20/68[2K 
-  Installing : perl-PathTools-3.40-291.fc20.x86_64                        21/68[2K 
-  Installing : 1:perl-Pod-Simple-3.28-292.fc20.noarch                     22/68[2K 
-  Installing : perl-Getopt-Long-2.42-1.fc20.noarch                        23/68[2K 
-  Installing : 1:perl-Module-CoreList-3.03-289.fc20.noarch                24/68[2K 
-  Installing : perl-File-Temp-0.23.01-4.fc20.noarch                       25/68[2K 
-  Installing : perl-Exporter-5.68-293.fc20.noarch                         26/68[2K 
-  Installing : perl-Carp-1.26-245.fc20.noarch                             27/68[2K 
-  Installing : perl-Time-HiRes-1.9726-1.fc20.x86_64                       28/68[2K 
-  Installing : 4:perl-5.18.2-289.fc20.x86_64                              29/68[2K 
-  Installing : perl-common-sense-3.6-6.fc20.noarch                        30/68[2K 
-  Installing : perl-BDB-1.90-6.fc20.x86_64                                31/68[2K 
-  Installing : perl-IO-AIO-4.15-6.fc20.x86_64                             32/68[2K 
-  Installing : perl-Data-Dumper-2.145-292.fc20.x86_64                     33/68[2K 
-  Installing : perl-Net-SSLeay-1.55-4.fc20.x86_64                         34/68[2K 
-  Installing : perl-Compress-Raw-Zlib-2.062-2.fc20.x86_64                 35/68[2K 
-  Installing : community-mysql-common-5.5.35-1.fc20.x86_64                36/68[2K 
-  Installing : community-mysql-5.5.35-1.fc20.x86_64                       37/68[2K 
-  Installing : perl-EV-4.11-4.fc20.x86_64                                 38/68[2K 
-  Installing : perl-IO-Socket-IP-0.22-2.fc20.noarch                       39/68[2K 
-  Installing : perl-Event-1.21-4.fc20.x86_64                              40/68[2K 
-  Installing : perl-Guard-1.022-6.fc20.x86_64                             41/68[2K 
-  Installing : perl-Task-Weaken-1.04-8.fc20.noarch                        42/68[2K 
-  Installing : perl-AnyEvent-7.05-1.fc20.x86_64                           43/68[2K 
-  Installing : perl-AnyEvent-AIO-1.1-13.fc20.noarch                       44/68[2K 
-  Installing : perl-AnyEvent-BDB-1.1-13.fc20.noarch                       45/68[2K 
-  Installing : perl-Compress-Raw-Bzip2-2.062-2.fc20.x86_64                46/68[2K 
-  Installing : perl-IO-Compress-2.062-2.fc20.noarch                       47/68[2K 
-  Installing : perl-Net-Daemon-0.48-7.fc20.noarch                         48/68[2K 
-  Installing : perl-PlRPC-0.2020-15.fc20.noarch                           49/68[2K 
-  Installing : perl-Net-LibIDN-0.12-16.fc20.x86_64                        50/68[2K 
-  Installing : perl-IO-Socket-SSL-1.955-1.fc20.noarch                     51/68[2K 
-  Installing : perl-Net-HTTP-6.06-4.fc20.noarch                           52/68[2K 
-  Installing : perl-Coro-6.33-1.fc20.x86_64                               53/68[2K 
-  Installing : perl-DBI-1.630-1.fc20.x86_64                               54/68[2K 
-  Installing : python-backports-1.0-3.fc20.x86_64                         55/68[2K 
-  Installing : python-backports-ssl_match_hostname-3.4.0.2-1.fc20.noarc   56/68[2K 
-  Installing : python-setuptools-1.4.2-1.fc20.noarch                      57/68[2K 
-  Installing : python-meld3-0.6.7-8.fc20.x86_64                           58/68[2K 
-  Installing : 1:mariadb-libs-5.5.34-2.fc20.x86_64                        59/68[2K 
-  Installing : perl-DBD-MySQL-4.024-1.fc20.x86_64                         60/68[2K 
-  Installing : libaio-0.3.109-8.fc20.x86_64                               61/68[2K 
-  Installing : community-mysql-server-5.5.35-1.fc20.x86_64                62/68[2K 
-  Installing : supervisor-3.0-1.fc20.noarch                               63/68[2K 
-  Installing : psmisc-22.20-3.fc20.x86_64                                 64/68[2K 
-  Installing : 1:bash-completion-2.1-3.fc20.noarch                        65/68[2K 
-  Installing : pwgen-2.06-10.fc20.x86_64                                  66/68[2K 
-  Installing : openssh-server-6.4p1-3.fc20.x86_64                         67/68[2K 
-  Installing : net-tools-2.0-0.15.20131119git.fc20.x86_64                 68/68[2K 
-  Verifying  : perl-Time-HiRes-1.9726-1.fc20.x86_64                        1/68[2K 
-  Verifying  : python-backports-ssl_match_hostname-3.4.0.2-1.fc20.noarc    2/68[2K 
-  Verifying  : perl-PlRPC-0.2020-15.fc20.noarch                            3/68[2K 
-  Verifying  : perl-Data-Dumper-2.145-292.fc20.x86_64                      4/68[2K 
-  Verifying  : libaio-0.3.109-8.fc20.x86_64                                5/68[2K 
-  Verifying  : perl-Text-ParseWords-3.29-3.fc20.noarch                     6/68[2K 
-  Verifying  : perl-AnyEvent-7.05-1.fc20.x86_64                            7/68[2K 
-  Verifying  : perl-File-Path-2.09-292.fc20.noarch                         8/68[2K 
-  Verifying  : perl-Storable-2.45-2.fc20.x86_64                            9/68[2K 
-  Verifying  : perl-IO-Socket-IP-0.22-2.fc20.noarch                       10/68[2K 
-  Verifying  : perl-Event-1.21-4.fc20.x86_64                              11/68[2K 
-  Verifying  : 1:mariadb-libs-5.5.34-2.fc20.x86_64                        12/68[2K 
-  Verifying  : perl-EV-4.11-4.fc20.x86_64                                 13/68[2K 
-  Verifying  : perl-Net-SSLeay-1.55-4.fc20.x86_64                         14/68[2K 
-  Verifying  : python-setuptools-1.4.2-1.fc20.noarch                      15/68[2K 
-  Verifying  : perl-Pod-Perldoc-3.20-7.fc20.noarch                        16/68[2K 
-  Verifying  : perl-Scalar-List-Utils-1.31-293.fc20.x86_64                17/68[2K 
-  Verifying  : perl-AnyEvent-AIO-1.1-13.fc20.noarch                       18/68[2K 
-  Verifying  : perl-IO-Socket-SSL-1.955-1.fc20.noarch                     19/68[2K 
-  Verifying  : perl-Time-Local-1.2300-291.fc20.noarch                     20/68[2K 
-  Verifying  : perl-BDB-1.90-6.fc20.x86_64                                21/68[2K 
-  Verifying  : perl-Getopt-Long-2.42-1.fc20.noarch                        22/68[2K 
-  Verifying  : 1:perl-Socket-2.013-1.fc20.x86_64                          23/68[2K 
-  Verifying  : community-mysql-server-5.5.35-1.fc20.x86_64                24/68[2K 
-  Verifying  : net-tools-2.0-0.15.20131119git.fc20.x86_64                 25/68[2K 
-  Verifying  : perl-common-sense-3.6-6.fc20.noarch                        26/68[2K 
-  Verifying  : openssh-server-6.4p1-3.fc20.x86_64                         27/68[2K 
-  Verifying  : perl-IO-Compress-2.062-2.fc20.noarch                       28/68[2K 
-  Verifying  : perl-DBD-MySQL-4.024-1.fc20.x86_64                         29/68[2K 
-  Verifying  : perl-HTTP-Tiny-0.034-4.fc20.noarch                         30/68[2K 
-  Verifying  : pwgen-2.06-10.fc20.x86_64                                  31/68[2K 
-  Verifying  : supervisor-3.0-1.fc20.noarch                               32/68[2K 
-  Verifying  : 4:perl-macros-5.18.2-289.fc20.x86_64                       33/68[2K 
-  Verifying  : community-mysql-5.5.35-1.fc20.x86_64                       34/68[2K 
-  Verifying  : perl-Guard-1.022-6.fc20.x86_64                             35/68[2K 
-  Verifying  : perl-threads-shared-1.45-1.fc20.x86_64                     36/68[2K 
-  Verifying  : perl-constant-1.27-292.fc20.noarch                         37/68[2K 
-  Verifying  : perl-podlators-2.5.1-291.fc20.noarch                       38/68[2K 
-  Verifying  : 1:perl-parent-0.228-1.fc20.noarch                          39/68[2K 
-  Verifying  : 1:perl-threads-1.89-1.fc20.x86_64                          40/68[2K 
-  Verifying  : 1:perl-Pod-Simple-3.28-292.fc20.noarch                     41/68[2K 
-  Verifying  : python-meld3-0.6.7-8.fc20.x86_64                           42/68[2K 
-  Verifying  : 1:perl-Filter-1.49-5.fc20.x86_64                           43/68[2K 
-  Verifying  : python-backports-1.0-3.fc20.x86_64                         44/68[2K 
-  Verifying  : perl-PathTools-3.40-291.fc20.x86_64                        45/68[2K 
-  Verifying  : perl-Coro-6.33-1.fc20.x86_64                               46/68[2K 
-  Verifying  : 3:perl-version-0.99.04-2.fc20.x86_64                       47/68[2K 
-  Verifying  : 1:perl-Pod-Escapes-1.04-289.fc20.noarch                    48/68[2K 
-  Verifying  : 1:bash-completion-2.1-3.fc20.noarch                        49/68[2K 
-  Verifying  : 1:perl-Module-CoreList-3.03-289.fc20.noarch                50/68[2K 
-  Verifying  : perl-Task-Weaken-1.04-8.fc20.noarch                        51/68[2K 
-  Verifying  : community-mysql-common-5.5.35-1.fc20.x86_64                52/68[2K 
-  Verifying  : perl-Pod-Usage-1.63-4.fc20.noarch                          53/68[2K 
-  Verifying  : 4:perl-libs-5.18.2-289.fc20.x86_64                         54/68[2K 
-  Verifying  : perl-Net-HTTP-6.06-4.fc20.noarch                           55/68[2K 
-  Verifying  : perl-AnyEvent-BDB-1.1-13.fc20.noarch                       56/68[2K 
-  Verifying  : 1:perl-Encode-2.54-1.fc20.x86_64                           57/68[2K 
-  Verifying  : perl-File-Temp-0.23.01-4.fc20.noarch                       58/68[2K 
-  Verifying  : 4:perl-5.18.2-289.fc20.x86_64                              59/68[2K 
-  Verifying  : perl-Exporter-5.68-293.fc20.noarch                         60/68[2K 
-  Verifying  : perl-DBI-1.630-1.fc20.x86_64                               61/68[2K 
-  Verifying  : perl-Compress-Raw-Bzip2-2.062-2.fc20.x86_64                62/68[2K 
-  Verifying  : perl-Net-Daemon-0.48-7.fc20.noarch                         63/68[2K 
-  Verifying  : perl-Compress-Raw-Zlib-2.062-2.fc20.x86_64                 64/68[2K 
-  Verifying  : perl-Net-LibIDN-0.12-16.fc20.x86_64                        65/68[2K 
-  Verifying  : perl-IO-AIO-4.15-6.fc20.x86_64                             66/68[2K 
-  Verifying  : perl-Carp-1.26-245.fc20.noarch                             67/68[2K 
-  Verifying  : psmisc-22.20-3.fc20.x86_64                                 68/68[2K 
-
-Installed:
-  bash-completion.noarch 1:2.1-3.fc20                                           
-  community-mysql.x86_64 0:5.5.35-1.fc20                                        
-  community-mysql-server.x86_64 0:5.5.35-1.fc20                                 
-  net-tools.x86_64 0:2.0-0.15.20131119git.fc20                                  
-  openssh-server.x86_64 0:6.4p1-3.fc20                                          
-  psmisc.x86_64 0:22.20-3.fc20                                                  
-  pwgen.x86_64 0:2.06-10.fc20                                                   
-  supervisor.noarch 0:3.0-1.fc20                                                
-
-Dependency Installed:
-  community-mysql-common.x86_64 0:5.5.35-1.fc20                                 
-  libaio.x86_64 0:0.3.109-8.fc20                                                
-  mariadb-libs.x86_64 1:5.5.34-2.fc20                                           
-  perl.x86_64 4:5.18.2-289.fc20                                                 
-  perl-AnyEvent.x86_64 0:7.05-1.fc20                                            
-  perl-AnyEvent-AIO.noarch 0:1.1-13.fc20                                        
-  perl-AnyEvent-BDB.noarch 0:1.1-13.fc20                                        
-  perl-BDB.x86_64 0:1.90-6.fc20                                                 
-  perl-Carp.noarch 0:1.26-245.fc20                                              
-  perl-Compress-Raw-Bzip2.x86_64 0:2.062-2.fc20                                 
-  perl-Compress-Raw-Zlib.x86_64 0:2.062-2.fc20                                  
-  perl-Coro.x86_64 0:6.33-1.fc20                                                
-  perl-DBD-MySQL.x86_64 0:4.024-1.fc20                                          
-  perl-DBI.x86_64 0:1.630-1.fc20                                                
-  perl-Data-Dumper.x86_64 0:2.145-292.fc20                                      
-  perl-EV.x86_64 0:4.11-4.fc20                                                  
-  perl-Encode.x86_64 1:2.54-1.fc20                                              
-  perl-Event.x86_64 0:1.21-4.fc20                                               
-  perl-Exporter.noarch 0:5.68-293.fc20                                          
-  perl-File-Path.noarch 0:2.09-292.fc20                                         
-  perl-File-Temp.noarch 0:0.23.01-4.fc20                                        
-  perl-Filter.x86_64 1:1.49-5.fc20                                              
-  perl-Getopt-Long.noarch 0:2.42-1.fc20                                         
-  perl-Guard.x86_64 0:1.022-6.fc20                                              
-  perl-HTTP-Tiny.noarch 0:0.034-4.fc20                                          
-  perl-IO-AIO.x86_64 0:4.15-6.fc20                                              
-  perl-IO-Compress.noarch 0:2.062-2.fc20                                        
-  perl-IO-Socket-IP.noarch 0:0.22-2.fc20                                        
-  perl-IO-Socket-SSL.noarch 0:1.955-1.fc20                                      
-  perl-Module-CoreList.noarch 1:3.03-289.fc20                                   
-  perl-Net-Daemon.noarch 0:0.48-7.fc20                                          
-  perl-Net-HTTP.noarch 0:6.06-4.fc20                                            
-  perl-Net-LibIDN.x86_64 0:0.12-16.fc20                                         
-  perl-Net-SSLeay.x86_64 0:1.55-4.fc20                                          
-  perl-PathTools.x86_64 0:3.40-291.fc20                                         
-  perl-PlRPC.noarch 0:0.2020-15.fc20                                            
-  perl-Pod-Escapes.noarch 1:1.04-289.fc20                                       
-  perl-Pod-Perldoc.noarch 0:3.20-7.fc20                                         
-  perl-Pod-Simple.noarch 1:3.28-292.fc20                                        
-  perl-Pod-Usage.noarch 0:1.63-4.fc20                                           
-  perl-Scalar-List-Utils.x86_64 0:1.31-293.fc20                                 
-  perl-Socket.x86_64 1:2.013-1.fc20                                             
-  perl-St[2Korable.x86_64 0:2.45-2.fc20                                            
-  perl-Task-Weaken.noarch 0:1.04-8.fc20                                         
-  perl-Text-ParseWords.noarch 0:3.29-3.fc20                                     
-  perl-Time-HiRes.x86_64 0:1.9726-1.fc20                                        
-  perl-Time-Local.noarch 0:1.2300-291.fc20                                      
-  perl-common-sense.noarch 0:3.6-6.fc20                                         
-  perl-constant.noarch 0:1.27-292.fc20                                          
-  perl-libs.x86_64 4:5.18.2-289.fc20                                            
-  perl-macros.x86_64 4:5.18.2-289.fc20                                          
-  perl-parent.noarch 1:0.228-1.fc20                                             
-  perl-podlators.noarch 0:2.5.1-291.fc20                                        
-  perl-threads.x86_64 1:1.89-1.fc20                                             
-  perl-threads-shared.x86_64 0:1.45-1.fc20                                      
-  perl-version.x86_64 3:0.99.04-2.fc20                                          
-  python-backports.x86_64 0:1.0-3.fc20                                          
-  python-backports-ssl_match_hostname.noarch 0:3.4.0.2-1.fc20                   
-  python-meld3.x86_64 0:0.6.7-8.fc20                                            
-  python-setuptools.noarch 0:1.4.2-1.fc20                                       
-
-[2KComplete!
-[2K ---> 5d4832e15f09
-[2KStep 5 : ADD ./start.sh /start.sh
-[2K ---> eeb69e56ee64
-[2KStep 6 : ADD ./supervisord.conf /etc/supervisord.conf
-[2K ---> ca25fab06c14
-[2KStep 7 : RUN echo %sudo ALL=NOPASSWD: ALL >> /etc/sudoers
-[2K ---> Running in a83e60ead13f
-[2K ---> 3615e4d92a2e
-[2KStep 8 : RUN chmod 755 /start.sh
-[2K ---> Running in e421f4f92440
-[2K ---> 2aee05401619
-[2KStep 9 : RUN mkdir /var/run/sshd
-[2K ---> Running in 313aa082cd32
-[2K ---> f93d05315f41
-[2KStep 10 : EXPOSE 3306 22
-[2K ---> Running in 092813b0ce59
-[2K ---> 3d770ff146b8
-[2KStep 11 : CMD ["/bin/bash", "/start.sh"]
-[2K ---> Running in 46ab2d9ae625
-[2K ---> 80f9851159ae
-[2KSuccessfully built 80f9851159ae
-[2KRemoving intermediate container 0f4737a10c2e
-[2KRemoving intermediate container 5bbfd7cd8978
-[2KRemoving intermediate container 824b909a33e0
-[2KRemoving intermediate container a83e60ead13f
-[2KRemoving intermediate container e421f4f92440
-[2KRemoving intermediate container 313aa082cd32
-[2KRemoving intermediate container 092813b0ce59
-[2KRemoving intermediate container 46ab2d9ae625
-
