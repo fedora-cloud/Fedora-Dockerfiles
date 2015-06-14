@@ -1,4 +1,4 @@
-FROM fedora
+FROM fedora:22
 
 MAINTAINER "Mike DePaulo" <mikedep333@gmail.com>
 
