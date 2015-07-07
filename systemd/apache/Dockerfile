@@ -1,23 +1,19 @@
 FROM fedora:rawhide
 MAINTAINER http://fedoraproject.org/wiki/Cloud
 
-ENV container docker
-
 RUN yum -y update && yum clean all
-RUN yum -y install systemd httpd && yum clean all; \
-(cd /lib/systemd/system/sysinit.target.wants/; for i in *; do [ $i == systemd-tmpfiles-setup.service ] || rm -f $i; done); \
-rm -f /lib/systemd/system/multi-user.target.wants/*;\
-rm -f /etc/systemd/system/*.wants/*;\
-rm -f /lib/systemd/system/local-fs.target.wants/*; \
-rm -f /lib/systemd/system/sockets.target.wants/*udev*; \
-rm -f /lib/systemd/system/sockets.target.wants/*initctl*; \
-rm -f /lib/systemd/system/basic.target.wants/*;\
-rm -f /lib/systemd/system/anaconda.target.wants/*; \
+RUN yum -y install httpd && yum clean all; \
 systemctl enable httpd.service
 
 EXPOSE 80
+
 RUN echo "systemd httpd server" > /var/www/html/index.html
 
-VOLUME [ "/sys/fs/cgroup" ]
+RUN systemctl mask systemd-remount-fs.service dev-hugepages.mount sys-fs-fuse-connections.mount systemd-logind.service getty.target console-getty.service
+RUN cp /usr/lib/systemd/system/dbus.service /etc/systemd/system/; sed -i 's/OOMScoreAdjust=-900//' /etc/systemd/system/dbus.service
+
+VOLUME ["/run", "/tmp"]
+
+ENV container=docker
 
 CMD ["/usr/sbin/init"]
