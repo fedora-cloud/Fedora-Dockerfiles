@@ -17,6 +17,14 @@ To run:
 
     # docker run -d -p 11211:11211 <username>/memcached
 
+To run with additional tuning values:
+    # docker run -d -p 11211:11211 \
+      [-e MEMCACHED_CACHE_SIZE=<size_in_MB>] \
+      [-e MEMCACHED_CONNECTIONS=<max_simultaneous_connections>] \
+      [-e MEMCACHED_THREADS=<max_concurrent_threads>] \
+      <username>/memcached \
+
+
 Test:
 
 ```
