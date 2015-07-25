@@ -4,13 +4,13 @@ MAINTAINER "Mike DePaulo" <mikedep333@gmail.com>
 
 ENV container docker
 
-RUN yum -y update && yum clean all
+RUN dnf -y update && dnf clean all
 # install main packages:
-RUN yum -y install systemd openssh-server sudo passwd pwgen x2goserver x2goserver-xsession && yum clean all
+RUN dnf -y install systemd openssh-server sudo passwd pwgen x2goserver x2goserver-xsession && dnf clean all
 # Make the command-line significantly more usable
-RUN yum -y install bash-completion man-db file net-tools && yum clean all
+RUN dnf -y install bash-completion man-db file net-tools && dnf clean all
 # Minimal set of fonts. Many (proprietary) apps do not run, or do not run correctly without them.
-RUN yum -y install xorg-x11-fonts-Type1 xorg-x11-fonts-misc dejavu-lgc-sans-fonts xorg-x11-fonts-75dpi xorg-x11-fonts-100dpi && yum clean all
+RUN dnf -y install xorg-x11-fonts-Type1 xorg-x11-fonts-misc dejavu-lgc-sans-fonts xorg-x11-fonts-75dpi xorg-x11-fonts-100dpi && dnf clean all
 
 # Although generating the standard set of SSH keys is a best practice,
 # X2Go Client for Windows 4.0.3.2 requires an ecdsa-sha2-nistp256 key due to
@@ -29,7 +29,7 @@ RUN sed --in-place=.orig 's/^account    required     pam_nologin.so/#account    
 # Install lxterminal rather than xterm because it is significantly easier to use
 #
 # Installing these fonts fixes this kerning bug http://imgur.com/ut4GXqE
-RUN yum -y install lxterminal dejavu-sans-mono-fonts && yum clean all
+RUN dnf -y install lxterminal dejavu-sans-mono-fonts && dnf clean all
 
 # Make the command-line significantly more usable
 RUN mandb
