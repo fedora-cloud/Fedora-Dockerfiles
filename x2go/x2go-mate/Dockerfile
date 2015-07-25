@@ -31,7 +31,7 @@ RUN sed --in-place=.orig 's/^account    required     pam_nologin.so/#account    
 #
 # Note: This installs many things we need like systemd as well as things we do
 # not need like the Linux kernel and anaconda.
-RUN dnf -y install fedora-release-nonproduct && dnf clean all
+RUN dnf -y install fedora-release && dnf clean all
 RUN dnf -y groups install fonts input-methods mate-desktop && dnf clean all
 RUN dnf -y remove anaconda-core && dnf clean all
 
