@@ -75,7 +75,6 @@ RUN dnf -y install \
            subscription-manager \
            python-rhsm \
            rootfiles \
-           fedora-release-server \
            python-dnf-plugins-extras* \
            dnf-plugins-core && dnf clean all
 

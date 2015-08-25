@@ -19,14 +19,19 @@ To run:
    # dnf install atomic
    ```
 2. If you are at Atomic Host, you have `atomic` tool preinstalled and thus you can directly call
+
    ```
    # atomic run <username>/tools
    ```
+
    to get a shell in the tools container, or
+
    ```
    # atomic run <username>/tools <command>
    ```
+
    to run a specific command. For example:
+
    ```
    # atomic run <username>/tools man systemd
    ```
