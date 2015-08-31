@@ -1,5 +1,5 @@
 # pdftk was last packaged for Fedora 20
-FROM       fedora:20
+FROM fedora:latest
 MAINTAINER http://fedoraproject.org/wiki/Cloud
 
 # Perform updates
