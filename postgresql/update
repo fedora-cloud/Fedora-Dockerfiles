@@ -1,0 +1,20 @@
+#!/bin/sh
+
+clean()
+{
+    git rm -rf Dockerfile root
+}
+
+build()
+(
+    # To better understand how this works (or how to make this work)
+    # see https://github.com/devexp-db/cont-postgresql
+    cd cont-postgresql
+    git pull
+    git submodule update --init
+    make DESTDIR=../
+)
+
+clean
+build
+git add root Dockerfile
