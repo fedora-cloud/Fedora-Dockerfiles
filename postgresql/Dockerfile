@@ -1,20 +1,20 @@
-FROM index.docker.io/fedora
+FROM index.docker.io/fedora:22
 MAINTAINER Pavel Raiskup <praiskup@redhat.com>
 
 ENV container="docker"
 
-RUN yum -y --setopt=tsflags=nodocs install postgresql-server \
-    && yum -y --setopt=tsflags=nodocs reinstall glibc-common \
-    && yum -y --setopt=tsflags=nodocs clean all --enablerepo='*'
+RUN dnf -y --setopt=tsflags=nodocs install postgresql-server \
+    && dnf -y --setopt=tsflags=nodocs reinstall glibc-common \
+    && dnf -y --setopt=tsflags=nodocs clean all --enablerepo='*'
 
-ADD root /
+ADD "root" \
+    "/"
 
 RUN systemctl disable getty.service console-getty.service \
     && systemctl enable postgresql-container.service \
     && ln -s /usr/bin/cont-postgresql-cmd /usr/bin/container-start \
-    && chmod +x /usr/bin/container-build \
-    && container-build \
-    && rm -rf /usr/bin/container-build
+    && touch /var/lib/pgsql/data/.container_internal && chown 26:26 /var/lib/pgsql/data \
+    && container-build && rm /usr/bin/container-build
 
 VOLUME \
     "/var/lib/pgsql/data"
@@ -22,7 +22,5 @@ VOLUME \
 EXPOSE 5432
 
 USER postgres
-
 ENTRYPOINT ["/usr/bin/container-entrypoint"]
-
 CMD ["container-start"]
