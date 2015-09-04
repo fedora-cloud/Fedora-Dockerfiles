@@ -1,4 +1,4 @@
-FROM fedora
+FROM fedora:22
 
 RUN dnf -y update && dnf clean all
 RUN dnf -y install tar gzip java java-devel && dnf clean all

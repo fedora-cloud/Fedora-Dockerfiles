@@ -1,4 +1,4 @@
-FROM fedora:rawhide
+FROM fedora:22
 MAINTAINER http://fedoraproject.org/wiki/Cloud
 
 RUN dnf -y install \

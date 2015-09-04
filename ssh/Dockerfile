@@ -1,4 +1,4 @@
-FROM fedora
+FROM fedora:22
 MAINTAINER http://fedoraproject.org/wiki/Cloud
 
 EXPOSE 22
