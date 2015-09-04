@@ -1,8 +1,8 @@
 FROM fedora:rawhide
 MAINTAINER http://fedoraproject.org/wiki/Cloud
 
-RUN yum -y install \
+RUN dnf -y install \
 	virt-install \
 	libvirt-client \
-	; yum clean all
+	; dnf clean all
 

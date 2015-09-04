@@ -3,9 +3,9 @@ MAINTAINER Pavel Raiskup <praiskup@redhat.com>
 
 ENV container="docker"
 
-RUN yum -y --setopt=tsflags=nodocs install postgresql-server \
-    && yum -y --setopt=tsflags=nodocs reinstall glibc-common \
-    && yum -y --setopt=tsflags=nodocs clean all --enablerepo='*'
+RUN dnf -y --setopt=tsflags=nodocs install postgresql-server \
+    && dnf -y --setopt=tsflags=nodocs reinstall glibc-common \
+    && dnf -y --setopt=tsflags=nodocs clean all --enablerepo='*'
 
 ADD root /
 

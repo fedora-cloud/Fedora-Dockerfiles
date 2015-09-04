@@ -3,10 +3,10 @@ FROM       fedora:20
 MAINTAINER http://fedoraproject.org/wiki/Cloud
 
 # Perform updates
-RUN yum -y update && yum clean all
+RUN dnf -y update && dnf clean all
 
 # Install owncloud owncloud-httpd owncloud-sqlite rpms
-RUN yum install -y pdftk && yum clean all
+RUN dnf install -y pdftk && dnf clean all
 
 # Set pdftk as our entrypoint
 ENTRYPOINT ["/usr/bin/pdftk"]

@@ -1,8 +1,8 @@
 FROM fedora:20
 MAINTAINER http://fedoraproject.org/wiki/Cloud
 
-RUN yum -y update && yum clean all
-RUN yum -y install httpd && yum clean all
+RUN dnf -y update && dnf clean all
+RUN dnf -y install httpd && dnf clean all
 RUN echo "Apache" >> /var/www/html/index.html
 
 EXPOSE 80
