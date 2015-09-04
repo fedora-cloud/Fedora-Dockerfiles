@@ -1,4 +1,4 @@
-FROM index.docker.io/fedora
+FROM fedora:22
 MAINTAINER Pavel Raiskup <praiskup@redhat.com>
 
 ENV container="docker"

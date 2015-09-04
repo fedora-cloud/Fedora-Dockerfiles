@@ -1,4 +1,4 @@
-FROM  fedora
+FROM fedora:22
 MAINTAINER http://fedoraproject.org/wiki/Cloud
 
 RUN  dnf -y update && dnf clean all
