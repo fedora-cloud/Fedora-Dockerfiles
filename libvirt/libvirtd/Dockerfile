@@ -1,4 +1,4 @@
-FROM rhel7
+FROM fedora:22
 MAINTAINER http://fedoraproject.org/wiki/Cloud
 ENV container docker
 RUN dnf -y update && dnf clean all
