@@ -1,7 +1,7 @@
-FROM fedora:21
+FROM fedora:22
 MAINTAINER http://fedoraproject.org/wiki/Cloud
 
-RUN yum -y update && yum install -y sed openssl && yum clean all
+RUN dnf -y update && dnf install -y sed openssl && dnf clean all
 
 # A repo where we can find recent Cockpit builds for Fedora
 ADD cockpit-preview.repo /etc/yum.repos.d/
@@ -13,9 +13,9 @@ ADD cockpit-ws-*.rpm Dockerfile /tmp/
 
 # Again see above ... we do our branching in shell script
 RUN cd /tmp && \
-  ( ls *.rpm > /dev/null 2> /dev/null && yum -y install *.rpm || \
-        yum -y --enablerepo=cockpit-preview install cockpit-ws ) && \
-  yum clean all && rm -f /tmp/*.rpm
+  ( ls *.rpm > /dev/null 2> /dev/null && dnf -y install *.rpm || \
+        dnf -y --enablerepo=cockpit-preview install cockpit-ws ) && \
+  dnf clean all && rm -f /tmp/*.rpm
 
 # And the stuff that starts the container
 RUN mkdir -p /container && ln -s /host/proc/1 /container/target-namespace

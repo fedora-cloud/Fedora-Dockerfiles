@@ -1,8 +1,8 @@
-FROM fedora
+FROM fedora:22
 MAINTAINER http://fedoraproject.org/wiki/Cloud
-RUN yum -y update && yum clean all
-RUN yum -y install httpd php php-mysql php-gd pwgen psmisc tar && \
-    yum clean all
+RUN dnf -y update && dnf clean all
+RUN dnf -y install httpd php php-mysql php-gd pwgen psmisc tar && \
+    dnf clean all
 
 ADD scripts /scripts
 RUN curl -LO http://wordpress.org/latest.tar.gz                   && \

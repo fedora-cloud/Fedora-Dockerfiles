@@ -1,8 +1,8 @@
-FROM fedora
+FROM fedora:22
 MAINTAINER http://fedoraproject.org/wiki/Cloud
 
-RUN yum -y update && yum clean all
-RUN yum -y install pwgen wget logrotate rabbitmq-server && yum clean all
+RUN dnf -y update && dnf clean all
+RUN dnf -y install pwgen wget logrotate rabbitmq-server && dnf clean all
 RUN /usr/lib/rabbitmq/bin/rabbitmq-plugins enable rabbitmq_management
 
 #

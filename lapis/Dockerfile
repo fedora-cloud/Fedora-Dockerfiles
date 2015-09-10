@@ -1,9 +1,9 @@
 # Dockerfile for lapis on fedora
-FROM fedora
+FROM fedora:22
 MAINTAINER http://fedoraproject.org/wiki/Cloud
 
-RUN yum -y update && yum clean all
-RUN yum -y install unzip tar wget vim git make gcc readline-devel pcre-devel openssl-devel && yum clean all
+RUN dnf -y update && dnf clean all
+RUN dnf -y install unzip tar wget vim git make gcc readline-devel pcre-devel openssl-devel && dnf clean all
 
 #install openresty
 ENV OPENRESTY_VERSION 1.7.7.1

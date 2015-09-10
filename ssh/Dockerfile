@@ -1,12 +1,12 @@
-FROM fedora
+FROM fedora:22
 MAINTAINER http://fedoraproject.org/wiki/Cloud
 
 EXPOSE 22
 
-RUN yum -y install \
+RUN dnf -y install \
 	openssh-server \
 	passwd \
-	; yum clean all
+	; dnf clean all
 
 COPY entrypoint.sh /entrypoint.sh
 

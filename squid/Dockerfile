@@ -1,13 +1,13 @@
 # Based on the Fedora image
-FROM fedora
+FROM fedora:22
 
 # File Author / Maintainer
 MAINTAINER http://fedoraproject.org/wiki/Cloud
 
 # Install Squid
-RUN yum -y update; yum clean all;
-RUN yum -y install squid; yum clean all;
-RUN yum -y install httpd-tools; yum clean all;
+RUN dnf -y update; dnf clean all;
+RUN dnf -y install squid; dnf clean all;
+RUN dnf -y install httpd-tools; dnf clean all;
 
 # Change the first occurrence squid.conf to auth_squid.conf
 # if you would like to use authentication

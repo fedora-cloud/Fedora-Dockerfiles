@@ -1,8 +1,8 @@
-FROM fedora
+FROM fedora:22
 MAINTAINER http://fedoraproject.org/wiki/Cloud
 
-RUN yum -y update && yum clean all
-RUN yum -y install cups openssl passwd && yum clean all
+RUN dnf -y update && dnf clean all
+RUN dnf -y install cups openssl passwd && dnf clean all
 ADD adjust-config.sh /adjust-config.sh
 ADD start-cups.sh /start-cups.sh
 RUN chmod 755 /adjust-config.sh /start-cups.sh

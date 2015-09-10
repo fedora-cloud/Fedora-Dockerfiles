@@ -1,10 +1,10 @@
-FROM fedora:21
+FROM fedora:22
 MAINTAINER http://fedoraproject.org/wiki/Cloud
 
-RUN yum -y update && yum clean all
-RUN yum -y install yum-utils && yum clean all
+RUN dnf -y update && dnf clean all
+RUN dnf -y install yum-utils && dnf clean all
 RUN yum-config-manager --enable updates-testing 
-RUN yum -y install cadvisor && yum clean all
+RUN dnf -y install cadvisor && dnf clean all
 
 EXPOSE 8080
 

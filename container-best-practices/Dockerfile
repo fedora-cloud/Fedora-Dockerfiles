@@ -1,10 +1,10 @@
-FROM fedora:21
+FROM fedora:22
 
 MAINTAINER Scott Collier <scollier@redhat.com>
 
-RUN yum -y update && yum clean all 
+RUN dnf -y update && dnf clean all 
 
-RUN yum -y install git asciidoc dockbook-xsl fop make && yum clean all
+RUN dnf -y install git asciidoc dockbook-xsl fop make && dnf clean all
 
 WORKDIR /workdir
 

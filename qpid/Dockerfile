@@ -1,8 +1,8 @@
-FROM fedora
+FROM fedora:22
 MAINTAINER http://fedoraproject.org/wiki/Cloud
 
-RUN yum -y update && yum clean all
-RUN yum install -y python-qpid qpid-cpp-server && yum clean all
+RUN dnf -y update && dnf clean all
+RUN dnf install -y python-qpid qpid-cpp-server && dnf clean all
 
 ADD . /.qpidd
 

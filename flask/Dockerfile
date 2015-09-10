@@ -1,8 +1,8 @@
-FROM fedora
+FROM fedora:22
 MAINTAINER http://fedoraproject.org/wiki/Cloud
 
-RUN yum -y update && yum clean all
-RUN yum -y install python-flask && yum clean all
+RUN dnf -y update && dnf clean all
+RUN dnf -y install python-flask && dnf clean all
 ADD flask-example.py /opt/
 EXPOSE 5000
 
