@@ -14,6 +14,7 @@ RUN dnf -y install \
            kernel \
            e2fsprogs \
            sos \
+           fpaste \
            crash \
            strace \
            ltrace \
