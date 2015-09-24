@@ -133,3 +133,4 @@ POSTGRESQL_PASSWORD=STRING
     by given user.
 
 [1] http://www.postgresql.org/docs/9.2/static/auth-pg-hba-conf.html
+[2] https://github.com/devexp-db/cont-lib/blob/master/project.py

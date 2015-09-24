@@ -1,22 +1,6 @@
-#!/bin/sh
-
-executables="
-/usr/bin/container-entrypoint
-/usr/bin/container-usage
-/usr/bin/cont-postgresql-cmd
-/usr/libexec/cont-postgresql-exec
-/usr/libexec/cont-postgresql-preexec
-/usr/libexec/cont-postgresql-initdb
-"
-
-postgres_ownership="
-/var/lib/pgsql/data
-"
-
-for i in $executables; do
-    chmod +x "$i"
-done
-
-for i in $postgres_ownership; do
-    chown postgres:postgres "$i"
-done
+chmod 755 /usr/bin/cont-postgresql-cmd
+chmod 755 /usr/libexec/cont-postgresql-exec
+chmod 755 /usr/libexec/cont-postgresql-preexec
+chmod 755 /usr/libexec/cont-postgresql-initdb
+chmod 775 /usr/bin/container-entrypoint
+chmod 775 /usr/bin/container-usage

@@ -1,0 +1,3 @@
+[submodule "cont-postgresql"]
+	path = postgresql/cont-postgresql
+	url = https://github.com/devexp-db/cont-postgresql.git

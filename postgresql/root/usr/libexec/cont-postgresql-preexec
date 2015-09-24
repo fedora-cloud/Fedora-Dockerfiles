@@ -41,7 +41,8 @@ test -f "$pidfile" \
     && exit 1
 
 # Run the checking script here manually, usually placed in ExecStartPre=.
-/usr/bin/postgresql-check-db-dir "$(pgcont_opt pgdata)" || exit 1
+PGDATA="$(pgcont_opt pgdata)" /usr/libexec/postgresql-check-db-dir \
+    postgresql-container || exit 1
 
 # Pre-exec hooks.  Don't call from 'rh-cont-pg-exec' because that would not
 # be called from service file.
