@@ -5,7 +5,7 @@ MAINTAINER http://fedoraproject.org/wiki/Cloud
 RUN dnf -y update
 
 # Install the hadoop packages
-RUN dnf -y install dnf install hadoop-common hadoop-common-native hadoop-hdfs hadoop-mapreduce hadoop-mapreduce-examples hadoop-yarn pwgen java-1.7.0-openjdk-headless java-1.7.0-openjdk java-1.7.0-openjdk-devel ldapjdk supervisor bash-completion && dnf clean all
+RUN dnf -y install hadoop-common hadoop-common-native hadoop-hdfs hadoop-mapreduce hadoop-mapreduce-examples hadoop-yarn pwgen java-1.8.0-openjdk-headless java-1.8.0-openjdk java-1.8.0-openjdk-devel ldapjdk supervisor bash-completion && dnf clean all
 
 # Install network troubleshooting tools into the container, these can be removed if you don't want them.
 RUN dnf -y install net-tools lsof nmap && dnf clean all
