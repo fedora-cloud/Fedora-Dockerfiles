@@ -1,0 +1,23 @@
+# This is a service file for SSSD in Docker container
+# started via Atomic. This file will not be seen by the
+# SSSD processes in the container. To customize the behaviour
+# of the service in the container, add config file/snipped to
+# /etc/systemd/system/sssd.service.d/
+
+[Unit]
+Description=System Security Services Daemon in container
+
+# SSSD will not be started until syslog is
+After=syslog.target
+# SSSD must be running before we permit user sessions
+Before=systemd-user-sessions.service nss-user-lookup.target
+Wants=nss-user-lookup.target
+
+[Service]
+ExecStart=/usr/bin/atomic run sssd
+ExecStop=/usr/bin/atomic stop sssd
+Type=oneshot
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target

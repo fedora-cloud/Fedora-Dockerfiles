@@ -1,0 +1,62 @@
+=====================
+SSSD Atomic container
+=====================
+
+Configure:
+
+If SSSD has already been configured on the Atomic Host, for example
+the host was IPA-enrolled, running
+
+   # atomic install sssd --migrate
+
+will override the sssd.service definition to start the service in
+container via atomic. Existing configuration and data will be re-used.
+
+If SSSD hasn't been configured yet, run
+
+   # atomic install sssd [ options ]
+
+The options will be passed to ipa-client-install, so for example
+
+   # atomic install sssd --password the-otp-password
+
+will attempt to IPA-enroll the machine with the one-time password.
+
+If the options start with word realm, realm (typically realm join)
+will be used instead of ipa-client-install:
+
+   # atomic install sssd realm join [ realm join's options ]
+
+Options to atomic install can also be specified in the following files
+on the host:
+
+   /etc/sssd/ipa-client-install-options - parameters to ipa-client-install
+   /etc/sssd/realm-join-options - parameters to realm join
+   /etc/sssd/realm-join-password - file with password for realm join
+
+When SSSD and dependent packages are not installed on the host, at least
+the following libraries need to be present there:
+
+   /usr/lib64/libnss_sss.so.2
+   /usr/lib64/sssd/modules/sssd_krb5_localauth_plugin.so
+   /usr/lib64/libsss_sudo.so
+   /usr/lib64/security/pam_sss.so
+   /usr/lib64/security/pam_oddjob_mkhomedir.so (for realm join setup)
+
+Run:
+
+On the Atomic Host, run
+
+   # atomic run sssd
+
+or
+
+   # systemctl start sssd.service
+
+Then for example ssh access to the Atomic Host machine with Kerberos
+single sign-on will work.
+
+Uninstall:
+
+   # atomic uninstall sssd
+
