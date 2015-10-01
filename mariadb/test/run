@@ -9,7 +9,7 @@
 set -exo nounset
 shopt -s nullglob
 
-IMAGE_NAME=${IMAGE_NAME-openshift/mysql-56-centos7-candidate}
+IMAGE_NAME=${IMAGE_NAME-fedora/mariadb}
 
 CIDFILE_DIR=$(mktemp --suffix=mysql_test_cidfiles -d)
 
