@@ -40,7 +40,7 @@ matches the user UID or name which is running inside the container.**
 Usage
 ---------------------------------
 
-For this, we will assume that you are using the `openshift/mysql-55-centos7` image.
+For this, we will assume that you are using the `fedora/mysql` image.
 If you want to set only the mandatory environment variables and not store
 the database in a host directory, execute the following command:
 
@@ -86,3 +86,19 @@ values stored in the variables and the actual passwords. Whenever a database
 container starts it will reset the passwords to the values stored in the
 environment variables.
 
+
+Test
+---------------------------------
+
+This repository also provides a test framework, which checks basic functionality
+of the MySQL image.
+
+To test the MySQL image, you need to run the test like this:
+
+```bash
+#> cd mysql
+#> docker build -t mysql .
+#> IMAGE_NAME=mysql ./test/run
+```
+
+Tested on Docker 1.8.2.

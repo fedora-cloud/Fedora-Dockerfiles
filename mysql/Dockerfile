@@ -37,7 +37,8 @@ COPY contrib /var/lib/mysql/
 # arbitrary UID
 # When only specifying user, group is 0, that's why /var/lib/mysql must have
 # owner mysql.0; that allows to avoid a+rwx for this dir
-RUN chmod -R g+rwx /var/lib/mysql
+RUN chmod -R g+rwx /var/lib/mysql && \
+    chmod a+x /usr/local/bin/run-*.sh
 
 VOLUME ["/var/lib/mysql/data"]
 
