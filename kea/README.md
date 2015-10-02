@@ -2,7 +2,7 @@ dockerfiles-fedora-kea
 =========================
 
 Fedora dockerfile for kea - DHCPv4, DHCPv6 and Dynamic DNS servers.
-Tested on Docker 1.6.2
+Tested on Docker 1.8.2
 
 Clone Dockerfile somewhere and build the container:
 
