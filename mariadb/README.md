@@ -1,88 +1,105 @@
-dockerfiles-fedora-mariadb
-==========================
+MariaDB for general usage and OpenShift - Docker image
+======================================================
 
-Based on scollier's mysql dockerfile.
+This repository contains Dockerfiles for MariaDB images for general usage and for OpenShift.
 
-This repo contains a recipe for making a Docker container for mariadb
-on Fedora.
 
-Setup
------
+Environment variables and volumes
+----------------------------------
 
-Check your Docker version
+The image recognizes the following environment variables that you can set during
+initialization by passing `-e VAR=VALUE` to the Docker run command.
 
-    # docker version
+|    Variable name       |    Description                            |
+| :--------------------- | ----------------------------------------- |
+|  `MYSQL_USER`          | User name for MySQL account to be created |
+|  `MYSQL_PASSWORD`      | Password for the user account             |
+|  `MYSQL_DATABASE`      | Database name                             |
+|  `MYSQL_ROOT_PASSWORD` | Password for the root user (optional)     |
 
-Perform the build
+The following environment variables influence the MySQL configuration file. They are all optional.
 
-    # docker build --rm -t <yourname>/mariadb .
+|    Variable name                |    Description                                                    |    Default
+| :------------------------------ | ----------------------------------------------------------------- | -------------------------------
+|  `MYSQL_LOWER_CASE_TABLE_NAMES` | Sets how the table names are stored and compared                  |  0
+|  `MYSQL_MAX_CONNECTIONS`        | The maximum permitted number of simultaneous client connections   |  151
+|  `MYSQL_FT_MIN_WORD_LEN`        | The minimum length of the word to be included in a FULLTEXT index |  4
+|  `MYSQL_FT_MAX_WORD_LEN`        | The maximum length of the word to be included in a FULLTEXT index |  20
+|  `MYSQL_AIO`                    | Controls the `innodb_use_native_aio` setting value in case the native AIO is broken. See http://help.directadmin.com/item.php?id=529 |  1
 
-Check the image out.
+You can also set the following mount points by passing the `-v /host:/container` flag to Docker.
 
-    # docker images
+|  Volume mount point      | Description          |
+| :----------------------- | -------------------- |
+|  `/var/lib/mysql/data`   | MySQL data directory |
 
-Launching MariaDB
------------------
+**Notice: When mouting a directory from the host into the container, ensure that the mounted
+directory has the appropriate permissions and that the owner and group of the directory
+matches the user UID or name which is running inside the container.**
 
-### Stand-alone database: ###
+Usage
+---------------------------------
 
-    # docker run --name=mariadb -d -p 3306:3306 <yourname>/mariadb
+For this, we will assume that you are using the `fedora/mariadb` image.
+If you want to set only the mandatory environment variables and not store
+the database in a host directory, execute the following command:
 
-This will create the system tables and a database named 'db', with user 'dbuser' and a generated password. To find out what the password is, check the logs:
+```
+$ docker run -d --name mysql_database -e MYSQL_USER=user -e MYSQL_PASSWORD=pass -e MYSQL_DATABASE=db -p 3306:3306 fedora/mariadb
+```
 
-    # docker logs mariadb | grep -E '^USER|^PASS'
+This will create a container named `mysql_database` running MySQL with database
+`db` and user with credentials `user:pass`. Port 3306 will be exposed and mapped
+to the host. If you want your database to be persistent across container executions,
+also add a `-v /host/db/path:/var/lib/mysql/data` argument. This will be the MySQL
+data directory.
 
-### Adjustable configuration ###
+If the database directory is not initialized, the entrypoint script will first
+run [`mysql_install_db`](https://dev.mysql.com/doc/refman/5.6/en/mysql-install-db.html)
+and setup necessary database users and passwords. After the database is initialized,
+or if it was already present, `mysqld` is executed and will run as PID 1. You can
+ stop the detached container by running `docker stop mysql_database`.
 
-Create a data volume container:
 
-    # docker run --name=mariadb-data -v /var/lib/mysql \
-        --entrypoint /bin/echo <yourname>/mariadb "MariaDB data volume"
+MySQL root user
+---------------------------------
+The root user has no password set by default, only allowing local connections.
+You can set it by setting the `MYSQL_ROOT_PASSWORD` environment variable. This
+will allow you to login to the root account remotely. Local connections will
+still not require a password.
 
-Now create the persistent container, using the data volume container for storage:
+To disable remote root access, simply unset `MYSQL_ROOT_PASSWORD` and restart
+the container.
 
-    # docker run --name=mariadb --volumes-from=mariadb-data \
-        -p 3306:3306 -d <yourname>/mariadb
 
-The container will not re-initialise an already-initialised data volume.
+Changing passwords
+------------------
 
-Using your MariaDB container
-----------------------------
+Since passwords are part of the image configuration, the only supported method
+to change passwords for the database user (`MYSQL_USER`) and root user is by
+changing the environment variables `MYSQL_PASSWORD` and `MYSQL_ROOT_PASSWORD`,
+respectively.
 
-Connecting to mariadb:
+Changing database passwords through SQL statements or any way other than through
+the environment variables aforementioned will cause a mismatch between the
+values stored in the variables and the actual passwords. Whenever a database
+container starts it will reset the passwords to the values stored in the
+environment variables.
 
-    # mysql --protocol=tcp db -udbuser -p
 
-Use the password indicated in the 'docker logs' output.
+Test
+---------------------------------
 
-Create a sample table:
+This repository also provides a test framework, which checks basic functionality
+of the MariaDB image.
 
-    \> CREATE TABLE test (name VARCHAR(10), owner VARCHAR(10),
-        -> species VARCHAR(10), birth DATE, death DATE);
+To test the MariaDB image, you need to run the test like this:
 
-Linking with another container
-------------------------------
+```bash
+#> cd mariadb
+#> docker build -t mariadb .
+#> IMAGE_NAME=mariadb ./test/run
+```
 
-To arrange for linking with another container, set the USER, PASS, and NAME environment variables when creating the mariadb container. You don't need to expose any ports, as they are available to other containers automatically:
+Tested on Docker 1.8.2.
 
-    # docker run --name=mariadb --volumes-from=mariadb-data \
-        -e USER=user -e PASS=mypassword -e NAME=mydb \
-	-d <yourname>/mariadb
-
-This will create a database named 'mydb', and a user 'user' with the specified password. To link another container to this one, use the --link option to 'docker run':
-
-    # docker run --link=mariadb:db -d <yourname>/mydbapp
-
-As we've set the alias for the linked mariadb container to 'db', the 'mydbapp' container will have environment variables set to give it the information it needs:
-
-  - DB_PORT will specify the protocol, host, and port
-  - DB_ENV_NAME will be 'mydb'
-  - DB_ENV_USER will be 'user'
-  - DB_ENV_PASS will be 'mypassword'
-
-Using mariadb as a client to an existing mariadb container
-----------------------------------------------------------
-
-To run a query against an existing container, using the client from this container image, create a new container linked to the existing one:
-
-    # docker run --rm --link=mariadb:db -i -t <yourname>/mariadb sh -c 'mysql -h $DB_PORT_3306_TCP_ADDR -P $DB_PORT_3306_TCP_PORT -u$DB_ENV_USER -p$DB_ENV_PASS'
