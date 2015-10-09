@@ -3,6 +3,8 @@ dockerfiles-fedora-bind
 
 Fedora dockerfile for Bind - based resolving & cache'ing (DNS server)
 
+Tested on docker 1.8.2
+
 Configuration
 -----
 
@@ -47,7 +49,7 @@ Testing
 
 Just use tools like dig. First check the IP address assigned to container:
 
-    $ docker inspect -format '{{ .NetworkSettings.IPAddress }}' container_id
+    $ docker inspect --format '{{ .NetworkSettings.IPAddress }}' <container_id|container_name>
 
 And next use use dig:
 
@@ -60,7 +62,7 @@ In order to change configuration just edit cfg files in host
 /srv/docker_mounts/bind/configs (remember that this dir is mounted on
 /etc/named/ in container) and run a command:
 
-    $ docker exec -it <container_id> rndc reload
+    $ docker exec -it <container_id|container_name> rndc reload
 
 Managing logfiles
 -----
