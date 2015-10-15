@@ -47,6 +47,6 @@ LABEL RUN 'docker run -d --restart=always --security-opt label:type:sssd_t --pri
 	-v /var/lib/sss/:/var/lib/sss/ \
 	-v /var/log/sssd/:/var/log/sssd/ \
 	-v /var/run/dbus/system_bus_socket:/var/run/dbus/system_bus_socket \
-	${NAME} /bin/run.sh'
-LABEL UNINSTALL 'docker run --privileged --net=host -v /:/host -e NAME=${NAME} -e HOST=/host ${NAME} /bin/uninstall.sh'
-LABEL STOP 'docker kill -s TERM ${NAME}'
+	${IMAGE} /bin/run.sh'
+LABEL UNINSTALL 'docker run --privileged --net=host -v /:/host -e NAME=${NAME} -e HOST=/host ${IMAGE} /bin/uninstall.sh'
+LABEL STOP 'docker kill -s TERM ${IMAGE}'
