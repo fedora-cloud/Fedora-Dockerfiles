@@ -6,7 +6,7 @@ MAINTAINER Jan Pazdziora
 # Optional is needed on RHEL 7.1 for sssd-dbus
 # RUN subscription-manager repos --enable=rhel-7-server-optional-rpms
 # Install FreeIPA client and realmd
-RUN mkdir -p /run/lock ; dnf install -y freeipa-client realmd /etc/selinux/targeted/contexts/dbus_contexts oddjob oddjob-mkhomedir sssd sssd-dbus adcli perl tar && dnf clean all
+RUN mkdir -p /run/lock ; dnf install -y freeipa-client realmd /etc/selinux/targeted/contexts/dbus_contexts oddjob oddjob-mkhomedir sssd sssd-dbus adcli perl tar findutils && dnf clean all
 RUN rm -f /usr/bin/sss_ssh_authorizedkeys
 ADD dbus.service /etc/systemd/system/dbus.service
 ADD oddjobd.service /etc/systemd/system/oddjobd.service
@@ -21,6 +21,7 @@ ADD uninstall.sh /bin/uninstall.sh
 RUN chmod +x /usr/bin/systemctl /usr/bin/systemctl-socket-daemon /bin/install.sh /bin/run.sh /bin/uninstall.sh
 
 ADD rhel-domainname.service /etc/systemd/system/rhel-domainname.service
+ADD rhel-domainname.service /etc/systemd/system/fedora-domainname.service
 ADD sssd.service /etc/sssd.service.template
 
 LABEL INSTALL 'docker run --rm=true --privileged --net=host -v /:/host -e NAME=${NAME} -e HOST=/host ${IMAGE} /bin/install.sh'
