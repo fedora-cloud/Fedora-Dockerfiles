@@ -21,6 +21,7 @@ ADD uninstall.sh /bin/uninstall.sh
 RUN chmod +x /usr/bin/systemctl /usr/bin/systemctl-socket-daemon /bin/install.sh /bin/run.sh /bin/uninstall.sh
 
 ADD rhel-domainname.service /etc/systemd/system/rhel-domainname.service
+ADD rhel-domainname.service /etc/systemd/system/fedora-domainname.service
 ADD sssd.service /etc/sssd.service.template
 
 LABEL INSTALL 'docker run --rm=true --privileged --net=host -v /:/host -e NAME=${NAME} -e HOST=/host ${NAME} /bin/install.sh'
