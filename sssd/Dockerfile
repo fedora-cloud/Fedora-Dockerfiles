@@ -23,7 +23,7 @@ RUN chmod +x /usr/bin/systemctl /usr/bin/systemctl-socket-daemon /bin/install.sh
 ADD rhel-domainname.service /etc/systemd/system/rhel-domainname.service
 ADD sssd.service /etc/sssd.service.template
 
-LABEL INSTALL 'docker run --rm=true --privileged --net=host -v /:/host -e NAME=${NAME} -e HOST=/host ${NAME} /bin/install.sh'
+LABEL INSTALL 'docker run --rm=true --privileged --net=host -v /:/host -e NAME=${NAME} -e HOST=/host ${IMAGE} /bin/install.sh'
 LABEL RUN 'docker run -d --restart=always --security-opt label:type:sssd_t --privileged --net=host --name ${NAME} -e NAME=${NAME} \
 	-v /etc/ipa/:/etc/ipa/:ro \
 	-v /etc/krb5.conf:/etc/krb5.conf:ro \
