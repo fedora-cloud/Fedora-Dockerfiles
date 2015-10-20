@@ -1,0 +1,19 @@
+worker_processes 4;
+daemon off;
+
+error_log  /srv/www/logs/error.log  warn;
+pid	   /tmp/nginx.pid;
+
+events {
+    worker_connections  1024;
+}
+
+http {
+    include       mime.types;
+    default_type  application/octet-stream;
+
+    gzip_comp_level 2;
+    gzip_proxied    any;
+
+    include       /srv/www/sites/enabled/*;
+}
