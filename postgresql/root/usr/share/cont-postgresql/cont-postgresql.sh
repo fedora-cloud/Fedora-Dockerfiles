@@ -1,5 +1,5 @@
 . "/usr/share/cont-lib/cont-lib.sh"
-. "/usr/share/cont-lib/parser-simple-config.sh"
+. "/usr/share/cont-lib/parser-simple-macro-config.sh"
 
 
 pgcont_opt()
@@ -29,16 +29,18 @@ __pgcont_load_config()
         assert_external_data    = true ;
         clear_pgdata_pidfile    = false ;
 
-        pgdata                  = /var/lib/pgsql/data ;
-        pghba                   = /var/lib/pgsql/data/pg_hba.conf ;
+        pgdatasubdir            = data ;
+        pgdatamountpoint        = /var/lib/pgsql/data
+        pgdata                  = <pgdatamountpoint>/<pgdatasubdir> ;
+        pghba                   = <pgdata>/pg_hba.conf ;
         pghome                  = /var/lib/pgsql ;
-        pgconf                  = /var/lib/pgsql/data/postgresql.conf ;
-        pgcontconf              = /var/lib/pgsql/data/postgresql-container.conf ;
-        pidfile                 = /var/lib/pgsql/data/postmaster.pid  ;
+        pgconf                  = <pgdata>/postgresql.conf ;
+        pgcontconf              = <pgdata>/postgresql-container.conf ;
+        pidfile                 = <pgdata>/postmaster.pid  ;
         $POSTGRESQL_CONTAINER_OPTS
     "
 
-    cont_parser_simple_config config __pgcont_cb_opts
+    cont_parser_simple_macro_config config __pgcont_cb_opts
 }
 
 
@@ -133,7 +135,7 @@ pgcont_config_use_var()
 
 pgcont_check_external_storage()
 {
-    local pgdata=$(pgcont_opt pgdata)
+    local pgdata=$(pgcont_opt pgdatamountpoint)
 
     cont_debug3 "working with: $pgdata"
 
@@ -146,9 +148,22 @@ pgcont_check_external_storage()
 You plan to run the data directory '$pgdata' from container.  Please run the
 image like 'docker run -v YOUR_DIR:$pgdata'.  Or use the
 'assert_external_data = false' option in POSTGRESQL_CONTAINER_OPTS.  For more
-info see the 'container-usage' command output."
+info see the following 'container-usage' output:
+"
 
     test -f "$pgdata/.container_internal" \
+        && cont_error "$msg" \
+        && container-usage >&2 \
+        && return 1
+
+    local msg="
+Directory '$pgdata' seems to be initialized PG directory while it should
+be only bind-mountpoint.  We now support only <pgdatamountpoint>/<pgdatasubdir>
+pattern and by default the components are pgdatamountpoint = '/var/lib/pgsql/data'
+and pgdatasubdir = 'data'.  So please **make sure** you have '$pgdata' directory
+moved into $(pgcont_opt pgdata) before running the container."
+
+    test -f "$pgdata/PG_VERSION" \
         && cont_error "$msg" \
         && return 1
 
@@ -173,7 +188,7 @@ pgcont_cleanup_environment()
 # in background listening only on localhost.
 pgcont_server_start_local()
 {
-    pg_ctl -D "/var/lib/pgsql/data" -w start -o '-h localhost' "$@"
+    pg_ctl -D "$(pgcont_opt pgdata)" -w start -o '-h localhost' "$@"
 }
 
 
@@ -183,7 +198,7 @@ pgcont_server_start_local()
 # /var/lib/pgsql/data.
 pgcont_server_stop()
 {
-    pg_ctl -D "/var/lib/pgsql/data" stop
+    pg_ctl -D "$(pgcont_opt pgdata)" stop
 }
 
 

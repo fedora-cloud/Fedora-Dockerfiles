@@ -1,6 +1,11 @@
+set -x
 chmod 755 /usr/bin/cont-postgresql-cmd
 chmod 755 /usr/libexec/cont-postgresql-exec
 chmod 755 /usr/libexec/cont-postgresql-preexec
 chmod 755 /usr/libexec/cont-postgresql-initdb
+chmod 755 /usr/share/cont-postgresql/atomic/install.sh
+chmod 755 /usr/share/cont-postgresql/atomic/uninstall.sh
 chmod 775 /usr/bin/container-entrypoint
 chmod 775 /usr/bin/container-usage
+chmod 775 /usr/bin/container-help
+test -f /usr/bin/cont-postgresql-cmd && ln -sf /usr/bin/cont-postgresql-cmd /usr/bin/container-start
