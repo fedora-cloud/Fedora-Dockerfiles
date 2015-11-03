@@ -17,4 +17,4 @@ build()
 
 clean
 build
-git add root Dockerfile
+git add root Dockerfile cont-postgresql

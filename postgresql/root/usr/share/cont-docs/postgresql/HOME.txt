@@ -1,0 +1,86 @@
+=====================================
+Help page for PostgreSQL in container
+=====================================
+
+General documentation for PostgreSQL container usage.  Most of this
+documentation describes only proof-of-concept implemented ideas.  Be careful not
+to rely described API too much because it is still expected to change very fast.
+
+Note that this is for 1.0.0 API
+(MAJOR.MINOR.FIX).  Any change in MAJOR part of version introduces backward
+incompatibility (you should take into account that interchanging MAJOR container
+with MAJOR+N container will need some manual changes in your tooling).  On the
+other hand, incrementing MINOR version just adds some new features.
+
+
+Basic concepts
+--------------
+We try to push you to mount PostgreSQL datadir from host machine (see
+'assert_external_data' option below).
+
+While starting PostgreSQL in container, your database datadir will be
+initialized automatically (unless you provided already initialized volume).
+That way we allowed you to do 'initdb && start' of the container PostgreSQL
+server by one command.
+
+Note that PostgreSQL in container uses /var/lib/pgsql/data/data directory, thus
+*not* the direct /var/lib/pgsql/data bind-mount-point.  Changing this location
+is not yet supported use-case.
+
+We also try to avoid starting concurrent servers running against the same
+datadir volume, see the 'clear_pgdata_pidfile' option.
+
+
+Basic usage
+-----------
+
+We suppose that your $UID is able to communicate with docker's socket file, if
+this is not truth -- some of the following actions will need 'sudo' (root
+privileges):
+
+  1. Create *persistent* directory where PostgreSQL server should store
+     its data (you should make sure to have this properly backed up).
+
+     $ mkdir data
+
+  2. Allow 'postgres' (from container) user writing into this directory:
+
+     $ setfacl -m 'u:26:-wx' data
+
+  3. Run the container (if you are running SELinux on your Docker host machine,
+     make sure the :Z suffix is added to the volume):
+
+     $ docker run -d --name postgresql_test \
+            -v "$(pwd)/data:/var/lib/pgsql/data:Z" fedora/postgresql
+     1f8d36e192421c02d59baba7082adf13f975c35ba42e235e349574a0c049ed43
+
+  4. Connect to the running container from host (obtain psql console):
+
+     $ docker exec -ti postgresql_test /bin/sh
+     bash-4.3$ psql -q
+     postgres=#
+
+  5. Having 'pgsql' installed on your host machine allows you to connect
+     to PostgreSQL server also without the 'docker exec' command:
+
+
+     $ docker inspect --format '{{ .NetworkSettings.IPAddress }}' \
+            postgresql_test
+
+     172.17.1.189
+     $ psql -h 172.17.1.189
+     Password:
+
+     You can see that you are able to connect!  But there is no default
+     user/password/db (nor even admin password) available at this time.  How to
+     setup this, see the 'Advanced usage' documentation.
+
+
+Advanced usage
+--------------
+
+To keep this starting document rather shorter, we moved the rest of
+documentation into:
+
+$ docker run --rm fedora/postgresql container-help --component postgresql \
+    --topic advanced

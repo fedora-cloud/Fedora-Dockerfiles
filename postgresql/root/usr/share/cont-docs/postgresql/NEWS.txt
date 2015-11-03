@@ -1,0 +1,12 @@
+New in 1.O.0
+
+* Backward incompatibilities (against pre-release versions):
+
+  - we do not store PG data under /var/lib/pgsql/data, but rather under
+    /var/lib/pgsql/data/data.  Users are still expected to bind-mount
+    data directory into /var/lib/pgsql/data but must expect sub-directory
+    will appear there.
+
+* New features:
+
+  - really basic atomic support added

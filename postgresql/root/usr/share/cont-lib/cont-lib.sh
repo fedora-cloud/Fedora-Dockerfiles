@@ -53,8 +53,10 @@ __cont_dbg()
 }
 
 
+cont_info()   { __cont_msg " * $*" ; }
 cont_warn()   { __cont_msg "warn: $*" ; }
 cont_error()  { __cont_msg "error: $*"; }
+cont_fatal()  { __cont_msg "fatal: $*"; exit 1; }
 cont_debug()  { __cont_dbg 1 "$*" ; }
 cont_debug2() { __cont_dbg 2 "$*" ; }
 cont_debug3() { __cont_dbg 3 "$*" ; }

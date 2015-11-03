@@ -1,0 +1,11 @@
+[Unit]
+Description=PostgreSQL database server
+After=docker.service
+BindTo=docker.service
+
+[Service]
+ExecStart=/usr/bin/docker start -a TEMPLATE
+ExecStop=/usr/bin/docker stop TEMPLATE
+
+[Install]
+WantedBy=multi-user.target
