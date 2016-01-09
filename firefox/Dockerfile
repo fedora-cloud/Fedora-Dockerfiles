@@ -1,15 +1,10 @@
-FROM fedora
+FROM fedora:23
 MAINTAINER http://fedoraproject.org/wiki/Cloud
 
 # Install the appropriate software
-RUN yum -y update && yum clean all
-RUN yum -y install firefox \
-xorg-x11-twm tigervnc-server \
-xterm xorg-x11-font \
-xulrunner-26.0-2.fc20.x86_64 \
-dejavu-sans-fonts \
-dejavu-serif-fonts \
-xdotool && yum clean all
+RUN dnf -y update
+RUN dnf -y install firefox xorg-x11-twm tigervnc-server xterm xulrunner dejavu-sans-fonts dejavu-serif-fonts xdotool
+RUN dnf clean all
 
 # Add the xstartup file into the image and set the default password.
 RUN mkdir /root/.vnc
