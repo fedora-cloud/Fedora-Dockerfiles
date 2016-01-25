@@ -1,0 +1,12 @@
+sudo: required
+services: docker
+language: python
+
+install:
+  - pip install behave ansible ctf-cli --upgrade
+
+before_script:
+- cd mysql
+
+script:
+- docker build -t fedora/mysql . && ctf-cli run -d IMAGE=fedora/mysql
