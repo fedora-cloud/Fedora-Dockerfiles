@@ -1,5 +1,5 @@
-# Clone from the Fedora 22 image
-FROM fedora:22
+# Clone from the Fedora image
+FROM fedora
 
 MAINTAINER Jan Pazdziora
 
