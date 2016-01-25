@@ -1,9 +1,9 @@
 FROM fedora:latest
 MAINTAINER http://fedoraproject.org/wiki/Cloud
 
-RUN yum -y update && yum clean all
+RUN dnf -y update && dnf clean all
 
-RUN yum -y install ansible && yum clean all
+RUN dnf -y install ansible && dnf clean all
 RUN mkdir -p /etc/ansible/roles \
         && echo '[local]\nlocalhost\n' > /etc/ansible/hosts
 
