@@ -6,14 +6,15 @@ set -ex -o pipefail
 [ "$1" == "" ] && echo "Must provide tag as argument" && exit 1
 
 # Check to make sure required utilites are present
-/usr/bin/which cpio docker mktemp rpm2cpio tar yumdownloader
+/usr/bin/which cpio docker mktemp rpm2cpio tar
+/usr/bin/which yumdownloader || /usr/bin/which dnf
 
 # cd to a temporary directory
 tmpdir=$(mktemp -d)
 pushd $tmpdir
 
 # Get and extract busybox 
-yumdownloader busybox 
+which yumdownloader && yumdownloader busybox || dnf download busybox
 rpm2cpio busybox*rpm | cpio -imd
 rm -f busybox*rpm
 
@@ -24,7 +25,7 @@ for i in $(./sbin/busybox --list);do
 done
 
 # Create container
-tar -c . | docker import - $1
+tar -c . | docker import -c="CMD /bin/sh" - $1
 
 # Go back to old pwd
 popd
