@@ -95,7 +95,7 @@ pgcont_config_set_option()
     while read line; do
         if [[ $line =~ ^(#[[:space:]]*)?$key[[:space:]]*= ]]; then
             if $hit; then
-                cont_warn "multiple occurences of '$key' in '$cf'," \
+                cont_warn "multiple occurrences of '$key' in '$cf'," \
                           "only the first is adjusted and others are commented"
                 continue
             fi

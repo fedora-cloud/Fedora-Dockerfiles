@@ -1,4 +1,4 @@
-FROM       fedora:21
+FROM       fedora
 MAINTAINER http://fedoraproject.org/wiki/Cloud
 
 # Perform updates

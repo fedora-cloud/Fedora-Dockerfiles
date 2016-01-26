@@ -1,4 +1,4 @@
-FROM fedora:22
+FROM fedora
 MAINTAINER http://fedoraproject.org/wiki/Cloud
 
 ENV container docker

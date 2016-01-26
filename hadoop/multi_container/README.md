@@ -69,7 +69,7 @@ hadoop-common
 hadoop-mapreduce-examples
 
 Make sure the core-site.xml file is pointing at the namenode and the
-resouce manager running in containers.
+resource manager running in containers.
 
   <property>
     <name>fs.default.name</name>

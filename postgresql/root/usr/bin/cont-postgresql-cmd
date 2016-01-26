@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # We split this file into 'preexec' and 'exec' to match what is done in
-# systemd service file (ExecStart & ExecStartPre), to alow easier re-using of
+# systemd service file (ExecStart & ExecStartPre), to allow easier re-using of
 # those scripts.
 
 . /usr/share/cont-postgresql/cont-postgresql.sh

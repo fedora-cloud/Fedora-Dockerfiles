@@ -20,7 +20,7 @@ Then the slave container(s) should be started with:
     docker run --link master:mesos_master -d -p 5051:5051 <username>/mesos-slave
 
 Note: Only 1 slave can be run on a machine with the above command because of
-the port mapping.  If the slave does not need to be accessable from outside
+the port mapping.  If the slave does not need to be accessible from outside
 dockers private network then remove the -p 5051:5051 and as many slaves as
 desired can be started.
 
