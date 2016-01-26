@@ -1,4 +1,4 @@
-FROM fedora:21
+FROM fedora
 
 MAINTAINER Scott Collier <scollier@redhat.com>
 
