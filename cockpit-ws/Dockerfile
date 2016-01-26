@@ -1,4 +1,4 @@
-FROM fedora:21
+FROM fedora
 MAINTAINER http://fedoraproject.org/wiki/Cloud
 
 RUN yum -y update && yum install -y sed openssl && yum clean all

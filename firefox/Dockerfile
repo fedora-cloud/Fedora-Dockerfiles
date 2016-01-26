@@ -1,4 +1,4 @@
-FROM fedora:23
+FROM fedora
 MAINTAINER http://fedoraproject.org/wiki/Cloud
 
 # Install the appropriate software

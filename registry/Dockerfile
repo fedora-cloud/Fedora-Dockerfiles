@@ -1,4 +1,4 @@
-FROM fedora:20
+FROM fedora
 MAINTAINER http://fedoraproject.org/wiki/Cloud
 
 RUN yum update -y &&  yum clean all
