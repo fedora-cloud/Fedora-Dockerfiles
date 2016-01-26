@@ -1,4 +1,4 @@
-FROM fedora:22
+FROM fedora:23
 
 # MySQL image for OpenShift.
 #

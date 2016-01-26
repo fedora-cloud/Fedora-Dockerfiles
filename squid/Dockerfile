@@ -1,5 +1,5 @@
 # Based on the Fedora image
-FROM fedora:22
+FROM fedora:23
 
 # File Author / Maintainer
 MAINTAINER http://fedoraproject.org/wiki/Cloud

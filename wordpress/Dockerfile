@@ -1,4 +1,4 @@
-FROM fedora:22
+FROM fedora:23
 MAINTAINER http://fedoraproject.org/wiki/Cloud
 RUN dnf -y update && dnf clean all
 RUN dnf -y install httpd php php-mysql php-gd pwgen psmisc tar && \
