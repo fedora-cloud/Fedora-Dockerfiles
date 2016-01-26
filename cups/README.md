@@ -82,7 +82,7 @@ also use the CUPS server in the container when printing.
 
 ### Automating printer setup
 
-You can set up a printer through the web interface or by passing additional environment variables to docker (usefull for automation):
+You can set up a printer through the web interface or by passing additional environment variables to docker (useful for automation):
 
 ```
 # docker run -d \
