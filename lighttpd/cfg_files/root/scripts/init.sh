@@ -28,9 +28,9 @@ chmod 600 /home/lighttpd/.ssh/authorized_keys
 chmod 700 /home/lighttpd/.ssh
 
 # create config template - we'll use it later (after mounting via external fs)
-mv /etc/lighttpd /etc/lighttpd.template
-sed -i 's/server.groupname = "www"/server.groupname = "lighttpd"/' /etc/lighttpd.template/lighttpd.conf
-sed -i 's/server.username  = "www"/server.username  = "lighttpd"/' /etc/lighttpd.template/lighttpd.conf
+sed -i 's/server.groupname = "www"/server.groupname = "lighttpd"/' /etc/lighttpd/lighttpd.conf
+sed -i 's/server.username  = "www"/server.username  = "lighttpd"/' /etc/lighttpd/lighttpd.conf
+cp -r /etc/lighttpd /etc/lighttpd.template
 
 # make sure logs are accessible from lighttpd user:
 chown lighttpd:lighttpd /var/log/lighttpd
