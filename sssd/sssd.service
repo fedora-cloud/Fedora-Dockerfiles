@@ -7,6 +7,9 @@
 [Unit]
 Description=System Security Services Daemon in container
 
+Requires=docker.service
+After=docker.service
+
 # SSSD will not be started until syslog is
 After=syslog.target
 # SSSD must be running before we permit user sessions
@@ -21,3 +24,4 @@ RemainAfterExit=yes
 
 [Install]
 WantedBy=multi-user.target
+WantedBy=docker.service
