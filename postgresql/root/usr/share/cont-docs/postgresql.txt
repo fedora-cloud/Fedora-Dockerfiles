@@ -2,7 +2,7 @@
 PostgreSQL in container
 =======================
 
-API Version:  1.0.0
+API Version:  1.0.1
 
 Documentation
 -------------
