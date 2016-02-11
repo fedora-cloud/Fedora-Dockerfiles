@@ -1,12 +1,10 @@
-FROM fedora:23
+FROM fedora
 MAINTAINER http://fedoraproject.org/wiki/Cloud
 
 # Install nodejs and npm
-RUN dnf -y update
-RUN dnf -y install npm
-RUN dnf clean all
+RUN dnf -y update && dnf -y install npm && dnf clean all
 
-# Show nodejs versions
+# Show nodejs and npm versions installed
 RUN node -v
 RUN npm -v
 
