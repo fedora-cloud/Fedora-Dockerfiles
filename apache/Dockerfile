@@ -1,14 +1,8 @@
-FROM fedora:23
+FROM fedora
 MAINTAINER http://fedoraproject.org/wiki/Cloud
 
-# Updating dependencies
-RUN dnf -y update
-
-# Installing Apache
-RUN dnf -y install httpd
-
-# Cleaning dnf caches to reduce container size
-RUN dnf clean all
+# Updating dependencies, installing Apache and cleaning dnf caches to reduce container size
+RUN dnf -y update && dnf -y install httpd && dnf clean all
 
 # Creating placeholder file to be served by apache
 RUN echo "Apache" >> /var/www/html/index.html
