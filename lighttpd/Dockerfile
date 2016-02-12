@@ -1,5 +1,5 @@
 # Based on the Fedora image
-FROM docker.io/fedora:22
+FROM fedora
 
 MAINTAINER http://fedoraproject.org/wiki/Cloud
 
