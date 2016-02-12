@@ -7,6 +7,6 @@ This is the upstream source for the [fedora-dockerfiles](http://koji.fedoraproje
 # sudo yum install docker fedora-dockerfiles
 ```
 
-Some [guidelines](https://github.com/fedora-cloud/Fedora-Dockerfiles/wiki/Guidelines-for-Creating-Dockerfiles) for contributing to this repo.
+Some [guidelines](https://github.com/projectatomic/container-best-practices) for contributing to this repo.
 
 We welcome contributions.
