@@ -1,8 +1,8 @@
 FROM fedora
 MAINTAINER http://fedoraproject.org/wiki/Cloud
 
-RUN  yum -y update && yum clean all
-RUN  yum -y install couchdb && yum clean all
+RUN  dnf -y update && dnf clean all
+RUN  dnf -y install couchdb && dnf clean all
 
 RUN  sed -e 's/^bind_address = .*$/bind_address = 0.0.0.0/' -i /etc/couchdb/default.ini
 

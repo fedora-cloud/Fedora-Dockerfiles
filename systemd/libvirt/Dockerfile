@@ -20,13 +20,13 @@ VOLUME /run
 # providing an alternative configuration.
 EXPOSE 16509
 
-RUN yum -y install \
+RUN dnf -y install \
 	libvirt \
 	qemu \
 	qemu-kvm \
 	virt-install \
 	pygobject3-base \
-	; yum clean all
+	; dnf clean all
 
 # Enable libvirtd and virtlockd services.
 RUN systemctl enable libvirtd

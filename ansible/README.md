@@ -34,8 +34,8 @@ Where `my-playbook.yml` might look something like this:
 
       post_tasks:
 
-        - name: cleanup yum cache
-          command: yum clean all
+        - name: cleanup dnf cache
+          command: dnf clean all
 
 Now you can use the same code in the playbook/role to configure bare-metal
 machines and also docker images.

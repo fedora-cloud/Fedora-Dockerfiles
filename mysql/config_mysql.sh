@@ -3,9 +3,9 @@
 __mysql_config() {
 # Hack to get MySQL up and running... I need to look into it more.
 echo "Running the mysql_config function."
-yum -y erase community-mysql community-mysql-server
+dnf -y erase community-mysql community-mysql-server
 rm -rf /var/lib/mysql/ /etc/my.cnf
-yum -y install community-mysql community-mysql-server
+dnf -y install community-mysql community-mysql-server
 mysql_install_db
 chown -R mysql:mysql /var/lib/mysql
 /usr/bin/mysqld_safe & 

@@ -1,8 +1,8 @@
 FROM fedora
 MAINTAINER http://fedoraproject.org/wiki/Cloud
 
-RUN yum -y update && yum clean all
-RUN yum -y install jenkins java initscripts supervisor && yum clean all
+RUN dnf -y update && dnf clean all
+RUN dnf -y install jenkins java initscripts supervisor && dnf clean all
 
 EXPOSE 8080
 

@@ -1,8 +1,8 @@
 FROM fedora
 MAINTAINER http://fedoraproject.org/wiki/Cloud
 
-RUN yum -y update && yum clean all
-RUN yum -y install community-mysql-server community-mysql pwgen supervisor bash-completion psmisc net-tools && yum clean all
+RUN dnf -y update && dnf clean all
+RUN dnf -y install community-mysql-server community-mysql pwgen supervisor bash-completion psmisc net-tools && dnf clean all
 
 ADD ./start.sh /start.sh
 ADD ./config_mysql.sh /config_mysql.sh

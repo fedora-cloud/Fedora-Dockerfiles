@@ -1,7 +1,7 @@
 FROM fedora
 MAINTAINER http://fedoraproject.org/wiki/Cloud
-RUN yum -y update && yum clean all
-RUN yum -y install httpd php php-mysql php-gd pwgen supervisor bash-completion openssh-server psmisc tar && yum clean all
+RUN dnf -y update && dnf clean all
+RUN dnf -y install httpd php php-mysql php-gd pwgen supervisor bash-completion openssh-server psmisc tar && dnf clean all
 ADD ./start.sh /start.sh
 ADD ./foreground.sh /etc/apache2/foreground.sh
 ADD ./supervisord.conf /etc/supervisord.conf

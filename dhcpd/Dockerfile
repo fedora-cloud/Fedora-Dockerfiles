@@ -3,9 +3,9 @@ FROM fedora
 
 MAINTAINER http://fedoraproject.org/wiki/Cloud
 
-RUN yum -y update && yum clean all
+RUN dnf -y update && dnf clean all
 
-RUN yum -y install dhcp-server /usr/sbin/ip /usr/bin/ipcalc && yum clean all
+RUN dnf -y install dhcp-server /usr/sbin/ip /usr/bin/ipcalc && dnf clean all
 
 ADD dhcpd.sh /dhcpd
 
