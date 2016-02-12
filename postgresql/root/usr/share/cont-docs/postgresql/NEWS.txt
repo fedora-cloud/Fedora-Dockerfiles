@@ -1,3 +1,8 @@
+New in 1.0.1
+
+* dnf reinstall fails if the package has been updated in the meantime,
+  fix by s/dnf reinstall/dnf update && dnf reinstall'
+
 New in 1.O.0
 
 * Backward incompatibilities (against pre-release versions):

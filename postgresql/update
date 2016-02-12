@@ -1,5 +1,7 @@
 #!/bin/sh
 
+version=1.0.1
+
 clean()
 {
     git rm -rf Dockerfile root
@@ -10,7 +12,9 @@ build()
     # To better understand how this works (or how to make this work)
     # see https://github.com/devexp-db/cont-postgresql
     cd cont-postgresql
+    git co master
     git pull
+    git checkout v$version
     git submodule update --init
     make DESTDIR=../
 )

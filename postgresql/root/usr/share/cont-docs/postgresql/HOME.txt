@@ -6,7 +6,7 @@ General documentation for PostgreSQL container usage.  Most of this
 documentation describes only proof-of-concept implemented ideas.  Be careful not
 to rely described API too much because it is still expected to change very fast.
 
-Note that this is for 1.0.0 API
+Note that this is for 1.0.1 API
 (MAJOR.MINOR.FIX).  Any change in MAJOR part of version introduces backward
 incompatibility (you should take into account that interchanging MAJOR container
 with MAJOR+N container will need some manual changes in your tooling).  On the
