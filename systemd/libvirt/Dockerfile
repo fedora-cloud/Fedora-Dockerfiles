@@ -26,7 +26,7 @@ RUN dnf -y install \
 	qemu-kvm \
 	virt-install \
 	pygobject3-base \
-	; dnf clean all
+	&& dnf clean all
 
 # Enable libvirtd and virtlockd services.
 RUN systemctl enable libvirtd

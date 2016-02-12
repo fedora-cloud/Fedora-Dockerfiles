@@ -2,7 +2,7 @@ FROM fedora
 MAINTAINER http://fedoraproject.org/wiki/Cloud
 
 # Update the container
-RUN dnf -y update
+RUN dnf -y update && dnf clean all
 
 # Install the hadoop packages
 RUN dnf -y install hadoop-common hadoop-common-native hadoop-hdfs hadoop-mapreduce hadoop-mapreduce-examples hadoop-yarn pwgen java-1.7.0-openjdk-headless java-1.7.0-openjdk java-1.7.0-openjdk-devel ldapjdk supervisor bash-completion && dnf clean all
