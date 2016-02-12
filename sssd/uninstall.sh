@@ -10,14 +10,13 @@ mv /var/log /var/log-aside && ln -s "$HOST/var/log/sssd/uninstall" /var/log
 
 export _SYSTEMCTL_LITE_LOGFILE="$HOST/var/log/sssd/uninstall/systemctl.log"
 touch $_SYSTEMCTL_LITE_LOGFILE
-tail -f "$HOST/var/log/sssd/uninstall/systemctl.log" &
 
-while read f ; do
-	if [ -e "$HOST/$f" ] ; then
-		f_dir=$( dirname "$f" )
-		( cd "$HOST/$f_dir" && tar cf - $( basename "$f" ) ) | ( cd "$f_dir" && tar xvf - )
+echo "Initializing configuration context from host ..."
+( cd "$HOST" && while read f ; do
+	if [ -e "$f" ] ; then
+		cp --parents -rp -t / "$f"
 	fi
-done < /etc/host-data-list
+done ) < /etc/host-data-list
 
 mkdir -p /etc/sssd/systemctl-lite-enabled
 rm -rf /etc/systemctl-lite-enabled
@@ -47,11 +46,13 @@ fi
 $COMMAND "${params[@]}"
 
 rm -rf /var/lib/sss/{mc,pipes}/*
-sed 's/^/./' /etc/host-data-list | ( cd "$HOST" && xargs find ) | while read f ; do
+
+echo "Copying new configuration to host ..."
+cat /etc/host-data-list | ( cd "$HOST" && xargs find ) | while read f ; do
 	if ! [ -e "/$f" ] ; then
-		echo "Removing $HOST/$f"
+		echo "Removing /$f"
 		rm -rf "$HOST/$f"
 	fi
 done
-xargs -a /etc/host-data-list tar cf - | ( cd "$HOST" && tar xvf - )
+xargs cp --parents -rp -t "$HOST" < /etc/host-data-list
 

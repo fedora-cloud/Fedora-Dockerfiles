@@ -39,10 +39,10 @@ need that later:
 And now run the container:
 
     On docker 0.8.x:
-    $ sudo docker run -p 8091:80/tcp -v /srv/docker_mounts/lighttpd/configs:/etc/lighttpd -v /srv/docker_mounts/lighttpd/logs:/var/log/lighttpd -v /srv/docker_mounts/lighttpd/htdocs/:/srv/httpd/htdocs -name lighttpd -t -d lighttpd
+    $ sudo docker run -p 8091:80/tcp -v /srv/docker_mounts/lighttpd/configs:/etc/lighttpd -v /srv/docker_mounts/lighttpd/logs:/var/log/lighttpd -v /srv/docker_mounts/lighttpd/htdocs/:/srv/httpd/htdocs -v /sys/fs/cgroup:/sys/fs/cgroup:ro --name lighttpd -t -d lighttpd
 
     On docker 0.9.x:
-    $ sudo docker run -d -p 8091:80/tcp -v /srv/docker_mounts/lighttpd/configs:/etc/lighttpd -v /srv/docker_mounts/lighttpd/logs:/var/log/lighttpd -v /srv/docker_mounts/lighttpd/htdocs/:/srv/httpd/htdocs --name=lighttpd -t lighttpd
+    $ sudo docker run -d -p 8091:80/tcp -v /srv/docker_mounts/lighttpd/configs:/etc/lighttpd -v /srv/docker_mounts/lighttpd/logs:/var/log/lighttpd -v /srv/docker_mounts/lighttpd/htdocs/:/srv/httpd/htdocs -v /sys/fs/cgroup:/sys/fs/cgroup:ro --name=lighttpd -t lighttpd
 
 In above example params means:
 
@@ -81,7 +81,7 @@ In order to change configuration just edit cfg files in host
 /srv/docker_mounts/lighttpd/configs (remember that this dir is mounted on
 /etc/lighttpd/ in container) and run a command:
 
-    $ ssh lighttpd@container_IP "sudo /etc/init.d/lighttpd restart"
+    $ ssh lighttpd@container_IP "sudo systemctl restart lighttpd"
 
 Managing logfiles
 -----

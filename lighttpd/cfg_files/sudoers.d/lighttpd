@@ -1,1 +1,1 @@
-lighttpd ALL=NOPASSWD: /etc/init.d/lighttpd restart,/etc/init.d/lighttpd stop,/etc/init.d/lighttpd start,/etc/init.d/lighttpd reload
+lighttpd ALL=NOPASSWD: systemctl restart lighttpd,systemctl stop lighttpd,systemctl start lighttpd,systemctl reload lighttpd

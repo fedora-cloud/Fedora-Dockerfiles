@@ -14,8 +14,8 @@ Before=systemd-user-sessions.service nss-user-lookup.target
 Wants=nss-user-lookup.target
 
 [Service]
-ExecStart=/usr/bin/atomic run sssd
-ExecStop=/usr/bin/atomic stop sssd
+ExecStart=/usr/bin/atomic run --name=${NAME} ${IMAGE}
+ExecStop=/usr/bin/atomic stop --name=${NAME} ${IMAGE}
 Type=oneshot
 RemainAfterExit=yes
 

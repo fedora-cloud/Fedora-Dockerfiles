@@ -3,8 +3,6 @@ FROM fedora
 
 MAINTAINER Jan Pazdziora
 
-# Optional is needed on RHEL 7.1 for sssd-dbus
-# RUN subscription-manager repos --enable=rhel-7-server-optional-rpms
 # Install FreeIPA client and realmd
 RUN mkdir -p /run/lock ; dnf install -y freeipa-client realmd /etc/selinux/targeted/contexts/dbus_contexts oddjob oddjob-mkhomedir sssd sssd-dbus adcli perl tar findutils && dnf clean all
 RUN rm -f /usr/bin/sss_ssh_authorizedkeys
@@ -24,8 +22,8 @@ ADD rhel-domainname.service /etc/systemd/system/rhel-domainname.service
 ADD rhel-domainname.service /etc/systemd/system/fedora-domainname.service
 ADD sssd.service /etc/sssd.service.template
 
-LABEL INSTALL 'docker run --rm=true --privileged --net=host -v /:/host -e NAME=${NAME} -e HOST=/host ${IMAGE} /bin/install.sh'
-LABEL RUN 'docker run -d --restart=always --security-opt label:type:sssd_t --privileged --net=host --name ${NAME} -e NAME=${NAME} \
+LABEL INSTALL 'docker run --rm=true --privileged --net=host -v /:/host -e NAME=${NAME} -e IMAGE=${IMAGE} -e HOST=/host ${IMAGE} /bin/install.sh'
+LABEL RUN 'docker run -d --restart=always --security-opt label:type:sssd_t --privileged --net=host --name ${NAME} -e NAME=${NAME} -e IMAGE=${IMAGE} \
 	-v /etc/ipa/:/etc/ipa/:ro \
 	-v /etc/krb5.conf:/etc/krb5.conf:ro \
 	-v /etc/krb5.keytab:/etc/krb5.keytab:ro \
@@ -49,5 +47,5 @@ LABEL RUN 'docker run -d --restart=always --security-opt label:type:sssd_t --pri
 	-v /var/log/sssd/:/var/log/sssd/ \
 	-v /var/run/dbus/system_bus_socket:/var/run/dbus/system_bus_socket \
 	${IMAGE} /bin/run.sh'
-LABEL UNINSTALL 'docker run --privileged --net=host -v /:/host -e NAME=${NAME} -e HOST=/host ${IMAGE} /bin/uninstall.sh'
-LABEL STOP 'docker kill -s TERM ${IMAGE}'
+LABEL UNINSTALL 'docker run --rm=true --privileged --net=host -v /:/host -e NAME=${NAME} -e IMAGE=${IMAGE} -e HOST=/host ${IMAGE} /bin/uninstall.sh'
+LABEL STOP 'docker kill -s TERM ${NAME}'
