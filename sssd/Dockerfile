@@ -23,7 +23,7 @@ ADD rhel-domainname.service /etc/systemd/system/fedora-domainname.service
 ADD sssd.service /etc/sssd.service.template
 
 LABEL INSTALL 'docker run --rm=true --privileged --net=host -v /:/host -e NAME=${NAME} -e IMAGE=${IMAGE} -e HOST=/host ${IMAGE} /bin/install.sh'
-LABEL RUN 'docker run -d --restart=always --security-opt label:type:sssd_t --privileged --net=host --name ${NAME} -e NAME=${NAME} -e IMAGE=${IMAGE} \
+LABEL RUN 'docker run -d --security-opt label:type:sssd_t --privileged --net=host --name ${NAME} -e NAME=${NAME} -e IMAGE=${IMAGE} \
 	-v /etc/ipa/:/etc/ipa/:ro \
 	-v /etc/krb5.conf:/etc/krb5.conf:ro \
 	-v /etc/krb5.keytab:/etc/krb5.keytab:ro \
