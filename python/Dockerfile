@@ -1,8 +1,8 @@
 FROM fedora
 MAINTAINER http://fedoraproject.org/wiki/Cloud
 
-RUN yum -y update && yum clean all
-RUN yum -y install python-pip && yum clean all
+RUN dnf -y update && dnf clean all
+RUN dnf -y install python-pip && dnf clean all
 
 ADD . /src
 

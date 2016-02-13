@@ -1,8 +1,8 @@
 FROM fedora:rawhide
 MAINTAINER http://fedoraproject.org/wiki/Cloud
 
-RUN yum -y update && yum clean all
-RUN yum -y install httpd && yum clean all; \
+RUN dnf -y update && dnf clean all
+RUN dnf -y install httpd && dnf clean all && \
 systemctl enable httpd.service
 
 EXPOSE 80

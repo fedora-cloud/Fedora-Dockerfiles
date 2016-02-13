@@ -1,8 +1,8 @@
 FROM fedora
 MAINTAINER http://fedoraproject.org/wiki/Cloud
 
-RUN yum -y update && yum clean all
-RUN yum -y install ghc cabal-install cabal-rpm cabal-dev\
+RUN dnf -y update && dnf clean all
+RUN dnf -y install ghc cabal-install cabal-rpm cabal-dev\
   hscolour ghc-rpm-macros hlint\
   ghc-QuickCheck-devel\
   ghc-cereal-devel\
@@ -40,6 +40,6 @@ RUN yum -y install ghc cabal-install cabal-rpm cabal-dev\
   ghc-mtl-devel\
   ghc-text-devel\
   ghc-transformers-devel &&\
- yum clean all
+ dnf clean all
 
 CMD [ "/bin/bash" ]

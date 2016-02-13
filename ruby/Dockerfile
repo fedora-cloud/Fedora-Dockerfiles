@@ -1,5 +1,5 @@
 FROM fedora
 MAINTAINER http://fedoraproject.org/wiki/Cloud
 
-RUN yum -y update && yum clean all
-RUN yum -y install ruby-devel git && yum clean all
+RUN dnf -y update && dnf clean all
+RUN dnf -y install ruby-devel git && dnf clean all
