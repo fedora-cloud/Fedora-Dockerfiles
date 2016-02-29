@@ -11,26 +11,23 @@ RUN dnf -y reinstall "*" && dnf clean all
 
 # Install all useful packages
 RUN dnf -y install \
-           kernel \
-           e2fsprogs \
-           sos \
-           fpaste \
-           crash \
-           strace \
-           ltrace \
-           tcpdump \
            abrt \
-           pcp \
-           systemtap \
-           perf \
+           bash-completion \
            bc \
            blktrace \
            btrfs-progs \
+           crash \
+           dnf-plugins-core \
+           docker \
+           docker-selinux \
+           e2fsprogs \
            ethtool \
            file \
            findutils \
+           fpaste \
            gcc \
            gdb \
+           gdb-gdbserver \
            git \
            glibc-common \
            glibc-utils \
@@ -38,8 +35,12 @@ RUN dnf -y install \
            iotop \
            iproute \
            iputils \
+           kernel \
+           kubernetes-client \
+           kubernetes-devel \
+           kubernetes-master \
+           kubernetes-node \
            less \
-           pciutils \
            ltrace \
            mailx \
            man-db \
@@ -48,36 +49,32 @@ RUN dnf -y install \
            net-tools \
            numactl \
            numactl-devel \
+           ostree \
            passwd \
+           pciutils \
+           pcp \
            perf \
            procps-ng \
            psmisc \
+           python-dnf-plugins-extras* \
+           python-docker-py \
+           python-rhsm \
+           rootfiles \
+           rpm-ostree \
            screen \
+           sos \
            strace \
+           subscription-manager \
            sysstat \
+           systemtap \
            systemtap-client \
            tar \
            tcpdump \
            vim-enhanced \
-           xauth \
-           which \
-           ostree \
-           rpm-ostree \
-           docker \
-           python-docker-py \
-           docker-selinux \
-           kubernetes-client \
-           kubernetes-node \
-           kubernetes-devel \
-           kubernetes-master \
-           gdb-gdbserver \
            vim-minimal \
-           bash-completion \
-           subscription-manager \
-           python-rhsm \
-           rootfiles \
-           python-dnf-plugins-extras* \
-           dnf-plugins-core && dnf clean all
+           which \
+           xauth \
+           && dnf clean all
 
 # Set default command
 CMD ["/usr/bin/bash"]
