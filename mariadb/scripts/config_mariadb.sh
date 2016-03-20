@@ -4,9 +4,8 @@ set -e
 
 __mysql_config() {
   echo "Running the mysql_config function."
-  mysql_install_db
-  chown -R mysql:mysql /var/lib/mysql
-  /usr/bin/mysqld_safe &
+  mysql_install_db --user=mysql
+  /usr/bin/mysqld_safe -u mysql &
   sleep 10
 }
 
