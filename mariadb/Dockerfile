@@ -10,4 +10,4 @@ RUN chmod 755 /scripts/*
 VOLUME ["/var/lib/mysql", "/var/log/mysql"]
 EXPOSE 3306
 
-CMD ["/bin/bash", "/scripts/start.sh"]
+CMD ["/scripts/start.sh"]
