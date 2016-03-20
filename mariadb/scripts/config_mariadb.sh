@@ -36,10 +36,7 @@ EOF
 }
 
 # Call all functions
-DB_FILES=$(echo /var/lib/mysql/*)
-DB_FILES="${DB_FILES#/var/lib/mysql/\*}"
-DB_FILES="${DB_FILES#/var/lib/mysql/lost+found}"
-if [ -z "$DB_FILES" ]; then
+if [ ! -d /var/lib/mysql/mysql ]; then
   printf "Initializing empty /var/lib/mysql...\n"
   __mysql_config
   __start_mysql
