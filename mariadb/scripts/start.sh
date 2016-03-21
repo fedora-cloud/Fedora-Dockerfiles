@@ -6,4 +6,4 @@ if [ -x /scripts/config_mariadb.sh ]; then
 fi
 
 rm -f /run/mysqld/mysqld.sock
-exec /usr/bin/mysqld_safe
+exec /usr/bin/mysqld_safe -u mysql
