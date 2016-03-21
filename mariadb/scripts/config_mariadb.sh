@@ -11,16 +11,14 @@ __mysql_config() {
 
 __start_mysql() {
   printf "Running the start_mysql function.\n"
-  ROOT_PASS="$(pwgen -s -1 12)"
   USER="${USER-dbuser}"
   PASS="${PASS-$(pwgen -s -1 12)}"
   NAME="${NAME-db}"
-  printf "root password=%s\n" "$ROOT_PASS"
+  printf "root password=\n"
   printf "NAME=%s\n" "$NAME"
   printf "USER=%s\n" "$USER"
   printf "PASS=%s\n" "$PASS"
-  mysqladmin -u root password "$ROOT_PASS"
-  mysql -uroot -p"$ROOT_PASS" <<-EOF
+  mysql -uroot <<-EOF
 	CREATE USER '$USER'@'%' IDENTIFIED BY '$PASS';
 	GRANT ALL PRIVILEGES ON *.* TO '$USER'@'%' WITH GRANT OPTION;
 	CREATE DATABASE $NAME;
