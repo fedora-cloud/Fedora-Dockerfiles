@@ -19,9 +19,9 @@ __start_mysql() {
   printf "USER=%s\n" "$USER"
   printf "PASS=%s\n" "$PASS"
   mysql -uroot <<-EOF
-	CREATE USER '$USER'@'%' IDENTIFIED BY '$PASS';
-	GRANT ALL PRIVILEGES ON *.* TO '$USER'@'%' WITH GRANT OPTION;
 	CREATE DATABASE $NAME;
+	CREATE USER '$USER'@'%' IDENTIFIED BY '$PASS';
+	GRANT ALL PRIVILEGES ON $NAME.* TO '$USER'@'%' WITH GRANT OPTION;
 EOF
 
   killall mysqld
