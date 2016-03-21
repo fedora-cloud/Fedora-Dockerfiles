@@ -21,10 +21,6 @@ __start_mysql() {
   printf "PASS=%s\n" "$PASS"
   mysqladmin -u root password "$ROOT_PASS"
   mysql -uroot -p"$ROOT_PASS" <<-EOF
-	DELETE FROM mysql.user WHERE user = '$USER';
-	FLUSH PRIVILEGES;
-	CREATE USER '$USER'@'localhost' IDENTIFIED BY '$PASS';
-	GRANT ALL PRIVILEGES ON *.* TO '$USER'@'localhost' WITH GRANT OPTION;
 	CREATE USER '$USER'@'%' IDENTIFIED BY '$PASS';
 	GRANT ALL PRIVILEGES ON *.* TO '$USER'@'%' WITH GRANT OPTION;
 	CREATE DATABASE $NAME;
