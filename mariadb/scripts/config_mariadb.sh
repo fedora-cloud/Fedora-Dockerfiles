@@ -29,11 +29,6 @@ EOF
 }
 
 # Call all functions
-if [ ! -d /var/lib/mysql/mysql ]; then
-  printf "Initializing empty /var/lib/mysql...\n"
-  __mysql_config
-  __start_mysql
-fi
+__mysql_config
+__start_mysql
 
-# Don't run this again.
-rm -f /scripts/config_mariadb.sh

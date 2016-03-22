@@ -1,7 +1,7 @@
 #!/bin/bash
 
-if [ -x /scripts/config_mariadb.sh ]; then
-  # Initial configuration
+if [ ! -d /var/lib/mysql/mysql ]; then
+  echo "Initializing empty /var/lib/mysql..."
   /scripts/config_mariadb.sh || exit 1
 fi
 
