@@ -1,7 +1,11 @@
 FROM fedora
 MAINTAINER http://fedoraproject.org/wiki/Cloud
 RUN dnf -y update && dnf clean all
-RUN dnf -y install mariadb-server pwgen psmisc net-tools hostname && \
+
+# Add our user and group first to make sure their IDs get assigned consistently
+RUN groupadd -r mysql -g 1000 && \
+    useradd -r mysql -u 1000 -g mysql && \
+    dnf -y install mariadb-server pwgen psmisc net-tools hostname && \
     dnf clean all
 
 ADD scripts /scripts
