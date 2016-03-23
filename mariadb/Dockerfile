@@ -10,8 +10,9 @@ RUN groupadd -r mysql -g 1000 && \
 
 ADD scripts /scripts
 RUN chmod -v +x /scripts/*
+ADD mariadb-server.cnf /etc/my.cnf.d/mariadb-server.cnf
 
-VOLUME ["/var/lib/mysql", "/var/log/mysql"]
+VOLUME ["/var/lib/mysql"]
 EXPOSE 3306
 
 CMD ["/scripts/start.sh"]

@@ -1,0 +1,14 @@
+#
+# These groups are read by MariaDB server.
+# Use it for options that only the server (but not clients) should see
+#
+# See the examples of server my.cnf files in /usr/share/mysql/
+#
+
+[server]
+user=mysql
+datadir=/var/lib/mysql
+socket=/var/lib/mysql/mysql.sock
+pid-file=/var/run/mariadb/mariadb.pid
+
+# Don't set log-error. Docker likes logs on stdout/stderr, like systemd does.
