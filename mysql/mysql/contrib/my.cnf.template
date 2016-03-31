@@ -1,0 +1,32 @@
+[mysqld]
+user = mysql
+
+datadir = ${MYSQL_DATADIR}
+basedir = /usr
+plugin-dir = /usr/lib64/mysql/plugin
+
+# Disabling symbolic-links is recommended to prevent assorted security risks
+symbolic-links = 0
+
+# http://www.percona.com/blog/2008/05/31/dns-achilles-heel-mysql-installation/
+skip_name_resolve
+
+#
+# Settings configured by the user
+#
+
+# Sets how the table names are stored and compared. Default: 0
+lower_case_table_names = ${MYSQL_LOWER_CASE_TABLE_NAMES}
+
+# The maximum permitted number of simultaneous client connections. Default: 151
+max_connections = ${MYSQL_MAX_CONNECTIONS}
+
+# The minimum length of the word to be included in a FULLTEXT index. Default: 4
+ft_min_word_len = ${MYSQL_FT_MIN_WORD_LEN}
+
+# The maximum length of the word to be included in a FULLTEXT index. Default: 20
+ft_max_word_len = ${MYSQL_FT_MAX_WORD_LEN}
+
+# In case the native AIO is broken. Default: 1
+# See http://help.directadmin.com/item.php?id=529
+innodb_use_native_aio = ${MYSQL_AIO}
