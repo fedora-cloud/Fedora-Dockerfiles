@@ -6,24 +6,21 @@ MAINTAINER Jan Pazdziora
 # Install FreeIPA client and realmd
 RUN mkdir -p /run/lock ; dnf install -y freeipa-client realmd /etc/selinux/targeted/contexts/dbus_contexts oddjob oddjob-mkhomedir sssd sssd-dbus adcli perl tar findutils && dnf clean all
 RUN rm -f /usr/bin/sss_ssh_authorizedkeys
-ADD dbus.service /etc/systemd/system/dbus.service
-ADD oddjobd.service /etc/systemd/system/oddjobd.service
+COPY dbus.service /etc/systemd/system/dbus.service
+COPY oddjobd.service /etc/systemd/system/oddjobd.service
 
-ADD systemctl-socket-daemon /usr/bin/systemctl-socket-daemon
-ADD systemctl /usr/bin/systemctl
+COPY systemctl-socket-daemon /usr/bin/systemctl-socket-daemon
+COPY systemctl /usr/bin/systemctl
 
-ADD host-data-list /etc/host-data-list
-ADD install.sh /bin/install.sh
-ADD run.sh /bin/run.sh
-ADD uninstall.sh /bin/uninstall.sh
+COPY host-data-list /etc/host-data-list
+COPY install.sh run.sh uninstall.sh /bin/
 RUN chmod +x /usr/bin/systemctl /usr/bin/systemctl-socket-daemon /bin/install.sh /bin/run.sh /bin/uninstall.sh
 
-ADD rhel-domainname.service /etc/systemd/system/rhel-domainname.service
-ADD rhel-domainname.service /etc/systemd/system/fedora-domainname.service
-ADD sssd.service /etc/sssd.service.template
+COPY rhel-domainname.service fedora-domainname.service /etc/systemd/system/
+COPY sssd.service /etc/sssd.service.template
 
 LABEL INSTALL 'docker run --rm=true --privileged --net=host -v /:/host -e NAME=${NAME} -e IMAGE=${IMAGE} -e HOST=/host ${IMAGE} /bin/install.sh'
-LABEL RUN 'docker run -d --security-opt label:type:sssd_t --privileged --net=host --name ${NAME} -e NAME=${NAME} -e IMAGE=${IMAGE} \
+LABEL RUN 'docker run -d --restart=always --privileged --net=host --name ${NAME} -e NAME=${NAME} -e IMAGE=${IMAGE} \
 	-v /etc/ipa/:/etc/ipa/:ro \
 	-v /etc/krb5.conf:/etc/krb5.conf:ro \
 	-v /etc/krb5.keytab:/etc/krb5.keytab:ro \
