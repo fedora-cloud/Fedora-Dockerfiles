@@ -48,11 +48,15 @@ $COMMAND "${params[@]}"
 rm -rf /var/lib/sss/{mc,pipes}/*
 
 echo "Copying new configuration to host ..."
-cat /etc/host-data-list | ( cd "$HOST" && xargs find ) | while read f ; do
-	if ! [ -e "/$f" ] ; then
-		echo "Removing /$f"
-		rm -rf "$HOST/$f"
+while read f ; do
+	( cd "$HOST" && find "$f" ) | while read g ; do
+		if ! [ -e "/$g" ] ; then
+			echo "Removing /$g"
+			rm -rf "$HOST/$g"
+		fi
+	done
+	if [ -e "$f" ] ; then
+		cp --parents -rp -t "$HOST" "$f"
 	fi
-done
-xargs cp --parents -rp -t "$HOST" < /etc/host-data-list
+done < /etc/host-data-list
 

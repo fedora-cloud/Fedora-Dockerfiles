@@ -104,7 +104,11 @@ if $REALM ; then
 fi
 
 echo "Copying new configuration to host ..."
-xargs cp --parents -rp -t "$HOST" < /etc/host-data-list
+while read f ; do
+	if [ -e "$f" ] ; then
+		cp --parents -rp -t "$HOST" "$f"
+	fi
+done < /etc/host-data-list
 chroot "$HOST" restorecon -ri -f - < /etc/host-data-list
 
 setup_service
