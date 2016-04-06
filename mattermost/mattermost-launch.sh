@@ -11,5 +11,4 @@ if [ "$DRIVER_NAME" = "mysql" ]; then
         /opt/mattermost/config/config.json.orig > /opt/mattermost/config/config.json
 fi
 
-cd /opt/mattermost/bin/
 exec /opt/mattermost/bin/platform

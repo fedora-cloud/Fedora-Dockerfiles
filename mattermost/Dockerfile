@@ -44,4 +44,6 @@ RUN chmod 777 /opt/mattermost/config/config.json
 USER 2273
 EXPOSE 8065
 
+WORKDIR /opt/mattermost
+
 CMD mattermost-launch.sh
