@@ -33,17 +33,15 @@ RUN cd /opt && \
     curl -LO https://releases.mattermost.com/2.1.0/mattermost-team-2.1.0-linux-amd64.tar.gz && \
     tar xf mattermost-team-2.1.0-linux-amd64.tar.gz &&\
     rm mattermost-team-2.1.0-linux-amd64.tar.gz && \
-    chmod -R 777 /opt/mattermost
-# FIXME this seems to be too 777ish
+    mkdir /opt/mattermost/data && \
+    chmod 777 /opt/mattermost/config /opt/mattermost/logs /opt/mattermost/data
 
-COPY mattermost-launch.sh /usr/local/bin/mattermost-launch.sh
+COPY mattermost-launch.sh /opt/mattermost/bin/mattermost-launch.sh
 COPY config.json /opt/mattermost/config/config.json
 RUN chmod 777 /opt/mattermost/config/config.json
 
-# Make sure we can run with random UID, even in standalone docker
-USER 2273
 EXPOSE 8065
 
 WORKDIR /opt/mattermost
 
-CMD mattermost-launch.sh
+CMD bin/mattermost-launch.sh
