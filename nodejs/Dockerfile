@@ -13,7 +13,8 @@ ENV PORT 8080
 EXPOSE 8080
 
 # Set production environment for nodejs application
-ENV NODE_ENV=production
+ENV NODE_ENV=production \
+    PATH=/src/node_modules/.bin/:$PATH
 
 # Make directory for our nodejs project
 RUN mkdir /src
