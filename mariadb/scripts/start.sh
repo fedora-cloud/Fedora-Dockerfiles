@@ -1,9 +1,10 @@
 #!/bin/bash
 
-if [ -x /scripts/config_mariadb.sh ]; then
-  # Initial configuration
+if [ ! -d /var/lib/mysql/mysql ]; then
+  echo "Initializing empty /var/lib/mysql..."
   /scripts/config_mariadb.sh || exit 1
+  echo "/var/lib/mysql initialized. Ready to start"
 fi
 
 rm -f /run/mysqld/mysqld.sock
-exec /usr/bin/mysqld_safe
+exec /usr/libexec/mysqld
