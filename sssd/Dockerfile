@@ -16,7 +16,8 @@ COPY host-data-list /etc/host-data-list
 COPY install.sh run.sh uninstall.sh /bin/
 RUN chmod +x /usr/bin/systemctl /usr/bin/systemctl-socket-daemon /bin/install.sh /bin/run.sh /bin/uninstall.sh
 
-COPY rhel-domainname.service fedora-domainname.service /etc/systemd/system/
+COPY rhel-domainname.service /etc/systemd/system/
+COPY rhel-domainname.service /etc/systemd/system/fedora-domainname.service
 COPY sssd.service /etc/sssd.service.template
 
 LABEL INSTALL 'docker run --rm=true --privileged --net=host -v /:/host -e NAME=${NAME} -e IMAGE=${IMAGE} -e HOST=/host ${IMAGE} /bin/install.sh'
