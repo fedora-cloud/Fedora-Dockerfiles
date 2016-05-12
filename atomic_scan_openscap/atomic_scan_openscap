@@ -1,0 +1,11 @@
+type: scanner
+scanner_name: atomic_scan_openscap
+image_name: docker.io/atomic_scan_openscap
+default_scan: cve
+custom_args: ['-v', '/etc/oscapd:/etc/oscapd:ro']
+scans: [ 
+      { name: cve,
+        args: ['oscapd-evaluate', 'scan',  '--no-standard-compliance', '--targets', 'chroots-in-dir:///scanin',  '--output', '/scanout'],
+        description: "Performs a CVE scan based on known CVE data"},
+]
+    
