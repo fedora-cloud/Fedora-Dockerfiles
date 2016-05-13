@@ -1,6 +1,6 @@
 type: scanner
 scanner_name: atomic_scan_openscap
-image_name: docker.io/atomic_scan_openscap
+image_name: docker.io/fedora/atomic_scan_openscap
 default_scan: cve
 custom_args: ['-v', '/etc/oscapd:/etc/oscapd:ro']
 scans: [ 
