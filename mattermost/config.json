@@ -7,24 +7,35 @@
         "EnableOAuthServiceProvider": false,
         "EnableIncomingWebhooks": false,
         "EnableOutgoingWebhooks": false,
+        "EnableCommands": false,
+        "EnableOnlyAdminIntegrations": true,
         "EnablePostUsernameOverride": false,
         "EnablePostIconOverride": false,
         "EnableTesting": false,
         "EnableDeveloper": false,
         "EnableSecurityFixAlert": true,
+        "EnableInsecureOutgoingConnections": false,
+        "EnableMultifactorAuthentication": false,
+        "AllowCorsFrom": "",
         "SessionLengthWebInDays": 30,
         "SessionLengthMobileInDays": 30,
         "SessionLengthSSOInDays": 30,
-        "SessionCacheInMinutes": 10
+        "SessionCacheInMinutes": 10,
+        "WebsocketSecurePort": 443,
+        "WebsocketPort": 80,
+        "WebserverMode": "regular"
     },
     "TeamSettings": {
         "SiteName": "Mattermost",
         "MaxUsersPerTeam": 50,
         "EnableTeamCreation": true,
         "EnableUserCreation": true,
+        "EnableOpenServer": false,
         "RestrictCreationToDomains": "",
         "RestrictTeamNames": true,
-        "EnableTeamListing": false
+        "EnableCustomBrand": false,
+        "CustomBrandText": "",
+        "RestrictDirectMessage": "any"
     },
     "SqlSettings": {
         "DriverName": "mysql",
@@ -46,7 +57,7 @@
     "FileSettings": {
         "DriverName": "local",
         "Directory": "./data/",
-        "EnablePublicLink": true,
+        "EnablePublicLink": false,
         "PublicLinkSalt": "A705AklYF8MFDOfcwh3I488G8vtLlVip",
         "ThumbnailWidth": 120,
         "ThumbnailHeight": 100,
@@ -66,6 +77,8 @@
     },
     "EmailSettings": {
         "EnableSignUpWithEmail": true,
+        "EnableSignInWithEmail": true,
+        "EnableSignInWithUsername": true,
         "SendEmailNotifications": false,
         "RequireEmailVerification": false,
         "FeedbackName": "",
@@ -78,7 +91,8 @@
         "InviteSalt": "bjlSR4QqkXFBr7TP4oDzlfZmcNuH9YoS",
         "PasswordResetSalt": "vZ4DcKyVVRlKHHJpexcuXzojkE5PZ5eL",
         "SendPushNotifications": false,
-        "PushNotificationServer": ""
+        "PushNotificationServer": "",
+        "PushNotificationContents": "generic"
     },
     "RateLimitSettings": {
         "EnableRateLimiter": true,
@@ -92,11 +106,11 @@
         "ShowFullName": true
     },
     "SupportSettings": {
-        "TermsOfServiceLink": "/static/help/terms.html",
-        "PrivacyPolicyLink": "/static/help/privacy.html",
-        "AboutLink": "/static/help/about.html",
-        "HelpLink": "/static/help/help.html",
-        "ReportAProblemLink": "/static/help/report_problem.html",
+        "TermsOfServiceLink": "https://about.mattermost.com/default-terms/",
+        "PrivacyPolicyLink": "https://about.mattermost.com/default-privacy-policy/",
+        "AboutLink": "https://about.mattermost.com/default-about/",
+        "HelpLink": "https://about.mattermost.com/default-help/",
+        "ReportAProblemLink": "https://about.mattermost.com/default-report-problem/",
         "SupportEmail": "feedback@mattermost.com"
     },
     "GitLabSettings": {
@@ -119,16 +133,26 @@
     },
     "LdapSettings": {
         "Enable": false,
-        "LdapServer": null,
+        "LdapServer": "",
         "LdapPort": 389,
-        "BaseDN": null,
-        "BindUsername": null,
-        "BindPassword": null,
-        "FirstNameAttribute": null,
-        "LastNameAttribute": null,
-        "EmailAttribute": null,
-        "UsernameAttribute": null,
-        "IdAttribute": null,
-        "QueryTimeout": 60
+        "ConnectionSecurity": "",
+        "BaseDN": "",
+        "BindUsername": "",
+        "BindPassword": "",
+        "UserFilter": "",
+        "FirstNameAttribute": "",
+        "LastNameAttribute": "",
+        "EmailAttribute": "",
+        "UsernameAttribute": "",
+        "NicknameAttribute": "",
+        "IdAttribute": "",
+        "SkipCertificateVerification": false,
+        "QueryTimeout": 60,
+        "LoginFieldName": ""
+    },
+    "ComplianceSettings": {
+        "Enable": false,
+        "Directory": "./data/",
+        "EnableDaily": false
     }
 }

@@ -6,17 +6,17 @@ MAINTAINER http://fedoraproject.org/wiki/Cloud
 # based on the work of Takayoshi Kimura <tkimura@redhat.com>
 
 ENV container docker
-ENV MATTERMOST_VERSION 2.2.0
+ENV MATTERMOST_VERSION 3.0.1
 
 # Labels consumed by Red Hat build service
 LABEL Component="mattermost" \
-      Name="fedora-cloud/mattermost-220" \
-      Version="2.2.0" \
+      Name="fedora-cloud/mattermost-301" \
+      Version="3.0.1" \
       Release="1"
 
 # Labels could be consumed by OpenShift
 LABEL io.k8s.description="Mattermost is an open source, self-hosted Slack-alternative" \
-      io.k8s.display-name="Mattermost 2.2.0" \
+      io.k8s.display-name="Mattermost 3.0.1" \
       io.openshift.expose-services="8065:mattermost" \
       io.openshift.tags="mattermost,slack"
 
@@ -30,9 +30,9 @@ RUN dnf update -y && \
     dnf clean all
 
 RUN cd /opt && \
-    curl -LO https://releases.mattermost.com/2.2.0/mattermost-team-2.2.0-linux-amd64.tar.gz && \
-    tar xf mattermost-team-2.2.0-linux-amd64.tar.gz &&\
-    rm mattermost-team-2.2.0-linux-amd64.tar.gz && \
+    curl -LO https://releases.mattermost.com/3.0.1/mattermost-team-3.0.1-linux-amd64.tar.gz && \
+    tar xf mattermost-team-3.0.1-linux-amd64.tar.gz && \
+    rm mattermost-team-3.0.1-linux-amd64.tar.gz && \
     mkdir /opt/mattermost/data && \
     chmod 777 /opt/mattermost/config /opt/mattermost/logs /opt/mattermost/data
 
