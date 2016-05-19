@@ -39,4 +39,4 @@ This image will only run in conjunction with atomic_scan.
 
 ## Usage
 
-_atomic scan --scanner docker.io/atomic_scan_openscap <image|container names>_
+atomic scan --scanner docker.io/atomic_scan_openscap <image|container names>
