@@ -1,5 +1,7 @@
-FROM fedora
+FROM docker.io/fedora
 MAINTAINER http://fedoraproject.org/wiki/Cloud
+
+LABEL RUN='docker run -d -p 80:80 $IMAGE'
 
 # Updating dependencies, installing Apache and cleaning dnf caches to reduce container size
 RUN dnf -y update && dnf -y install httpd && dnf clean all
