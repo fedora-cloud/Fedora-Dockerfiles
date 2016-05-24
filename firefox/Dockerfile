@@ -1,10 +1,19 @@
-FROM fedora
+FROM docker.io/fedora
 MAINTAINER http://fedoraproject.org/wiki/Cloud
 
+# RUN label is for atomic cli, allows for ease of use
+LABEL RUN='docker run -d -p 5901:5901 -v /etc/machine-id:/etc/machine-id:ro $IMAGE'
+
 # Install the appropriate software
-RUN dnf -y update
-RUN dnf -y install firefox xorg-x11-twm tigervnc-server xterm xulrunner dejavu-sans-fonts dejavu-serif-fonts xdotool
-RUN dnf clean all
+RUN dnf -y update && \
+    dnf -y install firefox \
+                   xorg-x11-twm \
+                   tigervnc-server \
+                   xterm xulrunner \
+                   dejavu-sans-fonts  \
+                   dejavu-serif-fonts \
+                   xdotool && \
+    dnf clean all
 
 # Add the xstartup file into the image and set the default password.
 RUN mkdir /root/.vnc
