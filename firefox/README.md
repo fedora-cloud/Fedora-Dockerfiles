@@ -17,10 +17,14 @@ Copy the sources down -
 # docker build --rm -t <username>/firefox .
 ```
 
-To run:
+To run without building:
+
+sudo atomic run docker.io/fedora/firefox
+
+To run a local build:
 
 ```
-# docker run -d -p 5901:5901 <username>/firefox
+# docker run -d -p 5901:5901 -v /etc/machine-id:/etc/machine-id <username>/firefox
 ```
 
 Check the that the image launched successfully
