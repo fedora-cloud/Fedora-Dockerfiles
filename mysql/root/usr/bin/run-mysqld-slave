@@ -1,0 +1,53 @@
+#!/bin/bash
+#
+# This is an entrypoint that runs the MySQL server in the 'slave' mode.
+#
+
+source ${CONTAINER_SCRIPTS_PATH}/common.sh
+set -eu
+
+export_setting_variables
+
+log_volume_info $MYSQL_DATADIR
+
+# Just run normal server if the data directory is already initialized
+if [ -d "${MYSQL_DATADIR}/mysql" ]; then
+  log_info "Datadir already exists, execing ordinary run script"
+  exec /usr/bin/run-mysqld "$@"
+fi
+
+export MYSQL_RUNNING_AS_SLAVE=1
+
+[ -f ${CONTAINER_SCRIPTS_PATH}/validate_replication_variables.sh ] && source ${CONTAINER_SCRIPTS_PATH}/validate_replication_variables.sh
+
+# Generate the unique 'server-id' for this master
+export MYSQL_SERVER_ID=$(server_id)
+log_info "The 'slave' server-id is ${MYSQL_SERVER_ID}"
+
+# Process the MySQL configuration files
+log_info 'Processing MySQL configuration files ...'
+envsubst < ${CONTAINER_SCRIPTS_PATH}/my-base.cnf.template > /etc/my.cnf.d/base.cnf
+envsubst < ${CONTAINER_SCRIPTS_PATH}/my-paas.cnf.template > /etc/my.cnf.d/paas.cnf
+envsubst < ${CONTAINER_SCRIPTS_PATH}/my-slave.cnf.template > /etc/my.cnf.d/slave.cnf
+envsubst < ${CONTAINER_SCRIPTS_PATH}/my-repl-gtid.cnf.template > /etc/my.cnf.d/repl-gtid.cnf
+envsubst < ${CONTAINER_SCRIPTS_PATH}/my-tuning.cnf.template > /etc/my.cnf.d/tuning.cnf
+
+# Initialize MySQL database and wait for the MySQL master to accept
+# connections.
+initialize_database "$@"
+wait_for_mysql_master
+
+mysql $mysql_flags <<EOSQL
+  CHANGE MASTER TO MASTER_HOST='${MYSQL_MASTER_SERVICE_NAME}',MASTER_USER='${MYSQL_MASTER_USER}', MASTER_PASSWORD='${MYSQL_MASTER_PASSWORD}', MASTER_AUTO_POSITION = 1;
+EOSQL
+
+log_info 'Sourcing post-init.sh ...'
+[ -f ${CONTAINER_SCRIPTS_PATH}/post-init.sh ] && source ${CONTAINER_SCRIPTS_PATH}/post-init.sh
+
+# Restart the MySQL server with public IP bindings
+shutdown_local_mysql
+unset_env_vars
+log_volume_info $MYSQL_DATADIR
+log_info 'Running final exec -- Only MySQL server logs after this point'
+exec ${MYSQL_PREFIX}/libexec/mysqld --defaults-file=$MYSQL_DEFAULTS_FILE \
+  --report-host=$(hostname -i) "$@" 2>&1
