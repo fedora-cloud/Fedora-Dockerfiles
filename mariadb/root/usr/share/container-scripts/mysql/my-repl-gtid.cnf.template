@@ -1,0 +1,4 @@
+[mysqld]
+
+log-slave-updates = ON
+

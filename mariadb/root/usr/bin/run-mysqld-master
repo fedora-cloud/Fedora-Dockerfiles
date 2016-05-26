@@ -1,0 +1,50 @@
+#!/bin/bash
+#
+# This is an entrypoint that runs the MySQL server in the 'master' mode.
+#
+export_vars=$(cgroup-limits); export $export_vars
+source ${CONTAINER_SCRIPTS_PATH}/common.sh
+set -eu
+
+export MYSQL_RUNNING_AS_MASTER=1
+
+[ -f ${CONTAINER_SCRIPTS_PATH}/validate_replication_variables.sh ] && source ${CONTAINER_SCRIPTS_PATH}/validate_replication_variables.sh
+[ -f ${CONTAINER_SCRIPTS_PATH}/validate_variables.sh ] && source ${CONTAINER_SCRIPTS_PATH}/validate_variables.sh
+
+# The 'server-id' for master needs to be constant
+export MYSQL_SERVER_ID=1
+log_info "The 'master' server-id is ${MYSQL_SERVER_ID}"
+
+# Process the MySQL configuration files
+log_info 'Processing MySQL configuration files ...'
+envsubst < ${CONTAINER_SCRIPTS_PATH}/my-base.cnf.template > /etc/my.cnf.d/base.cnf
+envsubst < ${CONTAINER_SCRIPTS_PATH}/my-paas.cnf.template > /etc/my.cnf.d/paas.cnf
+envsubst < ${CONTAINER_SCRIPTS_PATH}/my-master.cnf.template > /etc/my.cnf.d/master.cnf
+envsubst < ${CONTAINER_SCRIPTS_PATH}/my-repl-gtid.cnf.template > /etc/my.cnf.d/repl-gtid.cnf
+envsubst < ${CONTAINER_SCRIPTS_PATH}/my-tuning.cnf.template > /etc/my.cnf.d/tuning.cnf
+
+if [ ! -d "$MYSQL_DATADIR/mysql" ]; then
+  initialize_database "$@"
+else
+  start_local_mysql "$@"
+fi
+
+log_info 'Setting passwords ...'
+[ -f ${CONTAINER_SCRIPTS_PATH}/passwd-change.sh ] && source ${CONTAINER_SCRIPTS_PATH}/passwd-change.sh
+
+# Setup the 'master' replication on the MySQL server
+mysql $mysql_flags <<EOSQL
+  GRANT REPLICATION SLAVE ON *.* TO '${MYSQL_MASTER_USER}'@'%' IDENTIFIED BY '${MYSQL_MASTER_PASSWORD}';
+  GRANT SELECT ON replication.* TO '${MYSQL_MASTER_USER}'@'%' IDENTIFIED BY '${MYSQL_MASTER_PASSWORD}';
+  FLUSH PRIVILEGES;
+EOSQL
+
+log_info 'Sourcing post-init.sh ...'
+[ -f ${CONTAINER_SCRIPTS_PATH}/post-init.sh ] && source ${CONTAINER_SCRIPTS_PATH}/post-init.sh
+
+# Restart the MySQL server with public IP bindings
+shutdown_local_mysql
+unset_env_vars
+log_volume_info $MYSQL_DATADIR
+log_info 'Running final exec -- Only MySQL server logs after this point'
+exec ${MYSQL_PREFIX}/libexec/mysqld --defaults-file=$MYSQL_DEFAULTS_FILE "$@" 2>&1
