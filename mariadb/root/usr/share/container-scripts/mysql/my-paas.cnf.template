@@ -1,0 +1,26 @@
+[mysqld]
+#
+# Settings configured by the user
+#
+
+# Sets how the table names are stored and compared. Default: 0
+lower_case_table_names = ${MYSQL_LOWER_CASE_TABLE_NAMES}
+
+# The maximum permitted number of simultaneous client connections. Default: 151
+max_connections = ${MYSQL_MAX_CONNECTIONS}
+
+# The minimum/maximum lengths of the word to be included in a FULLTEXT index. Default: 4/20
+ft_min_word_len = ${MYSQL_FT_MIN_WORD_LEN}
+ft_max_word_len = ${MYSQL_FT_MAX_WORD_LEN}
+
+# In case the native AIO is broken. Default: 1
+# See http://help.directadmin.com/item.php?id=529
+innodb_use_native_aio = ${MYSQL_AIO}
+
+[myisamchk]
+# The minimum/maximum lengths of the word to be included in a FULLTEXT index. Default: 4/20
+#
+# To ensure that myisamchk and the server use the same values for full-text
+# parameters, we placed them in both sections.
+ft_min_word_len = ${MYSQL_FT_MIN_WORD_LEN}
+ft_max_word_len = ${MYSQL_FT_MAX_WORD_LEN}

@@ -1,0 +1,58 @@
+#!/bin/bash
+
+# This function returns all config files that daemon uses and their path
+# includes /opt. It is used to get correct path to the config file.
+mysql_get_config_files_scl() {
+    scl enable ${ENABLED_COLLECTIONS} -- my_print_defaults --help --verbose | \
+        grep --after=1 '^Default options' | \
+        tail -n 1 | \
+        grep -o '[^ ]*opt[^ ]*my.cnf'
+}
+
+# This function picks the main config file that deamon uses and we ship in rpm
+mysql_get_correct_config() {
+    # we use the same config in non-SCL packages, not necessary to guess
+    [ -z "${ENABLED_COLLECTIONS}" ] && echo -n "/etc/my.cnf" && return
+
+    # from all config files read by daemon, pick the first that exists
+    for f in `mysql_get_config_files_scl` ; do
+        [ -f "$f" ] && echo "$f"
+    done | head -n 1
+}
+
+export MYSQL_CONFIG_FILE=$(mysql_get_correct_config)
+
+[ -z "$MYSQL_CONFIG_FILE" ] && echo "MYSQL_CONFIG_FILE is empty" && exit 1
+
+unset -f mysql_get_correct_config mysql_get_config_files_scl
+
+# we provide own config files for the container, so clean what rpm ships here
+mkdir -p ${MYSQL_CONFIG_FILE}.d
+rm -f ${MYSQL_CONFIG_FILE}.d/*
+
+# we may add options during service init, so we need to have this dir writable by daemon user
+chown -R mysql:0 ${MYSQL_CONFIG_FILE}.d ${MYSQL_CONFIG_FILE}
+restorecon -R ${MYSQL_CONFIG_FILE}.d ${MYSQL_CONFIG_FILE}
+
+# API of the container are standard paths /etc/my.cnf and /etc/my.cnf.d
+# we already include own /etc/my.cnf for container, but for cases the
+# actually used config file is not on standard path /etc/my.cnf, we
+# need to move it to the location daemon expects it and create symlinks
+if [ "$MYSQL_CONFIG_FILE" != "/etc/my.cnf" ] ; then
+    rm -rf /etc/my.cnf.d
+    mv /etc/my.cnf ${MYSQL_CONFIG_FILE}
+    ln -s ${MYSQL_CONFIG_FILE} /etc/my.cnf
+    ln -s ${MYSQL_CONFIG_FILE}.d /etc/my.cnf.d
+fi
+
+# setup directory for data
+mkdir -p /var/lib/mysql/data
+chown -R mysql:0 /var/lib/mysql
+restorecon -R /var/lib/mysql
+
+# Loosen permission bits for group to avoid problems running container with
+# arbitrary UID
+# When only specifying user, group is 0, that's why /var/lib/mysql must have
+# owner mysql.0; that allows to avoid a+rwx for this dir
+chmod g+w -R /var/lib/mysql ${MYSQL_CONFIG_FILE}.d
+
