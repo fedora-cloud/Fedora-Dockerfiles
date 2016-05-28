@@ -1,4 +1,4 @@
-FROM fedora
+FROM docker.io/fedora
 MAINTAINER http://fedoraproject.org/wiki/Cloud
 
 ENV container docker
@@ -71,7 +71,6 @@ RUN dnf -y install \
            tar \
            tcpdump \
            vim-enhanced \
-           vim-minimal \
            which \
            xauth \
            && dnf clean all
