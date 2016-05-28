@@ -1,6 +1,9 @@
 FROM fedora
 MAINTAINER http://fedoraproject.org/wiki/Cloud
 
+# ATOMIC CLI run command
+LABEL RUN='docker run -d -p 8080:8080 $IMAGE'
+
 # Install nodejs and npm
 RUN dnf -y update && dnf -y install npm && dnf clean all
 

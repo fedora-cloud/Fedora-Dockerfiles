@@ -16,6 +16,8 @@ Copy the sources down and do the build-
 
 To run (if port 8080 is open on your host):
 
+    # atomic run docker.io/fedora/nodejs
+
     # docker run -d -p 8080:8080 <username>/nodejs
 
 or to assign a random port that maps to port 80 on the container:
