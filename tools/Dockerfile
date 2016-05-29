@@ -7,10 +7,11 @@ LABEL RUN="docker run -it --name NAME --privileged --ipc=host --net=host --pid=h
 RUN [ -e /etc/yum.conf ] && sed -i '/tsflags=nodocs/d' /etc/yum.conf || true
 
 # Reinstall all packages to get man pages for them
-RUN dnf -y reinstall "*" && dnf clean all
+RUN dnf -y update && dnf -y reinstall "*" && dnf clean all
 
 # Install all useful packages
-RUN dnf -y install \
+RUN dnf -y remove vim-minimal && \
+    dnf -y install \
            abrt \
            bash-completion \
            bc \
