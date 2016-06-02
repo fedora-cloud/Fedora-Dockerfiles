@@ -8,7 +8,7 @@ echo ""
 echo "Installing the configuration file 'atomic_scan_openscap' into /etc/atomic.d/.  You can now use this scanner with atomic scan with the --scanner atomic_scan_openscap command-line option.  You can also set 'atomic_scan_openscap' as the default scanner in /etc/atomic.conf.  To list the scanners you have configured for your system, use 'atomic scan --list'."
 
 echo ""
-cp /root/atomic_scan_openscap /host/etc/atomic.d
+cp /root/atomic_scan_openscap /host/etc/atomic.d/
 
 
 
@@ -28,7 +28,7 @@ fi
 
 # Add config.ini to the host filesystem
 echo "Updating ${ETC_FILE} with latest configuration"
-cp /root/config.ini ${HOST}/${ETC}
+cp /root/config.ini ${HOST}/${ETC}/
 
 # Exit Message
 echo "Installation complete. You can customize ${ETC}/${ETC_FILE} as needed."
