@@ -17,7 +17,7 @@ if [[ ! -d ${HOST}/${ETC} ]]; then
     mkdir ${HOST}/${ETC}
 fi
 
-DATE=$(date +'%Y-%m-%M-%T')
+DATE=$(date +'%Y-%m-%d-%T')
 
 # Check if /etc/oscapd/config.ini exists
 if [[ -f ${HOST}/${ETC}/${ETC_FILE} ]]; then
