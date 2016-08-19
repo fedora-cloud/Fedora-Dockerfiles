@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# Check if irssi is installed
+
+# If already installed simply run Irssi
+if irssi --version >/dev/null 2>&1; then
+    echo "Starting Irssi"
+    exec /usr/bin/irssi
+
+# If not installed, install Irssi and run it
+else
+    echo "Installing Irssi"
+    dnf -y install irssi && /usr/bin/irssi
+fi
