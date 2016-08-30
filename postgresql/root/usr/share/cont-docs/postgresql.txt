@@ -2,14 +2,14 @@
 PostgreSQL in container
 =======================
 
-API Version:  1.0.1
+API Version:  1.0.2
 
 Documentation
 -------------
 
 You are encouraged to install this alias into your environment:
 
-  $ alias pgcont_help='docker run --rm THIS_IMAGE container-help --component postgresql'
+  $ alias pgcont_help='docker run --rm fedora/postgresql container-help --component postgresql'
 
 Please consult documentation for PostgreSQL component via:
 

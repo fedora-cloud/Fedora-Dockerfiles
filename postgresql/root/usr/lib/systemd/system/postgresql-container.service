@@ -14,7 +14,7 @@ User=postgres
 Group=postgres
 
 # Location of database directory
-Environment=PGDATA=/var/lib/pgsql/data
+Environment=PGDATA=/var/lib/pgsql/data/data
 
 # Where to send early-startup messages from the server (before the logging
 # options of postgresql.conf take effect)
