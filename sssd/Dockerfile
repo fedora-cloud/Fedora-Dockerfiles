@@ -4,7 +4,7 @@ FROM fedora
 MAINTAINER Jan Pazdziora
 
 # Install FreeIPA client and realmd
-RUN mkdir -p /run/lock ; dnf install -y freeipa-client realmd /etc/selinux/targeted/contexts/dbus_contexts oddjob oddjob-mkhomedir sssd sssd-dbus adcli perl tar findutils && dnf clean all
+RUN mkdir -p /run/lock ; dnf install -y freeipa-client realmd /etc/selinux/targeted/contexts/dbus_contexts oddjob oddjob-mkhomedir sssd sssd-dbus adcli perl perl-Time-HiRes tar findutils && dnf clean all
 RUN rm -f /usr/bin/sss_ssh_authorizedkeys
 COPY dbus.service /etc/systemd/system/dbus.service
 COPY oddjobd.service /etc/systemd/system/oddjobd.service
