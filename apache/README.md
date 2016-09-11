@@ -16,7 +16,7 @@ Get Docker version
 To run the image in the registry (assuming port 80 is open):
 
 ```
-# sudo atomic RUN docker.io/apache
+# sudo atomic RUN docker.io/fedora/apache
 ```
 
 The atomic application will pull the image and run it.
