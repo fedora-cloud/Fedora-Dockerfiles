@@ -23,7 +23,7 @@ mkdir ./bin
 for i in $(./sbin/busybox --list);do
     ln -s /sbin/busybox ./bin/$i
 done
-
+mkdir etc
 echo "root:x:0:0:root:/root:/bin/sh" > etc/passwd
 echo "root:!:10933:0:99999:7:::" > etc/shadow
 echo "root:x:0:" > etc/group
