@@ -37,6 +37,8 @@ c8fc42d19fd3        <username>/mongo:latest   /usr/bin/mongod     4 minutes ago 
 
 To test:
 
+You will need mongo client tool installed on your system to issue the next command.
+
 ```
 # mongo --host localhost --port 49158
 
