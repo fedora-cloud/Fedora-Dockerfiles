@@ -16,7 +16,7 @@ ENV MYSQL_VERSION=10.0 \
 
 LABEL summary="MariaDB is a multi-user, multi-threaded SQL database server" \
       io.k8s.description="MariaDB is a multi-user, multi-threaded SQL database server" \
-      io.k8s.display-name="MariaDB 10.0" \
+      io.k8s.display-name="MariaDB 10.1" \
       io.openshift.expose-services="3306:mysql" \
       io.openshift.tags="database,mysql,mariadb,mariadb100"
 
@@ -32,7 +32,7 @@ RUN INSTALL_PKGS="rsync tar gettext hostname bind-utils policycoreutils mariadb-
     rpm -V $INSTALL_PKGS && \
     dnf clean all && \
     mkdir -p /var/lib/mysql/data && chown -R mysql.0 /var/lib/mysql && \
-    rpm -q --qf '%{version}' mariadb-server | grep -e '10\.0\.' && \
+    rpm -q --qf '%{version}' mariadb-server | grep -e '10\.1\.' && \
     test "$(id mysql)" = "uid=27(mysql) gid=27(mysql) groups=27(mysql)"
 
 # Get prefix path and path to scripts rather than hard-code them in scripts
