@@ -1,12 +1,6 @@
 Fedora-Dockerfiles
 ==================
 
-This is the upstream source for the [fedora-dockerfiles](http://koji.fedoraproject.org/koji/packageinfo?packageID=18023) package.  To get started with Docker on Fedora:
+This repository is no longer being maintained.  Please direct your Fedora Dockerfile work to the [Fedora Layered Docker Image Build Service] (https://fedoraproject.org/wiki/Changes/Layered_Docker_Image_Build_Service).
 
-```
-# sudo dnf install docker fedora-dockerfiles
-```
-
-Some [guidelines](https://github.com/projectatomic/container-best-practices) for contributing to this repo.
-
-We welcome contributions.
+Questions can be sent to the [Fedora Cloud] (https://lists.fedoraproject.org/admin/lists/cloud.lists.fedoraproject.org/) mailing list.
