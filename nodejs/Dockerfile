@@ -30,5 +30,5 @@ RUN cd /src; npm install
 # Add code of our nodejs project with respect to gitignore
 ADD . /src
 
-# Run it!
-CMD ["node", "/src/index.js"]
+# Run it! https://docs.npmjs.com/cli/start
+CMD ["npm", "start"]
