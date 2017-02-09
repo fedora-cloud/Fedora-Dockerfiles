@@ -1,6 +1,6 @@
-# Mattermost 3.0.1
+# Mattermost 3.1.0
 
-This is a Mattermost 3.0.1 docker container images. As the Mattermost community
+This is a Mattermost 3.1.0 docker container images. As the Mattermost community
 only provides a dev version and releases, but no link to the latest release, we
 will use a specific version of Mattermost for this docker container image. Please
 check [Mattermost release page](http://www.mattermost.org/download/) if updates
@@ -27,14 +27,14 @@ to start the Mattermost container.
 
 ### Building
 
-Just a simple `docker build --rm --tag <username>/mattermost:3.0.1 .` will do it.
+Just a simple `docker build --rm --tag <username>/mattermost:3.1.0 .` will do it.
 
 ## Running
 
 Start a MySQL container first, mattermost will need it: `docker run -ti --name db -e MYSQL_ALLOW_EMPTY_PASSWORD=true -e MYSQL_USER=mmuser -e MYSQL_PASSWORD=mostest -e MYSQL_DATABASE=mattermost_test mariadb` This will use a mariadb from hub.docker.io. user, password and database must
 match what you put in `config.json`.
 
-Now run the Mattermost container itself and link it to the mysql container: `docker run --detach --publish 8065:8065 --link db:mysql --name mattermost <username>/mattermost:3.0.1`
+Now run the Mattermost container itself and link it to the mysql container: `docker run --detach --publish 8065:8065 --link db:mysql --name mattermost <username>/mattermost:3.1.0`
 
 ## Usage
 
