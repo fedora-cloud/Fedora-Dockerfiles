@@ -7,11 +7,17 @@ To build:
 
 Copy the sources down -
 
-	# docker build --rm -t <username>/redis .
+	# docker build --rm -t fedora/redis .
 
 To run:
 
-	# docker run -d -p 6379:6379 <username>/redis
+On Atomic host:
+
+        # atomic run fedora/redis
+
+Non-Atomic host:
+
+	# docker run -d -p 6379:6379 fedora/redis
 
 To test:
 
