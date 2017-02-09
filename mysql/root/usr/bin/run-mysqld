@@ -1,0 +1,38 @@
+#!/bin/bash
+
+source ${CONTAINER_SCRIPTS_PATH}/common.sh
+set -eu
+
+export_setting_variables
+
+[ -f ${CONTAINER_SCRIPTS_PATH}/validate-variables.sh ] && source ${CONTAINER_SCRIPTS_PATH}/validate-variables.sh
+
+log_volume_info $MYSQL_DATADIR
+
+# Process the MySQL configuration files
+log_info 'Processing MySQL configuration files ...'
+envsubst < ${CONTAINER_SCRIPTS_PATH}/my-base.cnf.template > /etc/my.cnf.d/base.cnf
+envsubst < ${CONTAINER_SCRIPTS_PATH}/my-paas.cnf.template > /etc/my.cnf.d/paas.cnf
+envsubst < ${CONTAINER_SCRIPTS_PATH}/my-tuning.cnf.template > /etc/my.cnf.d/tuning.cnf
+
+if [ ! -d "$MYSQL_DATADIR/mysql" ]; then
+  initialize_database "$@"
+else
+  start_local_mysql "$@"
+fi
+
+if [ -f ${CONTAINER_SCRIPTS_PATH}/passwd-change.sh ]; then
+  log_info 'Setting passwords ...'
+  source ${CONTAINER_SCRIPTS_PATH}/passwd-change.sh
+fi
+if [ -f ${CONTAINER_SCRIPTS_PATH}/post-init.sh ]; then
+  log_info 'Sourcing post-init.sh ...'
+  source ${CONTAINER_SCRIPTS_PATH}/post-init.sh
+fi
+
+# Restart the MySQL server with public IP bindings
+shutdown_local_mysql
+unset_env_vars
+log_volume_info $MYSQL_DATADIR
+log_info 'Running final exec -- Only MySQL server logs after this point'
+exec ${MYSQL_PREFIX}/libexec/mysqld --defaults-file=$MYSQL_DEFAULTS_FILE "$@" 2>&1

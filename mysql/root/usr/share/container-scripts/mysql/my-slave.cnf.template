@@ -1,0 +1,7 @@
+[mysqld]
+
+server-id     = ${MYSQL_SERVER_ID}
+log_bin       = ${MYSQL_DATADIR}/mysql-bin.log
+relay-log     = ${MYSQL_DATADIR}/mysql-relay-bin.log
+binlog_do_db  = mysql
+binlog_do_db  = ${MYSQL_DATABASE}
