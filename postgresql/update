@@ -1,6 +1,6 @@
 #!/bin/sh
 
-version=1.0.1
+version=1.0.2
 
 clean()
 {
@@ -16,7 +16,7 @@ build()
     git pull
     git checkout v$version
     git submodule update --init
-    make DESTDIR=../
+    make DESTDIR=../ docker_main_tag=fedora/postgresql
 )
 
 clean

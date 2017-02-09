@@ -109,6 +109,26 @@ POSTGRESQL_PASSWORD=STRING
     by given user.
 
 
+Systemd-based image
+-------------------
+
+This image (fedora/postgresql) allows you to start multi-process
+container via systemd.  You can easily achive this by running:
+
+    $ docker run -it --rm -u root \
+        -v /run -v /tmp \
+        -v /sys/fs/cgroup:/sys/fs/cgroup:ro \
+        fedora/postgresql \
+        /usr/lib/systemd/systemd
+
+As you can see, the steps that you need to do (compared with regular docker-run
+command for fedora/postgresql) is to:
+
+    - mount some additional directories into container
+    - specify that you wan't to run the container as root
+    - specify /usr/lib/systemd/systemd docker's "main" command
+
+
 Usage on Atomic host (tech-preview feature, not supported)
 ----------------------------------------------------------
 
