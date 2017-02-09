@@ -1,6 +1,9 @@
 FROM fedora
 MAINTAINER http://fedoraproject.org/wiki/Cloud
 
+# This Label is to run the image with atomic command
+LABEL RUN='docker run -d -p 27017 $IMAGE'
+
 RUN dnf -y update && dnf clean all
 
 # List of packages that may be needed while troubleshooting, including the MongoDB client. Only uncomment this line if you need the MongoDB client while inside the container.

@@ -11,11 +11,17 @@ To build:
 
 Copy the sources down -
 
-    # docker build --rm -t <username>/mongo .
+    # docker build --rm -t fedora/mongo .
 
 To run:
 
-    # docker run -d -p 27017 <username>/mongo
+On Atomic host:
+
+    # atomic run fedora/mongo
+
+On Non-Atomic host:
+
+    # docker run -d -p 27017 fedora/mongo
 
 Watch for the database to initialize and start listening (using the container ID from "docker run":
 
