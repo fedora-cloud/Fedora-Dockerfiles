@@ -1,6 +1,9 @@
 FROM fedora
 MAINTAINER http://fedoraproject.org/wiki/Cloud
 
+# This Label adds ability to run image with atomic command
+LABEL RUN='docker run -d -p 80:80 $IMAGE'
+
 RUN dnf -y update && dnf clean all
 RUN dnf -y install nginx && dnf clean all
 RUN echo "daemon off;" >> /etc/nginx/nginx.conf

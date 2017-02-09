@@ -7,11 +7,17 @@ To build:
 
 Copy the sources down -
 
-    # docker build --rm -t <username>/nginx .
+    # docker build --rm -t fedora/nginx .
 
 To run:
 
-    # docker run -d -p 80:80 <username>/nginx
+On Atomic host:
+
+    # atomic run fedora/nginx
+
+On Non-Atomic host:
+
+    # docker run -d -p 80:80 fedora/nginx
 
 To test:
 
