@@ -1,0 +1,71 @@
+From 03f3073e685a2419d3967cfa7476a06f7a120697 Mon Sep 17 00:00:00 2001
+From: hchiramm <hchiramm@redhat.com>
+Date: Thu, 28 Jul 2016 20:03:23 +0530
+Subject: [PATCH] Adding GlusterFS DockerFile
+
+Signed-off-by: hchiramm <hchiramm@redhat.com>
+---
+ gluster/Dockerfile | 20 ++++++++++++++++++++
+ gluster/README.md  | 23 +++++++++++++++++++++++
+ 2 files changed, 43 insertions(+)
+ create mode 100644 gluster/Dockerfile
+ create mode 100644 gluster/README.md
+
+diff --git a/gluster/Dockerfile b/gluster/Dockerfile
+new file mode 100644
+index 0000000..0df2389
+--- /dev/null
++++ b/gluster/Dockerfile
+@@ -0,0 +1,20 @@
++FROM fedora:latest
++
++MAINTAINER http://fedoraproject.org/wiki/Cloud
++
++ENV container docker
++
++RUN yum -y update && yum clean all
++
++RUN yum --setopt=tsflags=nodocs -y install wget nfs-utils iputils iproute attr glusterfs glusterfs-server glusterfs-geo-replication openssh-server; yum clean all
++
++
++VOLUME [ "/sys/fs/cgroup" ]
++
++EXPOSE 22 111 245 443 24007 2049 8080 6010 6011 6012 38465 38466 38468 38469 49152 49153 49154 49156 49157 49158 49159 49160 49161 49162 49163
++
++RUN systemctl disable nfs-server.service
++RUN systemctl enable rpcbind.service
++RUN systemctl enable glusterd.service
++CMD ["/usr/sbin/init"]
++
+diff --git a/gluster/README.md b/gluster/README.md
+new file mode 100644
+index 0000000..9204186
+--- /dev/null
++++ b/gluster/README.md
+@@ -0,0 +1,23 @@
++dockerfiles-fedora-gluster
++===========================
++
++This repo contains a recipe for making a Docker container gluster on Fedora. It has been tested with docker 1.10.3
++
++
++Check your Docker version
++
++    # docker version
++
++To build:
++
++    # docker build --rm -t <username>/mygluster .
++
++Check the image out.
++
++    # docker images
++
++Run it:
++
++    # docker run -i -t <username>/mygluster 
++
++You should now have a shell inside a gluster container.
+-- 
+2.7.4
+
