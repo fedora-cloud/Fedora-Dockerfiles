@@ -2,7 +2,7 @@ FROM fedora
 MAINTAINER http://fedoraproject.org/wiki/Cloud
 
 RUN dnf -y update && dnf clean all
-RUN dnf -y install python-pip python-django git sqlite python-psycopg2 && dnf clean all
+RUN dnf -y install python-pip python3-django git sqlite python-psycopg2 && dnf clean all
 
 # create directory /code and mount sources there
 RUN mkdir /code
